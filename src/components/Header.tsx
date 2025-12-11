@@ -36,14 +36,14 @@ const Header = () => {
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
-              <span className="font-display font-bold text-foreground text-lg">A</span>
+              <span className="font-display font-bold text-foreground text-lg">S</span>
             </div>
             <div>
               <span className={`font-display font-bold text-xl ${isScrolled ? "text-foreground" : "text-primary-foreground"}`}>
-                AgroExports
+                SHC Global Trade
               </span>
               <span className={`block text-xs ${isScrolled ? "text-muted-foreground" : "text-primary-foreground/70"}`}>
-                From India to the World
+                Premium Indian Exports
               </span>
             </div>
           </a>

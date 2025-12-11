@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -83,9 +83,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Head Office</h4>
                   <p className="text-muted-foreground text-sm">
-                    123 Export House, Trade Center Road
+                    204, Suraj Darshan Apartment
                     <br />
-                    Mumbai, Maharashtra 400001, India
+                    Gopipura, Surat, Gujarat, India
                   </p>
                 </div>
               </motion.div>
@@ -103,9 +103,9 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
                   <p className="text-muted-foreground text-sm">
-                    +91 22 1234 5678
+                    +91 99999 99999
                     <br />
-                    +91 98765 43210 (WhatsApp)
+                    (WhatsApp Available)
                   </p>
                 </div>
               </motion.div>
@@ -123,13 +123,60 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
                   <p className="text-muted-foreground text-sm">
-                    exports@agroexports.in
+                    sales@shcglobaltrade.co.in
                     <br />
-                    info@agroexports.in
+                    info@shcglobaltrade.co.in
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="flex items-start gap-4"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Globe className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1">Website</h4>
+                  <p className="text-muted-foreground text-sm">
+                    www.shcglobaltrade.co.in
                   </p>
                 </div>
               </motion.div>
             </div>
+
+            {/* Business Credentials */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mt-10 p-6 bg-primary/5 rounded-2xl border border-primary/10"
+            >
+              <h4 className="font-semibold text-foreground mb-4">Business Credentials</h4>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-muted-foreground">GST Number:</span>
+                  <p className="font-medium text-foreground">24ABTPP7011L1Z9</p>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">IEC License:</span>
+                  <p className="font-medium text-foreground">ABTPP7011L</p>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">APEDA License:</span>
+                  <p className="font-medium text-foreground text-xs">RCMC/APEDA/05968/2023-2024</p>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">D&B D-U-N-S:</span>
+                  <p className="font-medium text-foreground">75-605-1507</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Right - Contact Form */}
@@ -213,9 +260,19 @@ const Contact = () => {
                   className="w-full h-10 rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <option value="">Select a product</option>
-                  <option value="basmati-rice">Basmati Rice</option>
-                  <option value="green-chillies">Green Chillies</option>
-                  <option value="raw-banana">Raw Banana</option>
+                  <optgroup label="Basmati Rice">
+                    <option value="1121-basmati">1121 Basmati Rice</option>
+                    <option value="traditional-basmati">Traditional Basmati Rice</option>
+                    <option value="pusa-basmati">Pusa Basmati Rice</option>
+                  </optgroup>
+                  <optgroup label="Green Chillies">
+                    <option value="gauri-chillies">Gauri Green Chillies</option>
+                    <option value="g9-chillies">G9 Green Chillies</option>
+                  </optgroup>
+                  <optgroup label="Banana">
+                    <option value="cavendish-banana">Cavendish Banana</option>
+                    <option value="grand-naine-banana">Grand Naine Banana</option>
+                  </optgroup>
                   <option value="multiple">Multiple Products</option>
                 </select>
               </div>

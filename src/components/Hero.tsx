@@ -23,20 +23,20 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-8 animate-fade-up opacity-0">
             <Award className="w-4 h-4 text-gold" />
             <span className="text-sm font-medium text-primary-foreground">
-              Trusted Exporter Since 2010
+              APEDA & IEC Certified Exporter | Established 2024
             </span>
           </div>
 
           {/* Heading */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up opacity-0 stagger-1">
-            Premium Indian
-            <span className="block text-gold">Agricultural Exports</span>
+            SHC Global Trade
+            <span className="block text-gold">Premium Indian Agricultural Exports</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl mb-10 animate-fade-up opacity-0 stagger-2">
-            Delivering the finest Basmati Rice, Green Chillies, and Raw Bananas from
-            the heartland of India to global markets with unmatched quality and reliability.
+            Your trusted partner for premium Basmati Rice varieties, Fresh Green Chillies (Gauri & G9), 
+            and Export-Grade Bananas from India. Quality assured, globally delivered.
           </p>
 
           {/* CTA Buttons */}
@@ -56,28 +56,28 @@ const Hero = () => {
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                 <Globe className="w-5 h-5 text-gold" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
-                  45+
+                  Global
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Countries Served</p>
+              <p className="text-sm text-primary-foreground/70">Export Reach</p>
             </div>
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                 <Truck className="w-5 h-5 text-gold" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
-                  10K+
+                  7+
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Tons Exported</p>
+              <p className="text-sm text-primary-foreground/70">Product Varieties</p>
             </div>
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                 <Award className="w-5 h-5 text-gold" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
-                  14+
+                  100%
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Years Experience</p>
+              <p className="text-sm text-primary-foreground/70">Quality Assured</p>
             </div>
           </div>
         </div>

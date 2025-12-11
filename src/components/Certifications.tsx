@@ -1,26 +1,30 @@
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Shield, FileCheck, Award } from "lucide-react";
 
 const certifications = [
   {
     name: "APEDA",
     fullName: "Agricultural & Processed Food Products Export Development Authority",
-    description: "Government of India certification for agricultural exports",
+    description: "License No: RCMC/APEDA/05968/2023-2024",
+    icon: Award,
   },
   {
-    name: "FSSAI",
-    fullName: "Food Safety and Standards Authority of India",
-    description: "Ensures food safety and quality standards compliance",
+    name: "IEC",
+    fullName: "Import Export Code",
+    description: "License No: ABTPP7011L - Authorized for international trade",
+    icon: FileCheck,
   },
   {
-    name: "ISO 22000",
-    fullName: "Food Safety Management System",
-    description: "International standard for food safety management",
+    name: "D&B Certified",
+    fullName: "Dun & Bradstreet Business Verification",
+    description: "D-U-N-S: 75-605-1507 - Verified business credibility",
+    icon: Shield,
   },
   {
-    name: "HACCP",
-    fullName: "Hazard Analysis Critical Control Points",
-    description: "Systematic preventive approach to food safety",
+    name: "GST Registered",
+    fullName: "Goods and Services Tax",
+    description: "GSTIN: 24ABTPP7011L1Z9 - Compliant taxation",
+    icon: CheckCircle2,
   },
 ];
 
@@ -37,8 +41,8 @@ const Certifications = () => {
             Certified for Excellence
           </h2>
           <p className="text-primary-foreground/80 text-lg">
-            Our operations meet the highest international standards for food safety,
-            quality management, and sustainable practices.
+            SHC Global Trade operates with full regulatory compliance and internationally 
+            recognized certifications, ensuring trust and quality in every transaction.
           </p>
         </div>
 
@@ -54,7 +58,7 @@ const Certifications = () => {
               className="bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-6 text-center hover:bg-primary-foreground/15 transition-colors"
             >
               <div className="w-16 h-16 mx-auto mb-4 bg-gold/20 rounded-2xl flex items-center justify-center">
-                <CheckCircle2 className="w-8 h-8 text-gold" />
+                <cert.icon className="w-8 h-8 text-gold" />
               </div>
               <h3 className="font-display text-xl font-bold text-primary-foreground mb-2">
                 {cert.name}
@@ -68,6 +72,21 @@ const Certifications = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Additional Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <p className="text-primary-foreground/70 text-sm max-w-2xl mx-auto">
+            All our products comply with international food safety standards including FSSAI, 
+            HACCP, and ISO 22000 requirements. We ensure complete documentation for seamless 
+            customs clearance in destination countries.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
