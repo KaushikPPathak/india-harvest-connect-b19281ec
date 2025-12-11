@@ -1,46 +1,130 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import basmatiRice from "@/assets/basmati-rice.jpg";
-import greenChillies from "@/assets/green-chillies.jpg";
-import rawBanana from "@/assets/raw-banana.jpg";
 
-const products = [
+// Basmati Rice varieties
+import rice1121 from "@/assets/1121-basmati-rice.jpg";
+import riceTraditional from "@/assets/traditional-basmati-rice.jpg";
+import ricePusa from "@/assets/pusa-basmati-rice.jpg";
+
+// Green Chillies varieties
+import gauriChillies from "@/assets/gauri-green-chillies.jpg";
+import g9Chillies from "@/assets/g9-green-chillies.jpg";
+
+// Banana varieties
+import cavendishBanana from "@/assets/cavendish-banana.jpg";
+import grandNaineBanana from "@/assets/grand-naine-banana.jpg";
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  features: string[];
+  origin: string;
+  category: string;
+  hsCode?: string;
+  packaging?: string;
+}
+
+const products: Product[] = [
+  // Basmati Rice Varieties
   {
     id: 1,
-    name: "Premium Basmati Rice",
+    name: "1121 Basmati Rice",
     description:
-      "Long-grain aromatic rice renowned for its distinctive fragrance and fluffy texture. Sourced from the fertile plains of Punjab and Haryana.",
-    image: basmatiRice,
-    features: ["Extra Long Grain", "Aged 2+ Years", "Non-GMO", "Pesticide Free"],
+      "The world's longest grain Basmati rice with exceptional aroma and elongation ratio of 2.5x after cooking. Premium quality extra-long grain rice with average grain length of 8.3-8.4mm raw. Ideal for Biryani, Pulao, and international cuisines. Aged for minimum 2 years for optimal flavor and texture.",
+    image: rice1121,
+    features: ["8.3mm+ Grain Length", "2.5x Elongation", "Aged 2+ Years", "Non-GMO"],
     origin: "Punjab, India",
+    category: "Basmati Rice",
+    hsCode: "1006.30",
+    packaging: "25/50 Kg PP Bags, Jute Bags",
   },
   {
     id: 2,
-    name: "Fresh Green Chillies",
+    name: "Traditional Basmati Rice",
     description:
-      "Vibrant and flavorful green chillies with the perfect balance of heat and taste. Freshly harvested and carefully packed for export.",
-    image: greenChillies,
-    features: ["Farm Fresh", "High Capsaicin", "Uniform Size", "Cold Chain"],
-    origin: "Andhra Pradesh, India",
+      "Authentic traditional Basmati with characteristic nutty flavor and delicate aroma. Known for its slender grains and excellent cooking properties. This heritage variety offers superior taste profile cherished across generations. Perfect for everyday cooking and traditional Indian dishes.",
+    image: riceTraditional,
+    features: ["Traditional Variety", "Nutty Aroma", "Slender Grains", "Premium Quality"],
+    origin: "Haryana, India",
+    category: "Basmati Rice",
+    hsCode: "1006.30",
+    packaging: "25/50 Kg PP Bags, Jute Bags",
   },
   {
     id: 3,
-    name: "Raw Green Bananas",
+    name: "Pusa Basmati Rice",
     description:
-      "Premium quality raw bananas perfect for cooking and industrial use. Known for their firm texture and excellent shelf life.",
-    image: rawBanana,
-    features: ["Export Grade", "Extended Shelf Life", "Uniform Ripening", "GAP Certified"],
+      "High-yielding Pusa variety developed by IARI with excellent cooking qualities and aromatic properties. Features pearly white grains with consistent quality. Popular choice for both domestic consumption and international exports. Offers great value with premium Basmati characteristics.",
+    image: ricePusa,
+    features: ["Pearly White", "Consistent Quality", "IARI Developed", "Export Grade"],
+    origin: "Uttar Pradesh, India",
+    category: "Basmati Rice",
+    hsCode: "1006.30",
+    packaging: "25/50 Kg PP Bags, Jute Bags",
+  },
+  // Green Chillies Varieties
+  {
+    id: 4,
+    name: "Gauri Green Chillies",
+    description:
+      "Premium Gauri variety green chillies known for their vibrant color, consistent size, and balanced heat profile. Freshly harvested from select farms in Andhra Pradesh. Maintained under strict cold chain protocols to ensure freshness. Ideal for culinary applications, pickle manufacturing, and food processing industries.",
+    image: gauriChillies,
+    features: ["Medium Heat", "Bright Green", "Uniform Size", "Cold Chain"],
+    origin: "Andhra Pradesh, India",
+    category: "Green Chillies",
+    hsCode: "0709.60",
+    packaging: "5/10 Kg Cartons, Reefer Containers",
+  },
+  {
+    id: 5,
+    name: "G9 Green Chillies",
+    description:
+      "Export-grade G9 variety with superior pungency and excellent shelf life. These premium green chillies feature uniform sizing, glossy appearance, and high capsaicin content. Processed and packed under HACCP standards. Perfect for dehydration, paste production, and fresh export markets.",
+    image: g9Chillies,
+    features: ["High Pungency", "Export Grade", "Long Shelf Life", "HACCP Certified"],
+    origin: "Gujarat, India",
+    category: "Green Chillies",
+    hsCode: "0709.60",
+    packaging: "5/10 Kg Cartons, Reefer Containers",
+  },
+  // Banana Varieties
+  {
+    id: 6,
+    name: "Cavendish Banana",
+    description:
+      "Premium Cavendish variety bananas, the world's most popular commercial banana. Known for uniform ripening, excellent taste, and extended shelf life. Harvested at optimal maturity for export. GAP certified farms ensure quality from cultivation to packaging. Ideal for supermarket chains and wholesale distribution.",
+    image: cavendishBanana,
+    features: ["Uniform Ripening", "Extended Shelf Life", "GAP Certified", "Class 1 Grade"],
     origin: "Maharashtra, India",
+    category: "Fresh Banana",
+    hsCode: "0803.90",
+    packaging: "13/18 Kg Cartons, Cluster Packing",
+  },
+  {
+    id: 7,
+    name: "Grand Naine Banana",
+    description:
+      "Superior quality Grand Naine variety, a premium Cavendish sub-variety with excellent export credentials. Features medium-sized fingers with consistent curvature and appealing yellow color when ripe. Cultivated using sustainable farming practices. Widely preferred in Middle East, European, and Asian markets.",
+    image: grandNaineBanana,
+    features: ["Premium Export", "Sustainable Farming", "Consistent Quality", "13.5cm+ Fingers"],
+    origin: "Tamil Nadu, India",
+    category: "Fresh Banana",
+    hsCode: "0803.90",
+    packaging: "13/18 Kg Cartons, Cluster Packing",
   },
 ];
 
 const Products = () => {
+  const categories = [...new Set(products.map((p) => p.category))];
+
   return (
     <section id="products" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-gold font-medium uppercase tracking-wider text-sm">
             Our Products
           </span>
@@ -48,66 +132,90 @@ const Products = () => {
             Premium Quality Exports
           </h2>
           <p className="text-muted-foreground text-lg">
-            We specialize in exporting the finest agricultural products from India,
-            ensuring quality at every step from farm to destination.
+            SHC Global Trade specializes in exporting the finest agricultural products from India.
+            Our comprehensive range includes premium Basmati rice varieties, fresh green chillies, 
+            and export-grade bananas - all meeting international quality standards.
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="inline-block bg-gold/90 text-foreground text-xs font-medium px-3 py-1 rounded-full">
-                    {product.origin}
-                  </span>
-                </div>
-              </div>
+        {/* Products by Category */}
+        {categories.map((category) => (
+          <div key={category} className="mb-16 last:mb-0">
+            <h3 className="font-display text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
+              <span className="w-12 h-1 bg-gold rounded-full" />
+              {category}
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products
+                .filter((p) => p.category === category)
+                .map((product, index) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300"
+                  >
+                    {/* Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={`${product.name} - Export Quality from India`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                        <span className="inline-block bg-gold/90 text-foreground text-xs font-medium px-3 py-1 rounded-full">
+                          {product.origin}
+                        </span>
+                        {product.hsCode && (
+                          <span className="inline-block bg-primary/90 text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
+                            HS: {product.hsCode}
+                          </span>
+                        )}
+                      </div>
+                    </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                  {product.name}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {product.description}
-                </p>
+                    {/* Content */}
+                    <div className="p-6">
+                      <h4 className="font-display text-xl font-bold text-foreground mb-3">
+                        {product.name}
+                      </h4>
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
+                        {product.description}
+                      </p>
 
-                {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {product.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
+                      {/* Features */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {product.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
 
-                <Button variant="outline" className="w-full group/btn">
-                  Learn More
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                      {/* Packaging Info */}
+                      {product.packaging && (
+                        <p className="text-xs text-muted-foreground mb-4">
+                          <span className="font-medium">Packaging:</span> {product.packaging}
+                        </p>
+                      )}
+
+                      <Button variant="outline" className="w-full group/btn">
+                        Request Quote
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
