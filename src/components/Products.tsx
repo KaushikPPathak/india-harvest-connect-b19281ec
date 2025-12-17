@@ -42,6 +42,7 @@ const products: Product[] = [
     category: "Basmati Rice",
     hsCode: "1006.30",
     packaging: "25/50 Kg PP Bags, Jute Bags",
+    detailPage: "/pusa-basmati-1121",
   },
   {
     id: 2,
