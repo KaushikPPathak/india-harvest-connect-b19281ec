@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Basmati Rice varieties
 import rice1121 from "@/assets/1121-basmati-rice.jpg";
@@ -25,6 +26,7 @@ interface Product {
   category: string;
   hsCode?: string;
   packaging?: string;
+  detailPage?: string;
 }
 
 const products: Product[] = [
@@ -64,6 +66,7 @@ const products: Product[] = [
     category: "Basmati Rice",
     hsCode: "1006.30",
     packaging: "25/50 Kg PP Bags, Jute Bags",
+    detailPage: "/pusa-basmati-1509",
   },
   // Green Chillies Varieties
   {
@@ -206,10 +209,19 @@ const Products = () => {
                         </p>
                       )}
 
-                      <Button variant="outline" className="w-full group/btn">
-                        Request Quote
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                      </Button>
+                      {product.detailPage ? (
+                        <Link to={product.detailPage} className="block">
+                          <Button variant="default" className="w-full group/btn">
+                            View Details
+                            <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button variant="outline" className="w-full group/btn">
+                          Request Quote
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Button>
+                      )}
                     </div>
                   </motion.div>
                 ))}
