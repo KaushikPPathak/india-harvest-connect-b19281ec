@@ -61,8 +61,8 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant={isScrolled ? "default" : "hero"} size="lg">
-              Get Quote
+            <Button variant={isScrolled ? "default" : "hero"} size="lg" asChild>
+              <a href="#contact">Get Quote</a>
             </Button>
           </nav>
 
@@ -96,8 +96,8 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" size="lg" className="mt-2">
-                Get Quote
+              <Button variant="default" size="lg" className="mt-2" asChild>
+                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Get Quote</a>
               </Button>
             </nav>
           </motion.div>
