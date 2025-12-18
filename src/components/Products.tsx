@@ -81,6 +81,7 @@ const products: Product[] = [
     category: "Green Chillies",
     hsCode: "0709.60",
     packaging: "5/10 Kg Cartons, Reefer Containers",
+    detailPage: "/gauri-green-chilli",
   },
   {
     id: 5,
@@ -93,6 +94,7 @@ const products: Product[] = [
     category: "Green Chillies",
     hsCode: "0709.60",
     packaging: "5/10 Kg Cartons, Reefer Containers",
+    detailPage: "/g9-green-chilli",
   },
   // Banana Varieties
   {

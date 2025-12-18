@@ -103,7 +103,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
                   <p className="text-muted-foreground text-sm">
-                    +91 99999 99999
+                    +91-93274-20046
                     <br />
                     (WhatsApp Available)
                   </p>
