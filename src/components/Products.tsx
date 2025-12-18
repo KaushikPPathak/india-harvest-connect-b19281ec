@@ -108,6 +108,7 @@ const products: Product[] = [
     category: "Fresh Banana",
     hsCode: "0803.90",
     packaging: "13/18 Kg Cartons, Cluster Packing",
+    detailPage: "/cavendish-banana",
   },
   {
     id: 7,
