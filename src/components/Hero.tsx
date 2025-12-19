@@ -41,12 +41,14 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up opacity-0 stagger-3">
-            <Button variant="hero" size="xl">
-              Request Quote
-              <ArrowRight className="w-5 h-5" />
+            <Button variant="hero" size="xl" asChild>
+              <a href="#contact">
+                Request Quote
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </Button>
-            <Button variant="heroOutline" size="xl">
-              Explore Products
+            <Button variant="heroOutline" size="xl" asChild>
+              <a href="#products">Explore Products</a>
             </Button>
           </div>
 
