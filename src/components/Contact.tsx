@@ -76,21 +76,21 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
+    <section id="contact" className="py-12 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16">
           {/* Left - Contact Info */}
           <div>
-            <span className="text-gold font-medium uppercase tracking-wider text-sm">
+            <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
               Get In Touch
             </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-4 md:mb-6">
               Ready to Start
               <span className="text-primary block">Exporting?</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-10">
+            <p className="text-muted-foreground text-sm md:text-lg mb-6 md:mb-10">
               Fill out the form and our export specialists will contact you within
-              24 hours to discuss your requirements and provide a competitive quote.
+              24 hours to discuss your requirements.
             </p>
 
             {/* Contact Details */}
@@ -180,25 +180,25 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-10 p-6 bg-primary/5 rounded-2xl border border-primary/10"
+              className="mt-6 md:mt-10 p-4 md:p-6 bg-primary/5 rounded-2xl border border-primary/10"
             >
-              <h4 className="font-semibold text-foreground mb-4">Business Credentials</h4>
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <h4 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base">Business Credentials</h4>
+              <div className="grid grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm">
                 <div>
-                  <span className="text-muted-foreground">GST Number:</span>
-                  <p className="font-medium text-foreground">24ABTPP7011L1Z9</p>
+                  <span className="text-muted-foreground text-[10px] md:text-xs">GST Number:</span>
+                  <p className="font-medium text-foreground text-xs md:text-sm">24ABTPP7011L1Z9</p>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">IEC License:</span>
-                  <p className="font-medium text-foreground">ABTPP7011L</p>
+                  <span className="text-muted-foreground text-[10px] md:text-xs">IEC License:</span>
+                  <p className="font-medium text-foreground text-xs md:text-sm">ABTPP7011L</p>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">APEDA License:</span>
-                  <p className="font-medium text-foreground text-xs">RCMC/APEDA/05968/2023-2024</p>
+                  <span className="text-muted-foreground text-[10px] md:text-xs">APEDA License:</span>
+                  <p className="font-medium text-foreground text-[10px] md:text-xs break-all">RCMC/APEDA/05968/2023-2024</p>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">D&B D-U-N-S:</span>
-                  <p className="font-medium text-foreground">75-605-1507</p>
+                  <span className="text-muted-foreground text-[10px] md:text-xs">D&B D-U-N-S:</span>
+                  <p className="font-medium text-foreground text-xs md:text-sm">75-605-1507</p>
                 </div>
               </div>
             </motion.div>
@@ -210,12 +210,12 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-card p-8 rounded-2xl shadow-elevated"
+            className="bg-card p-5 md:p-8 rounded-2xl shadow-elevated"
           >
-            <h3 className="font-display text-2xl font-bold text-foreground mb-6">
+            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">
               Request a Quote
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
