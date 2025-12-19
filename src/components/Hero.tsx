@@ -17,69 +17,69 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 py-32">
+      <div className="relative z-10 container mx-auto px-4 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-4 py-2 mb-8 animate-fade-up opacity-0">
-            <Award className="w-4 h-4 text-gold" />
-            <span className="text-sm font-medium text-primary-foreground">
-              APEDA & IEC Certified Exporter | Established 2024
+          <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-6 md:mb-8 animate-fade-up opacity-0">
+            <Award className="w-3 h-3 md:w-4 md:h-4 text-gold flex-shrink-0" />
+            <span className="text-xs md:text-sm font-medium text-primary-foreground">
+              APEDA & IEC Certified | Est. 2024
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up opacity-0 stagger-1">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-4 md:mb-6 animate-fade-up opacity-0 stagger-1">
             SHC Global Trade
-            <span className="block text-gold">Premium Indian Agricultural Exports</span>
+            <span className="block text-gold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">Premium Indian Agricultural Exports</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl mb-10 animate-fade-up opacity-0 stagger-2">
+          <p className="text-base md:text-lg lg:text-xl text-primary-foreground/80 max-w-xl mb-8 md:mb-10 animate-fade-up opacity-0 stagger-2">
             Your trusted partner for premium Basmati Rice varieties, Fresh Green Chillies (Gauri & G9), 
-            and Export-Grade Bananas from India. Quality assured, globally delivered.
+            and Export-Grade Bananas from India.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16 animate-fade-up opacity-0 stagger-3">
-            <Button variant="hero" size="xl" asChild>
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-12 md:mb-16 animate-fade-up opacity-0 stagger-3">
+            <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
               <a href="#contact">
                 Request Quote
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="xl" asChild>
+            <Button variant="heroOutline" size="lg" className="w-full sm:w-auto" asChild>
               <a href="#products">Explore Products</a>
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 animate-fade-up opacity-0 stagger-4">
-            <div className="text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                <Globe className="w-5 h-5 text-gold" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 animate-fade-up opacity-0 stagger-4">
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 mb-1 md:mb-2">
+                <Globe className="w-4 h-4 md:w-5 md:h-5 text-gold" />
+                <span className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-primary-foreground">
                   Global
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Export Reach</p>
+              <p className="text-xs md:text-sm text-primary-foreground/70">Export Reach</p>
             </div>
-            <div className="text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                <Truck className="w-5 h-5 text-gold" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 mb-1 md:mb-2">
+                <Truck className="w-4 h-4 md:w-5 md:h-5 text-gold" />
+                <span className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-primary-foreground">
                   7+
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Product Varieties</p>
+              <p className="text-xs md:text-sm text-primary-foreground/70">Products</p>
             </div>
-            <div className="text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                <Award className="w-5 h-5 text-gold" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">
+            <div className="text-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 mb-1 md:mb-2">
+                <Award className="w-4 h-4 md:w-5 md:h-5 text-gold" />
+                <span className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-primary-foreground">
                   100%
                 </span>
               </div>
-              <p className="text-sm text-primary-foreground/70">Quality Assured</p>
+              <p className="text-xs md:text-sm text-primary-foreground/70">Quality</p>
             </div>
           </div>
         </div>

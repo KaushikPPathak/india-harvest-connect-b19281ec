@@ -128,32 +128,30 @@ const Products = () => {
   const categories = [...new Set(products.map((p) => p.category))];
 
   return (
-    <section id="products" className="py-24 bg-muted/30">
+    <section id="products" className="py-12 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-gold font-medium uppercase tracking-wider text-sm">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+          <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
             Our Products
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-3 md:mb-4">
             Premium Quality Exports
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-lg">
             SHC Global Trade specializes in exporting the finest agricultural products from India.
-            Our comprehensive range includes premium Basmati rice varieties, fresh green chillies, 
-            and export-grade bananas - all meeting international quality standards.
           </p>
         </div>
 
         {/* Products by Category */}
         {categories.map((category) => (
-          <div key={category} className="mb-16 last:mb-0">
-            <h3 className="font-display text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
-              <span className="w-12 h-1 bg-gold rounded-full" />
+          <div key={category} className="mb-10 md:mb-16 last:mb-0">
+            <h3 className="font-display text-lg md:text-2xl font-bold text-foreground mb-4 md:mb-8 flex items-center gap-2 md:gap-3">
+              <span className="w-8 md:w-12 h-1 bg-gold rounded-full" />
               {category}
             </h3>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               {products
                 .filter((p) => p.category === category)
                 .map((product, index) => (
@@ -166,19 +164,19 @@ const Products = () => {
                     className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300"
                   >
                     {/* Image */}
-                    <div className="relative h-64 overflow-hidden">
+                    <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                       <img
                         src={product.image}
                         alt={`${product.name} - Export Quality from India`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                        <span className="inline-block bg-gold/90 text-foreground text-xs font-medium px-3 py-1 rounded-full">
+                      <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 right-3 md:right-4 flex justify-between items-end">
+                        <span className="inline-block bg-gold/90 text-foreground text-[10px] md:text-xs font-medium px-2 md:px-3 py-0.5 md:py-1 rounded-full">
                           {product.origin}
                         </span>
                         {product.hsCode && (
-                          <span className="inline-block bg-primary/90 text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
+                          <span className="inline-block bg-primary/90 text-primary-foreground text-[10px] md:text-xs font-medium px-2 md:px-3 py-0.5 md:py-1 rounded-full">
                             HS: {product.hsCode}
                           </span>
                         )}
@@ -186,20 +184,20 @@ const Products = () => {
                     </div>
 
                     {/* Content */}
-                    <div className="p-6">
-                      <h4 className="font-display text-xl font-bold text-foreground mb-3">
+                    <div className="p-4 md:p-6">
+                      <h4 className="font-display text-base md:text-xl font-bold text-foreground mb-2 md:mb-3">
                         {product.name}
                       </h4>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
+                      <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-3 md:line-clamp-4">
                         {product.description}
                       </p>
 
                       {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {product.features.map((feature) => (
+                      <div className="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
+                        {product.features.slice(0, 3).map((feature) => (
                           <span
                             key={feature}
-                            className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md"
+                            className="text-[10px] md:text-xs bg-primary/10 text-primary px-1.5 md:px-2 py-0.5 md:py-1 rounded-md"
                           >
                             {feature}
                           </span>
@@ -208,7 +206,7 @@ const Products = () => {
 
                       {/* Packaging Info */}
                       {product.packaging && (
-                        <p className="text-xs text-muted-foreground mb-4">
+                        <p className="text-[10px] md:text-xs text-muted-foreground mb-3 md:mb-4 hidden sm:block">
                           <span className="font-medium">Packaging:</span> {product.packaging}
                         </p>
                       )}
