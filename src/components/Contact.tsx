@@ -31,23 +31,48 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "4383280e-d560-4a06-9700-fa688f582fbb",
+          subject: `New Quote Request - ${formData.product || "General Inquiry"}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
 
-    toast({
-      title: "Inquiry Submitted!",
-      description: "We will get back to you within 24 hours.",
-    });
+      const result = await response.json();
 
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      product: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      if (result.success) {
+        toast({
+          title: "Inquiry Submitted!",
+          description: "We will get back to you within 24 hours.",
+        });
+
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          product: "",
+          message: "",
+        });
+      } else {
+        throw new Error(result.message || "Submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
