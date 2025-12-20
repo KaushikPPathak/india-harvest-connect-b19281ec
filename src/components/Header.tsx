@@ -16,12 +16,25 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#products", label: "Products" },
-    { href: "#about", label: "About Us" },
-    { href: "#quality", label: "Quality" },
-    { href: "#contact", label: "Contact" },
+    { href: "home", label: "Home" },
+    { href: "products", label: "Products" },
+    { href: "about", label: "About Us" },
+    { href: "quality", label: "Quality" },
+    { href: "contact", label: "Contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    
+    // Small delay to allow menu to close on mobile
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
 
   return (
     <header
@@ -34,7 +47,11 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
+          <a 
+            href="#home" 
+            onClick={(e) => handleNavClick(e, "home")}
+            className="flex items-center gap-3"
+          >
             <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
               <span className="font-display font-bold text-foreground text-lg">S</span>
             </div>
@@ -53,7 +70,8 @@ const Header = () => {
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={`#${link.href}`}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`font-medium transition-colors hover:text-gold ${
                   isScrolled ? "text-foreground" : "text-primary-foreground"
                 }`}
@@ -62,7 +80,7 @@ const Header = () => {
               </a>
             ))}
             <Button variant={isScrolled ? "default" : "hero"} size="lg" asChild>
-              <a href="#contact">Get Quote</a>
+              <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>Get Quote</a>
             </Button>
           </nav>
 
@@ -89,15 +107,15 @@ const Header = () => {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  href={`#${link.href}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="font-medium text-foreground hover:text-primary py-2"
                 >
                   {link.label}
                 </a>
               ))}
               <Button variant="default" size="lg" className="mt-2" asChild>
-                <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Get Quote</a>
+                <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>Get Quote</a>
               </Button>
             </nav>
           </motion.div>
