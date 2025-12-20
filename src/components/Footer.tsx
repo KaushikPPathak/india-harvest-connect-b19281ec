@@ -25,7 +25,7 @@ const Footer = () => {
               <p><span className="font-medium">IEC:</span> ABTPP7011L</p>
             </div>
             <div className="flex gap-2 md:gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+              {[Facebook, Twitter, Instagram].map((Icon, index) => (
                 <a
                   key={index}
                   href="#"
@@ -34,6 +34,24 @@ const Footer = () => {
                   <Icon className="w-3 h-3 md:w-4 md:h-4 text-primary-foreground group-hover:text-foreground" />
                 </a>
               ))}
+            </div>
+            
+            {/* Founder LinkedIn */}
+            <div className="mt-3 md:mt-4">
+              <a
+                href="https://www.linkedin.com/in/kaushik-pathak-83945927/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+              >
+                <div 
+                  className="w-6 h-6 md:w-7 md:h-7 rounded flex items-center justify-center"
+                  style={{ backgroundColor: "#0A66C2" }}
+                >
+                  <Linkedin className="w-3 h-3 md:w-4 md:h-4 text-white" />
+                </div>
+                <span className="text-[10px] md:text-xs">Founder & Director – LinkedIn</span>
+              </a>
             </div>
           </div>
 
