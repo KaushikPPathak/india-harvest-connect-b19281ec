@@ -1,8 +1,32 @@
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Helper function to handle navigation to sections on the Home page
+  const handleScrollToSection = (sectionId: string) => {
+    // If we are NOT on the home page, go there first
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait a split second for the home page to load, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      // If we are already on home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Helper to ensure new pages start at the top
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <footer className="bg-forest-dark py-10 md:py-16">
@@ -71,12 +95,12 @@ const Footer = () => {
                 "Cavendish Banana",
               ].map((item) => (
                 <li key={item}>
-                  <a
-                    href="#products"
-                    className="text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm"
+                  <button
+                    onClick={() => handleScrollToSection('products')}
+                    className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
                   >
                     {item}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -89,17 +113,17 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 md:space-y-3">
               {[
-                { label: "About Us", href: "#about" },
-                { label: "Quality Standards", href: "#quality" },
-                { label: "Contact Us", href: "#contact" },
+                { label: "About Us", id: "about" },
+                { label: "Quality Standards", id: "quality" },
+                { label: "Contact Us", id: "contact" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm"
+                  <button
+                    onClick={() => handleScrollToSection(item.id)}
+                    className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -165,18 +189,21 @@ const Footer = () => {
           <div className="flex gap-4 md:gap-6">
             <Link
               to="/privacy-policy"
+              onClick={scrollToTop}
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
             >
               Privacy
             </Link>
             <Link
               to="/terms-and-conditions"
+              onClick={scrollToTop}
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
             >
               Terms
             </Link>
             <Link
               to="/disclaimer"
+              onClick={scrollToTop}
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
             >
               Disclaimer
