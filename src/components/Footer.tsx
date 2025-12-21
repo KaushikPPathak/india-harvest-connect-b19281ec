@@ -23,7 +23,6 @@ const Footer = () => {
     }
   };
 
-  // Helper to ensure new pages start at the top
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -87,19 +86,19 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 md:space-y-3">
               {[
-                "1121 Basmati Rice",
-                "Traditional Basmati",
-                "Pusa Basmati Rice",
-                "Gauri Green Chillies",
-                "G9 Green Chillies",
-                "Cavendish Banana",
+                { name: "1121 Basmati Rice", id: "1121-basmati-rice" },
+                { name: "Traditional Basmati", id: "traditional-basmati" },
+                { name: "Pusa Basmati Rice", id: "pusa-basmati-rice" },
+                { name: "Gauri Green Chillies", id: "gauri-green-chillies" },
+                { name: "G9 Green Chillies", id: "g9-green-chillies" },
+                { name: "Cavendish Banana", id: "cavendish-banana" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <button
-                    onClick={() => handleScrollToSection('products')}
+                    onClick={() => handleScrollToSection(item.id)}
                     className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
                   >
-                    {item}
+                    {item.name}
                   </button>
                 </li>
               ))}
