@@ -175,6 +175,12 @@ const Footer = () => {
             >
               Terms
             </Link>
+            <Link
+              to="/disclaimer"
+              className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
+            >
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>
