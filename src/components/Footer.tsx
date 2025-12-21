@@ -163,12 +163,12 @@ const Footer = () => {
             © {currentYear} SHC Global Trade. All rights reserved.
           </p>
           <div className="flex gap-4 md:gap-6">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
             >
               Privacy
-            </a>
+            </Link>
             <Link
               to="/terms-and-conditions"
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
