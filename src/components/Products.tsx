@@ -18,6 +18,7 @@ import grandNaineBanana from "@/assets/grand-naine-banana.jpg";
 
 interface Product {
   id: number;
+  slug: string; // Added this for linking
   name: string;
   description: string;
   image: string;
@@ -33,6 +34,7 @@ const products: Product[] = [
   // Basmati Rice Varieties
   {
     id: 1,
+    slug: "1121-basmati-rice",
     name: "1121 Basmati Rice",
     description:
       "The world's longest grain Basmati rice with exceptional aroma and elongation ratio of 2.5x after cooking. Premium quality extra-long grain rice with average grain length of 8.3-8.4mm raw. Ideal for Biryani, Pulao, and international cuisines. Aged for minimum 2 years for optimal flavor and texture.",
@@ -46,6 +48,7 @@ const products: Product[] = [
   },
   {
     id: 2,
+    slug: "traditional-basmati",
     name: "Traditional Basmati Rice",
     description:
       "Authentic traditional Basmati with characteristic nutty flavor and delicate aroma. Known for its slender grains and excellent cooking properties. This heritage variety offers superior taste profile cherished across generations. Perfect for everyday cooking and traditional Indian dishes.",
@@ -58,6 +61,7 @@ const products: Product[] = [
   },
   {
     id: 3,
+    slug: "pusa-basmati-rice",
     name: "Pusa Basmati Rice",
     description:
       "High-yielding Pusa variety developed by IARI with excellent cooking qualities and aromatic properties. Features pearly white grains with consistent quality. Popular choice for both domestic consumption and international exports. Offers great value with premium Basmati characteristics.",
@@ -72,6 +76,7 @@ const products: Product[] = [
   // Green Chillies Varieties
   {
     id: 4,
+    slug: "gauri-green-chillies",
     name: "Gauri Green Chillies",
     description:
       "Premium Gauri variety green chillies known for their vibrant color, consistent size, and balanced heat profile. Freshly harvested from select farms in Andhra Pradesh. Maintained under strict cold chain protocols to ensure freshness. Ideal for culinary applications, pickle manufacturing, and food processing industries.",
@@ -85,6 +90,7 @@ const products: Product[] = [
   },
   {
     id: 5,
+    slug: "g9-green-chillies",
     name: "G9 Green Chillies",
     description:
       "Export-grade G9 variety with superior pungency and excellent shelf life. These premium green chillies feature uniform sizing, glossy appearance, and high capsaicin content. Processed and packed under HACCP standards. Perfect for dehydration, paste production, and fresh export markets.",
@@ -99,6 +105,7 @@ const products: Product[] = [
   // Banana Varieties
   {
     id: 6,
+    slug: "cavendish-banana",
     name: "Cavendish Banana",
     description:
       "Premium Cavendish variety bananas, the world's most popular commercial banana. Known for uniform ripening, excellent taste, and extended shelf life. Harvested at optimal maturity for export. GAP certified farms ensure quality from cultivation to packaging. Ideal for supermarket chains and wholesale distribution.",
@@ -112,6 +119,7 @@ const products: Product[] = [
   },
   {
     id: 7,
+    slug: "grand-naine-banana",
     name: "Grand Naine Banana",
     description:
       "Superior quality Grand Naine variety, a premium Cavendish sub-variety with excellent export credentials. Features medium-sized fingers with consistent curvature and appealing yellow color when ripe. Cultivated using sustainable farming practices. Widely preferred in Middle East, European, and Asian markets.",
@@ -157,11 +165,12 @@ const Products = () => {
                 .map((product, index) => (
                   <motion.div
                     key={product.id}
+                    id={product.slug} // THIS IS THE KEY FIX: Giving the card an address
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300"
+                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 scroll-mt-32" 
                   >
                     {/* Image */}
                     <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
