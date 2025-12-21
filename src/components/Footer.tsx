@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -168,12 +169,12 @@ const Footer = () => {
             >
               Privacy
             </a>
-            <a
-              href="#"
+            <Link
+              to="/terms-and-conditions"
               className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
             >
               Terms
-            </a>
+            </Link>
           </div>
         </div>
       </div>

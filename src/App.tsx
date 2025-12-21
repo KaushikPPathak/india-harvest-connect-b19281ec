@@ -11,6 +11,7 @@ import PusaBasmati1121 from "./pages/PusaBasmati1121";
 import GauriGreenChilli from "./pages/GauriGreenChilli";
 import G9GreenChilli from "./pages/G9GreenChilli";
 import CavendishBanana from "./pages/CavendishBanana";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/gauri-green-chilli" element={<GauriGreenChilli />} />
             <Route path="/g9-green-chilli" element={<G9GreenChilli />} />
             <Route path="/cavendish-banana" element={<CavendishBanana />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
