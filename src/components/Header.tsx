@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,13 +30,33 @@ const Header = () => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
-    // Small delay to allow menu to close on mobile
-    setTimeout(() => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Logic: Check if we are on the Home page
+    if (location.pathname === "/") {
+      // If on Home, just scroll smoothly
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
-    }, 100);
+    } else {
+      // If NOT on Home (e.g., on Privacy Policy), go to Home first
+      navigate("/");
+      
+      // Wait a split second for Home to load, then scroll
+      setTimeout(() => {
+        if (sectionId === "home") {
+          window.scrollTo(0, 0);
+        } else {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }, 100);
+    }
   };
 
   return (
