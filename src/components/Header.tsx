@@ -10,6 +10,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // 1. Scroll Appearance Logic (Transparency vs Solid background)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -17,6 +18,39 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 2. The Safe Scroll Function
+  // We use requestAnimationFrame to make sure the browser is ready to scroll
+  const scrollToSection = (sectionId: string) => {
+    requestAnimationFrame(() => {
+      if (sectionId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          // "block: start" aligns the element to the top of the screen
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    });
+  };
+
+  // 3. EFFECT: Handle scroll AFTER navigation completes
+  // This is the key fix for Mobile. It waits for the page to change, checks if
+  // there is a "target" in the state, and THEN scrolls.
+  useEffect(() => {
+    if (location.state && (location.state as any).scrollTo) {
+      const targetId = (location.state as any).scrollTo;
+      
+      // Small delay ensures the mobile menu animation is finished
+      setTimeout(() => {
+        scrollToSection(targetId);
+      }, 100);
+
+      // Clear the state so it doesn't keep scrolling on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   const navLinks = [
     { id: "home", label: "Home" },
@@ -26,36 +60,17 @@ const Header = () => {
     { id: "contact", label: "Contact" },
   ];
 
+  // 4. The Click Handler
   const handleNavClick = (sectionId: string) => {
+    // Always close the mobile menu first
     setIsMobileMenuOpen(false);
-    
-    // Logic: Check if we are on the Home page
+
     if (location.pathname === "/") {
-      // If on Home, just scroll smoothly
-      if (sectionId === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
+      // If we are already on Home, just scroll
+      scrollToSection(sectionId);
     } else {
-      // If NOT on Home (e.g., on Privacy Policy), go to Home first
-      navigate("/");
-      window.scrollTo(0, 0); // Force top instantly
-      
-      // Wait for Home page to load (500ms safety delay)
-      setTimeout(() => {
-        if (sectionId === "home") {
-          window.scrollTo(0, 0);
-        } else {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-      }, 500);
+      // If on another page (Privacy, etc.), go to Home and tell it where to scroll
+      navigate("/", { state: { scrollTo: sectionId } });
     }
   };
 
@@ -69,7 +84,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo - Converted to Button for reliability */}
+          {/* Logo Button */}
           <button 
             onClick={() => handleNavClick("home")}
             className="flex items-center gap-3 text-left bg-transparent border-none p-0 cursor-pointer"
