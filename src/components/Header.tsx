@@ -19,15 +19,14 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "home", label: "Home" },
-    { href: "products", label: "Products" },
-    { href: "about", label: "About Us" },
-    { href: "quality", label: "Quality" },
-    { href: "contact", label: "Contact" },
+    { id: "home", label: "Home" },
+    { id: "products", label: "Products" },
+    { id: "about", label: "About Us" },
+    { id: "quality", label: "Quality" },
+    { id: "contact", label: "Contact" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault();
+  const handleNavClick = (sectionId: string) => {
     setIsMobileMenuOpen(false);
     
     // Logic: Check if we are on the Home page
@@ -44,10 +43,9 @@ const Header = () => {
     } else {
       // If NOT on Home (e.g., on Privacy Policy), go to Home first
       navigate("/");
-      // Force scroll to top instantly to prevent being stuck at bottom
-      window.scrollTo(0, 0); 
+      window.scrollTo(0, 0); // Force top instantly
       
-      // Wait for Home page to load (Increased to 500ms)
+      // Wait for Home page to load (500ms safety delay)
       setTimeout(() => {
         if (sectionId === "home") {
           window.scrollTo(0, 0);
@@ -57,7 +55,7 @@ const Header = () => {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }
-      }, 500); // <--- FIXED: Changed 100 to 500
+      }, 500);
     }
   };
 
@@ -71,11 +69,10 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a 
-            href="#home" 
-            onClick={(e) => handleNavClick(e, "home")}
-            className="flex items-center gap-3"
+          {/* Logo - Converted to Button for reliability */}
+          <button 
+            onClick={() => handleNavClick("home")}
+            className="flex items-center gap-3 text-left bg-transparent border-none p-0 cursor-pointer"
           >
             <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
               <span className="font-display font-bold text-foreground text-lg">S</span>
@@ -88,24 +85,23 @@ const Header = () => {
                 Premium Indian Exports
               </span>
             </div>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={`#${link.href}`}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`font-medium transition-colors hover:text-gold ${
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`font-medium transition-colors hover:text-gold bg-transparent border-none p-0 cursor-pointer ${
                   isScrolled ? "text-foreground" : "text-primary-foreground"
                 }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
-            <Button variant={isScrolled ? "default" : "hero"} size="lg" asChild>
-              <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>Get Quote</a>
+            <Button variant={isScrolled ? "default" : "hero"} size="lg" onClick={() => handleNavClick("contact")}>
+              Get Quote
             </Button>
           </nav>
 
@@ -130,17 +126,16 @@ const Header = () => {
           >
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={`#${link.href}`}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="font-medium text-foreground hover:text-primary py-2"
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className="font-medium text-foreground hover:text-primary py-2 text-left bg-transparent border-none p-0 cursor-pointer"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
-              <Button variant="default" size="lg" className="mt-2" asChild>
-                <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>Get Quote</a>
+              <Button variant="default" size="lg" className="mt-2 w-full" onClick={() => handleNavClick("contact")}>
+                Get Quote
               </Button>
             </nav>
           </motion.div>
