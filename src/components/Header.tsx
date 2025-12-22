@@ -44,8 +44,10 @@ const Header = () => {
     } else {
       // If NOT on Home (e.g., on Privacy Policy), go to Home first
       navigate("/");
+      // Force scroll to top instantly to prevent being stuck at bottom
+      window.scrollTo(0, 0); 
       
-      // Wait a split second for Home to load, then scroll
+      // Wait for Home page to load (Increased to 500ms)
       setTimeout(() => {
         if (sectionId === "home") {
           window.scrollTo(0, 0);
@@ -55,7 +57,7 @@ const Header = () => {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }
-      }, 100);
+      }, 500); // <--- FIXED: Changed 100 to 500
     }
   };
 
