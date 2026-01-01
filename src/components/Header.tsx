@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,36 +19,26 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Safe scroll function (mobile friendly)
-  const scrollToSection = (sectionId: string) => {
-    requestAnimationFrame(() => {
-      if (sectionId === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
-
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const y =
-          element.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
-    });
-  };
-
-  // Scroll AFTER route change (fixes mobile freeze)
+  // Close mobile menu on route change
   useEffect(() => {
-    const state = location.state as { scrollTo?: string } | null;
-
-    if (state?.scrollTo) {
-      setTimeout(() => {
-        scrollToSection(state.scrollTo!);
-      }, 100);
-
-      // Clear state safely (DO NOT use window.history)
-      navigate(location.pathname, { replace: true, state: null });
-    }
+    setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Scroll to section with offset for fixed header
+  const scrollToSection = useCallback((sectionId: string) => {
+    if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  }, []);
 
   const navLinks = [
     { id: "home", label: "Home" },
@@ -58,15 +48,25 @@ const Header = () => {
     { id: "contact", label: "Contact" },
   ];
 
-  const handleNavClick = (sectionId: string) => {
+  const handleNavClick = useCallback((sectionId: string) => {
+    // Close mobile menu first
     setIsMobileMenuOpen(false);
 
     if (location.pathname === "/") {
-      scrollToSection(sectionId);
+      // Already on home page - just scroll
+      // Use setTimeout to allow menu close animation
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 50);
     } else {
-      navigate("/", { state: { scrollTo: sectionId } });
+      // Navigate to home page first, then scroll
+      navigate("/");
+      // Wait for navigation and DOM to be ready
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 150);
     }
-  };
+  }, [location.pathname, navigate, scrollToSection]);
 
   return (
     <header
@@ -80,6 +80,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <button
+            type="button"
             onClick={() => handleNavClick("home")}
             className="flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer"
           >
@@ -114,6 +115,7 @@ const Header = () => {
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
+                type="button"
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`font-medium transition-colors hover:text-gold bg-transparent border-none p-0 cursor-pointer ${
@@ -136,6 +138,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
+            type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`lg:hidden p-2 ${
               isScrolled
@@ -160,6 +163,7 @@ const Header = () => {
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
+                  type="button"
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
                   className="font-medium text-foreground hover:text-primary py-2 text-left bg-transparent border-none cursor-pointer"

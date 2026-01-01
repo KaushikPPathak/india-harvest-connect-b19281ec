@@ -1,31 +1,40 @@
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCallback } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Helper function to handle navigation to sections on the Home page
-  const handleScrollToSection = (sectionId: string) => {
-    // If we are NOT on the home page, go there first
-    if (location.pathname !== "/") {
-      navigate("/");
-      // Wait a split second for the home page to load, then scroll
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) element.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    } else {
-      // If we are already on home page, just scroll
-      const element = document.getElementById(sectionId);
-      if (element) element.scrollIntoView({ behavior: "smooth" });
+  // Scroll to section with offset for fixed header
+  const scrollToSection = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
-  };
+  }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
+  // Helper function to handle navigation to sections on the Home page
+  const handleScrollToSection = useCallback((sectionId: string) => {
+    if (location.pathname !== "/") {
+      // Navigate to home first, then scroll
+      navigate("/");
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 150);
+    } else {
+      // Already on home - just scroll
+      scrollToSection(sectionId);
+    }
+  }, [location.pathname, navigate, scrollToSection]);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <footer className="bg-forest-dark py-10 md:py-16">
@@ -95,6 +104,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item.name}>
                   <button
+                    type="button"
                     onClick={() => handleScrollToSection(item.id)}
                     className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
                   >
@@ -118,6 +128,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item.label}>
                   <button
+                    type="button"
                     onClick={() => handleScrollToSection(item.id)}
                     className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
                   >
