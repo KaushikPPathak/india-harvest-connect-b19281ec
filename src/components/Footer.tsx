@@ -192,31 +192,45 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 md:pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-          <p className="text-primary-foreground/60 text-xs md:text-sm text-center md:text-left">
-            © {currentYear} SHC Global Trade. All rights reserved.
-          </p>
-          <div className="flex gap-4 md:gap-6">
+        <div className="pt-6 md:pt-8 border-t border-primary-foreground/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 mb-4">
+            <p className="text-primary-foreground/60 text-xs md:text-sm text-center md:text-left">
+              © {currentYear} SHC Global Trade. All rights reserved.
+            </p>
+          </div>
+          
+          {/* Legal Links Row */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-[10px] md:text-xs text-primary-foreground/50">
             <Link
               to="/privacy-policy"
               onClick={scrollToTop}
-              className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
+              className="hover:text-gold transition-colors"
             >
-              Privacy
+              Privacy Policy
             </Link>
+            <span className="text-primary-foreground/30">|</span>
             <Link
               to="/terms-and-conditions"
               onClick={scrollToTop}
-              className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
+              className="hover:text-gold transition-colors"
             >
               Terms
             </Link>
+            <span className="text-primary-foreground/30">|</span>
             <Link
               to="/disclaimer"
               onClick={scrollToTop}
-              className="text-primary-foreground/60 hover:text-gold transition-colors text-xs md:text-sm"
+              className="hover:text-gold transition-colors"
             >
               Disclaimer
+            </Link>
+            <span className="text-primary-foreground/30">|</span>
+            <Link
+              to="/refund-policy"
+              onClick={scrollToTop}
+              className="hover:text-gold transition-colors"
+            >
+              Refund Policy
             </Link>
           </div>
         </div>
