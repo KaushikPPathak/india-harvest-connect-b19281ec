@@ -118,6 +118,9 @@ const GauriGreenChilli = () => {
                 <img
                   src={gauriChilliImage}
                   alt="Premium Gauri Green Chilli for Export"
+                  width={600}
+                  height={400}
+                  loading="eager"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent" />

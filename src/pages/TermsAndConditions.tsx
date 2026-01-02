@@ -7,7 +7,8 @@ const TermsAndConditions = () => {
     <>
       <Helmet>
         <title>Terms and Conditions | SHC Global Trade</title>
-        <meta name="description" content="Terms and Conditions for SHC Global Trade - Premium agricultural product exports from India." />
+        <meta name="description" content="Terms and Conditions for SHC Global Trade - Premium agricultural product exports from India. Governing laws and dispute resolution." />
+        <link rel="canonical" href="https://shcglobaltrade.co.in/terms-and-conditions" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

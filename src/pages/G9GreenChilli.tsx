@@ -119,6 +119,9 @@ const G9GreenChilli = () => {
                 <img
                   src={g9ChilliImage}
                   alt="Premium G9 Green Chilli for Export"
+                  width={600}
+                  height={400}
+                  loading="eager"
                   className="w-full h-auto object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent" />

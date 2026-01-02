@@ -7,7 +7,8 @@ const Disclaimer = () => {
     <>
       <Helmet>
         <title>Disclaimer | SHC Global Trade</title>
-        <meta name="description" content="Disclaimer for SHC Global Trade - Important information about product variations and limitations of liability." />
+        <meta name="description" content="Disclaimer for SHC Global Trade - Important information about agricultural product variations and limitations of liability." />
+        <link rel="canonical" href="https://shcglobaltrade.co.in/disclaimer" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

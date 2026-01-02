@@ -177,6 +177,10 @@ const Products = () => {
                       <img
                         src={product.image}
                         alt={`${product.name} - Export Quality from India`}
+                        width={400}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
