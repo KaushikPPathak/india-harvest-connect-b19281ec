@@ -57,6 +57,7 @@ const CavendishBanana = () => {
           name="keywords"
           content="Cavendish banana exporter India, fresh banana export, Indian banana supplier, premium banana wholesale, APEDA certified banana"
         />
+        <link rel="canonical" href="https://shcglobaltrade.co.in/cavendish-banana" />
       </Helmet>
 
       <Header />
@@ -113,6 +114,9 @@ const CavendishBanana = () => {
                   <img
                     src={cavendishBanana}
                     alt="Premium Cavendish Banana"
+                    width={600}
+                    height={600}
+                    loading="eager"
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -7,7 +7,8 @@ const RefundPolicy = () => {
     <>
       <Helmet>
         <title>Refund & Cancellation Policy | SHC Global Trade</title>
-        <meta name="description" content="Refund, Return & Cancellation Policy for SHC Global Trade - Policies for perishable agricultural exports." />
+        <meta name="description" content="Refund, Return & Cancellation Policy for SHC Global Trade - Policies for perishable agricultural exports including order cancellation and quality claims." />
+        <link rel="canonical" href="https://shcglobaltrade.co.in/refund-policy" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

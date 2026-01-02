@@ -48,10 +48,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>SHC Global Trade - Premium Basmati Rice, Green Chillies & Banana Exports from India</title>
+        <title>Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade</title>
         <meta
           name="description"
-          content="SHC Global Trade - Leading exporter of premium 1121 Basmati Rice, Traditional Basmati, Pusa Basmati, Gauri & G9 Green Chillies, and Cavendish Bananas from India. APEDA certified, IEC licensed. Based in Surat, Gujarat."
+          content="SHC Global Trade - Leading merchant exporter of premium 1121 Basmati Rice, Pusa Basmati, Gauri & G9 Green Chillies, and Cavendish Bananas from India. APEDA certified, IEC licensed."
         />
         <meta
           name="keywords"
@@ -60,15 +60,16 @@ const Index = () => {
         <link rel="canonical" href="https://shcglobaltrade.co.in" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="SHC Global Trade - Premium Indian Agricultural Exports" />
-        <meta property="og:description" content="Export quality Basmati Rice, Green Chillies & Bananas from India. APEDA certified, globally trusted." />
+        <meta property="og:title" content="Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade" />
+        <meta property="og:description" content="Premium Basmati Rice, Green Chillies & Bananas from India. APEDA certified, globally trusted exporter." />
         <meta property="og:url" content="https://shcglobaltrade.co.in" />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="SHC Global Trade" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="SHC Global Trade - Premium Indian Agricultural Exports" />
-        <meta name="twitter:description" content="Export quality Basmati Rice, Green Chillies & Bananas from India." />
+        <meta name="twitter:title" content="Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade" />
+        <meta name="twitter:description" content="Premium Basmati Rice, Green Chillies & Bananas from India. APEDA certified." />
         
         {/* LocalBusiness Schema */}
         <script type="application/ld+json">

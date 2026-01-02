@@ -7,7 +7,8 @@ const PrivacyPolicy = () => {
     <>
       <Helmet>
         <title>Privacy Policy | SHC Global Trade</title>
-        <meta name="description" content="Privacy Policy for SHC Global Trade - Learn how we collect, use, and protect your personal information." />
+        <meta name="description" content="Privacy Policy for SHC Global Trade - Learn how we collect, use, and protect your business contact information for export inquiries." />
+        <link rel="canonical" href="https://shcglobaltrade.co.in/privacy-policy" />
       </Helmet>
       
       <div className="min-h-screen bg-background">
