@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 interface OptimizedImageProps {
   src: string;
+  webpSrc?: string;
   alt: string;
   className?: string;
   width?: number;
@@ -11,11 +12,12 @@ interface OptimizedImageProps {
 }
 
 /**
- * Optimized image component with lazy loading, aspect ratio preservation,
- * and layout shift prevention
+ * Optimized image component with WebP support, lazy loading, 
+ * aspect ratio preservation, and layout shift prevention
  */
 const OptimizedImage = ({
   src,
+  webpSrc,
   alt,
   className = "",
   width,
@@ -25,7 +27,7 @@ const OptimizedImage = ({
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
-  const imgRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (priority) return;
@@ -40,8 +42,8 @@ const OptimizedImage = ({
       { rootMargin: "100px" }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
 
     return () => observer.disconnect();
@@ -55,9 +57,12 @@ const OptimizedImage = ({
     "auto": "",
   }[aspectRatio];
 
+  // Generate WebP URL if not provided (append ?webp query)
+  const webpSource = webpSrc || (src.includes('?') ? `${src}&format=webp` : `${src}?format=webp`);
+
   return (
     <div
-      ref={imgRef}
+      ref={containerRef}
       className={`relative overflow-hidden ${aspectRatioClass}`}
       style={{ width: width ? `${width}px` : undefined, height: height ? `${height}px` : undefined }}
     >
@@ -67,18 +72,23 @@ const OptimizedImage = ({
       )}
       
       {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? "eager" : "lazy"}
-          decoding={priority ? "sync" : "async"}
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          } ${className}`}
-        />
+        <picture>
+          {/* WebP source for modern browsers */}
+          <source srcSet={webpSource} type="image/webp" />
+          {/* JPEG/PNG fallback */}
+          <img
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={priority ? "eager" : "lazy"}
+            decoding={priority ? "sync" : "async"}
+            onLoad={() => setIsLoaded(true)}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            } ${className}`}
+          />
+        </picture>
       )}
     </div>
   );
