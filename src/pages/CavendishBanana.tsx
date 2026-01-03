@@ -5,6 +5,7 @@ import { Check, Phone, Mail, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 import cavendishBanana from "@/assets/cavendish-banana.jpg";
 
 const CavendishBanana = () => {
@@ -111,13 +112,13 @@ const CavendishBanana = () => {
               </div>
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-gold/20">
-                  <img
+                  <OptimizedImage
                     src={cavendishBanana}
                     alt="Premium Cavendish Banana"
                     width={600}
                     height={600}
-                    loading="eager"
-                    className="w-full h-full object-cover"
+                    priority={true}
+                    aspectRatio="1/1"
                   />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-gold text-foreground px-6 py-3 rounded-xl font-semibold shadow-lg">
