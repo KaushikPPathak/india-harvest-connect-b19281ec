@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Globe, Truck } from "lucide-react";
 import heroImage from "@/assets/hero-exports.jpg";
+import heroImageWebp from "@/assets/hero-exports.jpg?format=webp";
 
 const Hero = () => {
   return (
@@ -8,13 +9,18 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-overlay" />
-      </div>
+      {/* Background Image with WebP support */}
+      <picture className="absolute inset-0">
+        <source srcSet={heroImageWebp} type="image/webp" />
+        <img
+          src={heroImage}
+          alt="Premium Indian Agricultural Exports"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </picture>
+      <div className="absolute inset-0 bg-gradient-overlay" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-8 py-24 md:py-32">

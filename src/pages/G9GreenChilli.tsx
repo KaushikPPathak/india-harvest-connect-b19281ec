@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Package, Truck, Award, Leaf, Thermometer, Clock, Flam
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 import g9ChilliImage from "@/assets/g9-green-chilli.jpg";
 
 const G9GreenChilli = () => {
@@ -116,13 +117,13 @@ const G9GreenChilli = () => {
               className="relative"
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
+                <OptimizedImage
                   src={g9ChilliImage}
                   alt="Premium G9 Green Chilli for Export"
                   width={600}
                   height={400}
-                  loading="eager"
-                  className="w-full h-auto object-cover"
+                  priority={true}
+                  aspectRatio="3/2"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 to-transparent" />
               </div>

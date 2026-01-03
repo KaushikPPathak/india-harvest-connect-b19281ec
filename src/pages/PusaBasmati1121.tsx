@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Package, Globe, Award, Truck, Shield } from "lucide-r
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 
 import rawBasmati from "@/assets/1121-raw-basmati.jpg";
 import steamBasmati from "@/assets/1121-steam-basmati.jpg";
@@ -182,14 +183,13 @@ const PusaBasmati1121 = () => {
                 className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elegant transition-all duration-300 group"
               >
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={rice.image}
                     alt={rice.name}
                     width={400}
                     height={300}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    aspectRatio="4/3"
+                    className="group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
