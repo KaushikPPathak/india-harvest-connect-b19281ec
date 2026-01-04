@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import GoogleTranslate from "./GoogleTranslate";
@@ -173,6 +173,11 @@ const Header = () => {
                   {link.label}
                 </button>
               ))}
+              <div className="flex items-center gap-2 py-2">
+                <Globe className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">Language:</span>
+                <GoogleTranslate showIcon={false} />
+              </div>
               <Button
                 variant="default"
                 size="lg"
