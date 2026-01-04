@@ -5,8 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import GoogleTranslate from "./GoogleTranslate";
 
-// --- CHANGE 1: IMPORT THE IMAGE HERE ---
-// Make sure logo.jpeg is in the same folder as this file!
+// IMPORT THE IMAGE
 import logoImage from "./logo.jpeg";
 
 const Header = () => {
@@ -65,7 +64,7 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-md py-2"
-          : "bg-black/10 backdrop-blur-[1px] py-4"
+          : "bg-black/5 backdrop-blur-[1px] py-4"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -75,40 +74,44 @@ const Header = () => {
           <button
             type="button"
             onClick={() => handleNavClick("home")}
-            className="flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer text-left group"
+            className="flex items-center gap-3 md:gap-4 bg-transparent border-none p-0 cursor-pointer text-left group"
           >
-            {/* LOGO IMAGE - UPDATED TO BE BIGGER */}
+            {/* LOGO IMAGE - BIG SIZE */}
             {!imageError ? (
               <img 
                 src={logoImage}
                 alt="SHC Logo"
                 onError={() => setImageError(true)}
-                // CHANGE: Increased size to w-20 (mobile) and w-28 (desktop)
-                className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-2 border-white shadow-lg"
+                // Mobile: w-20 (80px), Desktop: w-28 (112px) -> VERY VISIBLE
+                className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-2 border-white shadow-xl flex-shrink-0"
               />
             ) : (
-              // Backup 'S' if image fails
-              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-gold flex items-center justify-center border-2 border-white shadow-lg">
+              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-gold flex items-center justify-center border-2 border-white shadow-xl flex-shrink-0">
                 <span className="font-display font-bold text-foreground text-4xl">S</span>
               </div>
             )}
             
-            <div className="flex flex-col">
-              {/* MAIN TITLE - UPDATED FOR ATTRACTIVE SCROLL STATE */}
+            <div className="flex flex-col justify-center">
+              {/* BRAND NAME */}
               <span
-                className={`font-display font-bold text-xl md:text-3xl leading-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] ${
+                className={`font-display font-bold text-xl md:text-3xl leading-none transition-colors duration-300 ${
                   isScrolled 
-                    ? "bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm" // Gold gradient on scroll
-                    : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]" // White on transparent background
+                    ? "bg-gradient-to-r from-amber-700 to-yellow-600 bg-clip-text text-transparent drop-shadow-sm"
+                    : "text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]" // Heavy shadow for readability
                 }`}
               >
                 SHC Global Trade
               </span>
               
-              {/* SUBTITLE */}
+              {/* DESCRIPTION / SUBTITLE - INCREASED SIZE */}
               <span
-                className={`block text-[11px] md:text-xs mt-1 max-w-[200px] md:max-w-md leading-tight font-bold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] ${
-                  isScrolled ? "text-slate-600" : "text-white"
+                className={`block mt-1 font-medium leading-tight tracking-wide transition-colors duration-300
+                  text-sm md:text-base          /* Mobile: Small, Desktop: Normal (Reading size) */
+                  max-w-[240px] md:max-w-xl     /* Wider width to prevent squashing */
+                  ${
+                  isScrolled 
+                    ? "text-gray-700" 
+                    : "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.95)]" // Very strong shadow
                 }`}
               >
                 Premium Indian Agriculture Exporter of Basmati Rice, Green Chilli, and Banana
@@ -124,7 +127,9 @@ const Header = () => {
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`font-bold text-base transition-colors hover:text-amber-500 bg-transparent border-none p-0 cursor-pointer ${
-                  isScrolled ? "text-slate-800" : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+                  isScrolled 
+                    ? "text-slate-800" 
+                    : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
                 }`}
               >
                 {link.label}
@@ -145,7 +150,7 @@ const Header = () => {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] ${
+            className={`lg:hidden p-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] ${
               isScrolled ? "text-slate-800" : "text-white"
             }`}
           >
