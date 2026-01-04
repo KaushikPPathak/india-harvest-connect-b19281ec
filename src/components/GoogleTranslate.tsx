@@ -1,25 +1,5 @@
-import { useEffect, useId } from "react";
-import { Globe } from "lucide-react";
-
-declare global {
-  interface Window {
-    googleTranslateElementInit?: () => void;
-    google?: {
-      translate: {
-        TranslateElement: new (
-          options: {
-            pageLanguage: string;
-            includedLanguages: string;
-            layout: number;
-            autoDisplay: boolean;
-          },
-          elementId: string
-        ) => void;
-      };
-    };
-    googleTranslateInitialized?: boolean;
-  }
-}
+import { useEffect, useState } from "react";
+import { Globe, ChevronDown } from "lucide-react";
 
 interface GoogleTranslateProps {
   className?: string;
@@ -27,70 +7,45 @@ interface GoogleTranslateProps {
 }
 
 const GoogleTranslate = ({ className = "", showIcon = true }: GoogleTranslateProps) => {
-  const uniqueId = useId().replace(/:/g, "_");
-  const elementId = `google_translate_element_${uniqueId}`;
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const initTranslate = () => {
-      if (window.google?.translate?.TranslateElement) {
-        const element = document.getElementById(elementId);
-        if (element && !element.hasChildNodes()) {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: "en",
-              includedLanguages: "en,ar,hi,fa,ur",
-              layout: (window.google.translate.TranslateElement as any).InlineLayout.SIMPLE,
-              autoDisplay: false,
-            },
-            elementId
-          );
-        }
+    // Check if Google Translate is loaded
+    const checkLoaded = () => {
+      const element = document.getElementById("google_translate_element");
+      if (element && element.children.length > 0) {
+        setIsLoaded(true);
+        console.log("Google Translate widget loaded successfully");
       }
     };
 
-    // Define the callback function
-    if (!window.googleTranslateInitialized) {
-      window.googleTranslateElementInit = () => {
-        window.googleTranslateInitialized = true;
-        // Initialize all translate elements on the page
-        document.querySelectorAll('[id^="google_translate_element_"]').forEach((el) => {
-          if (!el.hasChildNodes() && window.google?.translate?.TranslateElement) {
-            new window.google.translate.TranslateElement(
-              {
-                pageLanguage: "en",
-                includedLanguages: "en,ar,hi,fa,ur",
-                layout: (window.google.translate.TranslateElement as any).InlineLayout.SIMPLE,
-                autoDisplay: false,
-              },
-              el.id
-            );
-          }
-        });
-      };
-    }
+    // Check initially and then periodically
+    checkLoaded();
+    const interval = setInterval(checkLoaded, 500);
 
-    // Check if script already exists
-    if (!document.getElementById("google-translate-script")) {
-      const script = document.createElement("script");
-      script.id = "google-translate-script";
-      script.src =
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      script.async = true;
-      document.body.appendChild(script);
-    } else if (window.googleTranslateInitialized) {
-      // Script already loaded and initialized, init this element
-      initTranslate();
-    }
+    // Clear after 10 seconds
+    const timeout = setTimeout(() => {
+      clearInterval(interval);
+      if (!isLoaded) {
+        console.log("Google Translate widget failed to load - may be blocked by sandbox");
+      }
+    }, 10000);
 
     return () => {
-      // Cleanup is optional since we want to keep the script loaded
+      clearInterval(interval);
+      clearTimeout(timeout);
     };
-  }, [elementId]);
+  }, [isLoaded]);
 
   return (
     <div className={`google-translate-wrapper flex items-center gap-2 ${className}`}>
-      {showIcon && <Globe className="w-4 h-4 text-current opacity-70 hidden sm:block" />}
-      <div id={elementId} className="google-translate-container" />
+      {showIcon && <Globe className="w-4 h-4 text-current opacity-70" />}
+      <div id="google_translate_element" className="google-translate-container" />
+      {!isLoaded && (
+        <span className="text-sm opacity-70 flex items-center gap-1">
+          EN <ChevronDown className="w-3 h-3" />
+        </span>
+      )}
     </div>
   );
 };
