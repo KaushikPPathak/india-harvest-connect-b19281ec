@@ -311,3 +311,33 @@ header:not(.bg-card\/95) .goog-te-gadget .goog-te-combo:hover {
 .goog-te-gadget span {
   display: none !important;
 }
+/* --- FIX GOOGLE TRANSLATE WIDGET --- */
+#google_translate_element {
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 120px !important; /* Forces it to be wide enough */
+  height: auto !important;
+  position: relative !important;
+  z-index: 1000 !important; /* Brings it to the front */
+  margin-left: 10px;
+}
+
+/* Fix the inner layout so it is not squashed */
+.goog-te-gadget-simple {
+  background-color: white !important;
+  border: 1px solid #ccc !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+}
+
+/* Ensure the text is visible (Black) */
+.goog-te-gadget-simple span {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+/* Hide the Google Icon if you want a cleaner look */
+.goog-te-gadget-icon {
+  display: none !important;
+}
