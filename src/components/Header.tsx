@@ -50,19 +50,14 @@ const Header = () => {
   ];
 
   const handleNavClick = useCallback((sectionId: string) => {
-    // Close mobile menu first
     setIsMobileMenuOpen(false);
 
     if (location.pathname === "/") {
-      // Already on home page - just scroll
-      // Use setTimeout to allow menu close animation
       setTimeout(() => {
         scrollToSection(sectionId);
       }, 50);
     } else {
-      // Navigate to home page first, then scroll
       navigate("/");
-      // Wait for navigation and DOM to be ready
       setTimeout(() => {
         scrollToSection(sectionId);
       }, 150);
@@ -73,26 +68,28 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/95 backdrop-blur-md shadow-soft py-3"
-          : "bg-transparent py-5"
+          ? "bg-card/95 backdrop-blur-md shadow-soft py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo Section */}
           <button
             type="button"
             onClick={() => handleNavClick("home")}
-            className="flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer"
+            className="flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer text-left"
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-gold flex items-center justify-center">
-              <span className="font-display font-bold text-foreground text-lg">
-                S
-              </span>
-            </div>
-            <div>
+            {/* UPDATED: Loading the JPEG logo */}
+            <img 
+              src="/image.jpeg" 
+              alt="SHC Global Trade Logo" 
+              className="w-14 h-14 rounded-full object-cover border border-white/20 shadow-sm"
+            />
+            
+            <div className="flex flex-col">
               <span
-                className={`font-display font-bold text-xl ${
+                className={`font-display font-bold text-xl leading-none ${
                   isScrolled
                     ? "text-foreground"
                     : "text-primary-foreground"
@@ -100,14 +97,16 @@ const Header = () => {
               >
                 SHC Global Trade
               </span>
+              
+              {/* UPDATED: Subtitle Text */}
               <span
-                className={`block text-xs ${
+                className={`block text-[10px] sm:text-xs mt-1 max-w-[200px] sm:max-w-md leading-tight ${
                   isScrolled
                     ? "text-muted-foreground"
-                    : "text-primary-foreground/70"
+                    : "text-primary-foreground/80"
                 }`}
               >
-                Premium Indian Exports
+                Premium Indian Agriculture Exporter of Basmati Rice, Green Chilli, and Banana
               </span>
             </div>
           </button>
