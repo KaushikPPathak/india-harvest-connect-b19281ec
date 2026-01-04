@@ -7,7 +7,7 @@ import GoogleTranslate from "./GoogleTranslate";
 
 // --- CHANGE 1: IMPORT THE IMAGE HERE ---
 // Make sure logo.jpeg is in the same folder as this file!
-import logoImage from "./logo.jpeg"; 
+import logoImage from "./logo.jpeg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -77,26 +77,29 @@ const Header = () => {
             onClick={() => handleNavClick("home")}
             className="flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer text-left group"
           >
-            {/* LOGO IMAGE */}
+            {/* LOGO IMAGE - UPDATED TO BE BIGGER */}
             {!imageError ? (
               <img 
-                src={logoImage}  // --- CHANGE 2: USING THE IMPORTED VARIABLE ---
-                alt="SHC Logo" 
-                onError={() => setImageError(true)} 
-                className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-white shadow-lg"
+                src={logoImage}
+                alt="SHC Logo"
+                onError={() => setImageError(true)}
+                // CHANGE: Increased size to w-20 (mobile) and w-28 (desktop)
+                className="w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-2 border-white shadow-lg"
               />
             ) : (
               // Backup 'S' if image fails
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-gold flex items-center justify-center border-2 border-white shadow-lg">
-                <span className="font-display font-bold text-foreground text-2xl">S</span>
+              <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-gold flex items-center justify-center border-2 border-white shadow-lg">
+                <span className="font-display font-bold text-foreground text-4xl">S</span>
               </div>
             )}
             
             <div className="flex flex-col">
-              {/* MAIN TITLE */}
+              {/* MAIN TITLE - UPDATED FOR ATTRACTIVE SCROLL STATE */}
               <span
-                className={`font-display font-bold text-lg md:text-2xl leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] ${
-                  isScrolled ? "text-slate-800" : "text-white"
+                className={`font-display font-bold text-xl md:text-3xl leading-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] ${
+                  isScrolled 
+                    ? "bg-gradient-to-r from-amber-600 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm" // Gold gradient on scroll
+                    : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)]" // White on transparent background
                 }`}
               >
                 SHC Global Trade
@@ -104,7 +107,7 @@ const Header = () => {
               
               {/* SUBTITLE */}
               <span
-                className={`block text-[11px] md:text-xs mt-1 max-w-[200px] md:max-w-md leading-tight font-bold drop-shadow-[0_2px_2px_rgba(0,0,0,0.9)] ${
+                className={`block text-[11px] md:text-xs mt-1 max-w-[200px] md:max-w-md leading-tight font-bold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] ${
                   isScrolled ? "text-slate-600" : "text-white"
                 }`}
               >
@@ -120,8 +123,8 @@ const Header = () => {
                 type="button"
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`font-bold text-base transition-colors hover:text-amber-400 bg-transparent border-none p-0 cursor-pointer drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
-                  isScrolled ? "text-slate-800 shadow-none" : "text-white"
+                className={`font-bold text-base transition-colors hover:text-amber-500 bg-transparent border-none p-0 cursor-pointer ${
+                  isScrolled ? "text-slate-800" : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
                 }`}
               >
                 {link.label}
@@ -142,7 +145,7 @@ const Header = () => {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
+            className={`lg:hidden p-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] ${
               isScrolled ? "text-slate-800" : "text-white"
             }`}
           >
