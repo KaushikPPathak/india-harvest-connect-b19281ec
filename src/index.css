@@ -291,3 +291,23 @@ header:not(.bg-card\/95) .goog-te-gadget .goog-te-combo:hover {
   background-color: hsl(var(--foreground) / 0.2) !important;
   border-color: hsl(var(--primary-foreground) / 0.5) !important;
 }
+/* FORCE FIX for Google Translate Widget */
+#google_translate_element select,
+.goog-te-combo {
+  color: black !important;       /* Forces text to be black */
+  background-color: white !important; /* Forces background to be white */
+  border: 1px solid #ccc !important;
+  padding: 5px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
+
+/* Hide the Google Logo/Branding frame if possible */
+.goog-te-gadget {
+  color: transparent !important;
+}
+.goog-te-gadget span {
+  display: none !important;
+}
