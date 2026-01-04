@@ -256,9 +256,17 @@
   box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
 }
 
-/* Hide the Google Translate banner/bar */
-.goog-te-banner-frame,
-.skiptranslate {
+/* Hide the Google Translate banner/bar but keep the widget visible */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Only hide the skiptranslate elements that are NOT the widget */
+body > .skiptranslate:not(.goog-te-gadget-simple):not([id^="google_translate_element"]) {
+  display: none !important;
+}
+
+iframe.skiptranslate {
   display: none !important;
 }
 
