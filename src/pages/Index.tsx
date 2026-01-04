@@ -23,13 +23,14 @@ const Index = () => {
     document.body.appendChild(script);
 
     (window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          autoDisplay: false,
-        },
-        "google_translate_element"
-      );
+      new google.translate.TranslateElement(
+  {
+    pageLanguage: "en",
+    autoDisplay: false,
+    multilanguagePage: true,
+  },
+  "google_translate_element"
+);
     };
 
     return () => {
