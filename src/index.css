@@ -183,4 +183,6 @@ iframe.skiptranslate {
     bottom: 80px;
     right: 12px;
   }
+}.notranslate {
+  translate: no;
 }
