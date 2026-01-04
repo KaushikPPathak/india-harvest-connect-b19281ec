@@ -291,53 +291,38 @@ header:not(.bg-card\/95) .goog-te-gadget .goog-te-combo:hover {
   background-color: hsl(var(--foreground) / 0.2) !important;
   border-color: hsl(var(--primary-foreground) / 0.5) !important;
 }
-/* FORCE FIX for Google Translate Widget */
-#google_translate_element select,
+/* IMPROVED Google Translate Fix - Version 3 */
+
+/* 1. Make the container visible and sit on top */
+#google_translate_element {
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* 2. Style the Dropdown Box (The White Pill) */
 .goog-te-combo {
-  color: black !important;       /* Forces text to be black */
-  background-color: white !important; /* Forces background to be white */
-  border: 1px solid #ccc !important;
-  padding: 5px !important;
-  border-radius: 4px !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 160px !important;  /* Forces it wide enough to read */
+  height: 35px !important;      /* Forces it tall enough to click */
   font-size: 14px !important;
-  height: auto !important;
+  color: black !important;
+  background-color: white !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 5px !important;
+  cursor: pointer !important;
   opacity: 1 !important;
 }
 
-/* Hide the Google Logo/Branding frame if possible */
+/* 3. Hide the "Powered by Google" logo text properly */
 .goog-te-gadget {
+  font-size: 0px !important;
   color: transparent !important;
 }
+
+/* 4. Ensure the Google text inside the gadget is hidden */
 .goog-te-gadget span {
-  display: none !important;
-}
-/* --- FIX GOOGLE TRANSLATE WIDGET --- */
-#google_translate_element {
-  display: inline-block !important;
-  width: auto !important;
-  min-width: 120px !important; /* Forces it to be wide enough */
-  height: auto !important;
-  position: relative !important;
-  z-index: 1000 !important; /* Brings it to the front */
-  margin-left: 10px;
-}
-
-/* Fix the inner layout so it is not squashed */
-.goog-te-gadget-simple {
-  background-color: white !important;
-  border: 1px solid #ccc !important;
-  padding: 4px 8px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-}
-
-/* Ensure the text is visible (Black) */
-.goog-te-gadget-simple span {
-  color: black !important;
-  font-weight: bold !important;
-}
-
-/* Hide the Google Icon if you want a cleaner look */
-.goog-te-gadget-icon {
   display: none !important;
 }
