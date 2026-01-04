@@ -162,4 +162,25 @@ iframe.skiptranslate {
 
 #google_translate_element:not(:first-child) {
   display: none !important;
+}/* ================================
+   Floating Google Translate Widget
+   ================================ */
+
+#google_translate_floating {
+  position: fixed;
+  bottom: 90px; /* above WhatsApp button */
+  right: 16px;
+  z-index: 9999;
+  background: hsl(var(--background));
+  padding: 6px 8px;
+  border-radius: 999px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  #google_translate_floating {
+    bottom: 80px;
+    right: 12px;
+  }
 }
