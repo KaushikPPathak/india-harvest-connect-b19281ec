@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
+import GoogleTranslate from "./GoogleTranslate";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -127,6 +128,7 @@ const Header = () => {
                 {link.label}
               </button>
             ))}
+            <GoogleTranslate />
             <Button
               variant={isScrolled ? "default" : "hero"}
               size="lg"
