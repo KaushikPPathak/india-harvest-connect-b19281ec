@@ -126,9 +126,9 @@ const Index = () => {
 
       <div className="min-h-screen">
         {/* ✅ GOOGLE TRANSLATE DROPDOWN (VISIBLE PLACE) */}
-        <div className="flex justify-end px-4 pt-2">
-          <div id="google_translate_element"></div>
-        </div>
+       <div id="google_translate_floating">
+  <div id="google_translate_element"></div>
+</div>
 
         <Header />
 
