@@ -6,6 +6,7 @@ import Products from "@/components/Products";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Certifications from "@/components/Certifications";
 import FAQ from "@/components/FAQ";
+import DownloadCatalogue from "@/components/DownloadCatalogue";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -85,6 +86,7 @@ const Index = () => {
           <Products />
           <WhyChooseUs />
           <Certifications />
+          <DownloadCatalogue />
           <FAQ />
           <Contact />
         </main>
