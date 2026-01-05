@@ -14,29 +14,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
 
-  /* ✅ GOOGLE TRANSLATE SCRIPT LOAD */
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    script.async = true;
-    document.body.appendChild(script);
-
-    (window as any).googleTranslateElementInit = () => {
-      new google.translate.TranslateElement(
-  {
-    pageLanguage: "en",
-    autoDisplay: false,
-    multilanguagePage: true,
-  },
-  "google_translate_element"
-);
-    };
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  /* ✅ GOOGLE TRANSLATE - Script loaded in index.html */
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -82,27 +60,26 @@ const Index = () => {
     <>
       <Helmet>
         <title>
-          Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global
-          Trade
+          Premium Basmati Rice Exporter from India | 1121 & Pusa Rice, Green Chillies, Bananas – SHC Global Trade
         </title>
         <meta
           name="description"
-          content="SHC Global Trade - Leading merchant exporter of premium 1121 Basmati Rice, Pusa Basmati, Gauri & G9 Green Chillies, and Cavendish Bananas from India. APEDA certified, IEC licensed."
+          content="India's trusted exporter of Extra Long Grain 1121 Basmati Rice, Pusa Basmati, G9 & Gauri Green Chillies, and Cavendish Bananas. APEDA certified, globally shipped. Get competitive quotes today!"
         />
         <meta
           name="keywords"
-          content="basmati rice exporter, 1121 basmati rice, pusa basmati rice, green chillies export, gauri chillies, g9 chillies, banana export india, cavendish banana, grand naine banana, indian agricultural exports, APEDA certified exporter, surat exporter, gujarat exporter, shc global trade"
+          content="basmati rice exporter india, 1121 basmati rice wholesale, pusa basmati rice supplier, extra long grain basmati, green chillies exporter, G9 chilli export, gauri green chilli, cavendish banana exporter, grand naine banana india, APEDA certified rice exporter, gujarat rice exporter, bulk basmati rice, indian agricultural exports, premium rice supplier"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in" />
 
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade"
+          content="Premium Basmati Rice Exporter from India | SHC Global Trade"
         />
         <meta
           property="og:description"
-          content="Premium Basmati Rice, Green Chillies & Bananas from India. APEDA certified, globally trusted exporter."
+          content="Your trusted source for Extra Long Grain 1121 Basmati Rice, Pusa Basmati, Green Chillies & Cavendish Bananas. APEDA certified, competitive pricing, global delivery."
         />
         <meta property="og:url" content="https://shcglobaltrade.co.in" />
         <meta property="og:type" content="website" />
@@ -112,11 +89,11 @@ const Index = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade"
+          content="Premium Basmati Rice Exporter from India | SHC Global Trade"
         />
         <meta
           name="twitter:description"
-          content="Premium Basmati Rice, Green Chillies & Bananas from India. APEDA certified."
+          content="Extra Long Grain 1121 Basmati Rice, Pusa Basmati, G9 Green Chillies & Cavendish Bananas. APEDA certified exporter with global delivery."
         />
 
         {/* LocalBusiness Schema */}
