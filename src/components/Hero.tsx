@@ -77,9 +77,9 @@ const Hero = () => {
             </div>
             <div className="text-center bg-primary-foreground/5 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-primary-foreground/10">
               <span className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gold">
-                20+
+                APEDA
               </span>
-              <p className="text-xs md:text-sm text-primary-foreground/80 mt-1">Countries Served</p>
+              <p className="text-xs md:text-sm text-primary-foreground/80 mt-1">Certified Exporter</p>
             </div>
             <div className="text-center bg-primary-foreground/5 backdrop-blur-sm rounded-lg p-3 md:p-4 border border-primary-foreground/10">
               <span className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gold">
