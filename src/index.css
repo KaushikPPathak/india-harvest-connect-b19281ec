@@ -160,9 +160,14 @@ iframe.skiptranslate {
   display: none !important;
 }
 
-#google_translate_element:not(:first-child) {
-  display: none !important;
-}/* ================================
+/* Make the dropdown fit better on small screens */
+@media (max-width: 640px) {
+  .goog-te-gadget .goog-te-combo {
+    min-width: 124px !important;
+  }
+}
+
+/* ================================
    Floating Google Translate Widget
    ================================ */
 

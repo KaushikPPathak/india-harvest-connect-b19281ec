@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -103,11 +102,6 @@ const Index = () => {
       </Helmet>
 
       <div className="min-h-screen">
-        {/* ✅ GOOGLE TRANSLATE DROPDOWN (VISIBLE PLACE) */}
-       <div id="google_translate_floating">
-  <div id="google_translate_element"></div>
-</div>
-
         <Header />
 
         <main>

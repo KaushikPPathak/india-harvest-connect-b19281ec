@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Merchant Exporter of Basmati Rice, Banana & Green Chilli | SHC Global Trade</title>
     <meta name="description" content="SHC Global Trade - Leading exporter of 1121 Basmati Rice, Pusa Basmati, Gauri & G9 Green Chillies, and Cavendish Bananas from India. APEDA certified, IEC licensed. Surat, Gujarat." />
@@ -61,16 +60,39 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Google Translate -->
     <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,ar,hi,fa,ur',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
+      (function () {
+        let initAttempts = 0;
+        const MAX_ATTEMPTS = 40; // ~12s
+
+        function tryInit() {
+          initAttempts += 1;
+
+          const container = document.getElementById("google_translate_element");
+          const hasGoogle = !!(window.google && window.google.translate && window.google.translate.TranslateElement);
+
+          if (!container || !hasGoogle) {
+            if (initAttempts < MAX_ATTEMPTS) setTimeout(tryInit, 300);
+            return;
+          }
+
+          // Prevent double init
+          if (container.getAttribute("data-gt-initialized") === "true") return;
+          container.setAttribute("data-gt-initialized", "true");
+
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: "en",
+              includedLanguages: "en,ar,hi,fa,ur",
+              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+              autoDisplay: false,
+            },
+            "google_translate_element"
+          );
+        }
+
+        window.googleTranslateElementInit = tryInit;
+      })();
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
