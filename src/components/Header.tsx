@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
-import GoogleTranslate from "./GoogleTranslate";
+import LanguageSelector from "./LanguageSelector";
 
 // IMPORT THE IMAGE
 import logoImage from "./logo.jpeg";
@@ -139,8 +139,8 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* TRANSLATE (VISIBLE ON MOBILE + DESKTOP) */}
-            <GoogleTranslate showIcon={false} />
+            {/* LANGUAGE SELECTOR */}
+            <LanguageSelector />
 
             {/* CTA (DESKTOP ONLY) */}
             <Button
