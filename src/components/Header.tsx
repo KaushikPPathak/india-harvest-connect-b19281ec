@@ -119,43 +119,50 @@ const Header = () => {
             </div>
           </button>
 
-          {/* DESKTOP NAV */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                type="button"
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`font-bold text-base transition-colors hover:text-amber-500 bg-transparent border-none p-0 cursor-pointer ${
-                  isScrolled 
-                    ? "text-slate-800" 
-                    : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-            <GoogleTranslate />
+          {/* RIGHT SIDE CONTROLS */}
+          <div className="flex items-center gap-3 md:gap-4">
+            {/* DESKTOP NAV */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <button
+                  type="button"
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`font-bold text-base transition-colors hover:text-amber-500 bg-transparent border-none p-0 cursor-pointer ${
+                    isScrolled 
+                      ? "text-slate-800" 
+                      : "text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* TRANSLATE (VISIBLE ON MOBILE + DESKTOP) */}
+            <GoogleTranslate showIcon={false} />
+
+            {/* CTA (DESKTOP ONLY) */}
             <Button
               variant={isScrolled ? "default" : "hero"}
               size="lg"
               onClick={() => handleNavClick("contact")}
-              className="shadow-lg font-bold"
+              className="hidden lg:inline-flex shadow-lg font-bold"
             >
               Get Quote
             </Button>
-          </nav>
 
-          {/* MOBILE MENU TOGGLE */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] ${
-              isScrolled ? "text-slate-800" : "text-white"
-            }`}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+            {/* MOBILE MENU TOGGLE */}
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`lg:hidden p-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] ${
+                isScrolled ? "text-slate-800" : "text-white"
+              }`}
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
