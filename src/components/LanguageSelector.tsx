@@ -13,6 +13,10 @@ const languages: Language[] = [
   { code: "hi", name: "Hindi", nativeName: "हिन्दी" },
   { code: "fa", name: "Persian", nativeName: "فارسی" },
   { code: "ur", name: "Urdu", nativeName: "اردو" },
+  { code: "fr", name: "French", nativeName: "Français" },
+  { code: "de", name: "German", nativeName: "Deutsch" },
+  { code: "es", name: "Spanish", nativeName: "Español" },
+  { code: "ja", name: "Japanese", nativeName: "日本語" },
 ];
 
 const LanguageSelector = () => {
