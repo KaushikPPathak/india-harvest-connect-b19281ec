@@ -68,16 +68,16 @@ const LanguageSelector = () => {
       {/* Custom Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-amber-200 bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 transition-all duration-200 shadow-sm hover:shadow-md group"
+        className="flex items-center gap-1 sm:gap-2 p-2 sm:px-3 sm:py-2 rounded-lg border border-amber-200 bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 transition-all duration-200 shadow-sm hover:shadow-md group"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <Globe className="w-4 h-4 text-amber-600 group-hover:text-amber-700" />
-        <span className="text-sm font-medium text-amber-800 min-w-[60px] text-left">
+        <Globe className="w-5 h-5 sm:w-4 sm:h-4 text-amber-600 group-hover:text-amber-700" />
+        <span className="hidden sm:inline text-sm font-medium text-amber-800 min-w-[60px] text-left">
           {selected.nativeName}
         </span>
         <ChevronDown
-          className={`w-4 h-4 text-amber-600 transition-transform duration-200 ${
+          className={`hidden sm:block w-4 h-4 text-amber-600 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
