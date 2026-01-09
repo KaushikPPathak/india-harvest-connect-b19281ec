@@ -85,7 +85,7 @@ const LanguageSelector = () => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-amber-100 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute top-full right-0 mt-2 w-36 sm:w-48 bg-white rounded-xl shadow-xl border border-amber-100 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="py-1">
             {languages.map((lang) => (
               <button
