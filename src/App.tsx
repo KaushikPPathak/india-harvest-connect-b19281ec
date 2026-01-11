@@ -15,6 +15,10 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Disclaimer from "./pages/Disclaimer";
 import RefundPolicy from "./pages/RefundPolicy";
+import Blog from "./pages/Blog";
+import BasmatiRiceGrading from "./pages/blog/BasmatiRiceGrading";
+import ExportDocumentation from "./pages/blog/ExportDocumentation";
+import IndianAgricultureExport2025 from "./pages/blog/IndianAgricultureExport2025";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +40,10 @@ const App = () => (
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/basmati-rice-grading-system-india" element={<BasmatiRiceGrading />} />
+            <Route path="/blog/export-documentation-india-agricultural-products" element={<ExportDocumentation />} />
+            <Route path="/blog/indian-agriculture-export-opportunities-2025" element={<IndianAgricultureExport2025 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

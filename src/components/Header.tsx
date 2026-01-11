@@ -46,11 +46,17 @@ const Header = () => {
     { id: "products", label: "Products" },
     { id: "about", label: "About Us" },
     { id: "quality", label: "Quality" },
+    { id: "blog", label: "Blog", isPage: true },
     { id: "contact", label: "Contact" },
   ];
 
-  const handleNavClick = useCallback((sectionId: string) => {
+  const handleNavClick = useCallback((sectionId: string, isPage?: boolean) => {
     setIsMobileMenuOpen(false);
+    if (isPage) {
+      navigate(`/${sectionId}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     if (location.pathname === "/") {
       setTimeout(() => scrollToSection(sectionId), 50);
     } else {
@@ -127,7 +133,7 @@ const Header = () => {
                 <button
                   type="button"
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  onClick={() => handleNavClick(link.id, link.isPage)}
                   className={`font-bold text-base transition-colors hover:text-amber-500 bg-transparent border-none p-0 cursor-pointer ${
                     isScrolled 
                       ? "text-slate-800" 
@@ -180,7 +186,7 @@ const Header = () => {
                 <button
                   type="button"
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  onClick={() => handleNavClick(link.id, link.isPage)}
                   className="font-medium text-lg text-slate-800 hover:text-amber-600 py-2 text-left bg-transparent border-none cursor-pointer"
                 >
                   {link.label}
