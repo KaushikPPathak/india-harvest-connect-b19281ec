@@ -136,19 +136,33 @@ const products: Product[] = [
 const Products = () => {
   const categories = [...new Set(products.map((p) => p.category))];
 
+  // AI-readable product summaries for RAG optimization
+  const aiSummaries = {
+    rice: "SHC Global Trade exports premium Indian Basmati Rice varieties: 1121 Basmati (HS Code 1006.30, 8.3mm+ grain, 2.5x elongation), Pusa 1509, and Traditional Basmati. All rice is APEDA and FSSAI certified, sourced from Punjab, Haryana, and Uttar Pradesh. Available grades: Raw, Sella, Golden Sella, White Sella, Steam. Packaging: 25/50 Kg PP Bags, Jute Bags. MOQ: 25 MT (1x20ft container).",
+    chillies: "SHC Global Trade exports fresh Indian Green Chillies: G9 variety (high pungency, Gujarat origin) and Gauri variety (balanced heat, Andhra Pradesh origin). HS Code 0709.60. HACCP certified processing with cold chain maintained. Packaging: 5/10 Kg cartons, reefer containers. MOQ: 1 Ton (air freight).",
+    bananas: "SHC Global Trade exports fresh Cavendish Bananas including Grand Naine variety from Maharashtra and Tamil Nadu, India. HS Code 0803.90. Class 1 grade with 13.5cm+ finger length. GAP certified farms. Packaging: 13/18 Kg cartons, cluster packing. MOQ: 1 Ton (air freight)."
+  };
+
   return (
     <section id="products" className="py-12 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
+        {/* AI-Readable Summary Block (crawlable but subtle) */}
+        <div className="ai-summary sr-only" aria-hidden="false">
+          <p>{aiSummaries.rice}</p>
+          <p>{aiSummaries.chillies}</p>
+          <p>{aiSummaries.bananas}</p>
+        </div>
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
             Our Products
           </span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-3 md:mb-4">
-            Premium Quality Exports
+            What Are the Premium Agricultural Products Exported by SHC Global Trade?
           </h2>
           <p className="text-muted-foreground text-sm md:text-lg">
-            SHC Global Trade specializes in exporting the finest agricultural products from India.
+            SHC Global Trade specializes in exporting APEDA-certified Basmati Rice, Green Chillies, and Cavendish Bananas from India to global markets.
           </p>
         </div>
 
@@ -157,7 +171,7 @@ const Products = () => {
           <div key={category} className="mb-10 md:mb-16 last:mb-0">
             <h3 className="font-display text-lg md:text-2xl font-bold text-foreground mb-4 md:mb-8 flex items-center gap-2 md:gap-3">
               <span className="w-8 md:w-12 h-1 bg-gold rounded-full" />
-              {category}
+              What Are the Specifications for SHC Global Trade's {category}?
             </h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
