@@ -40,7 +40,7 @@ const Footer = () => {
     <footer className="bg-forest-dark py-10 md:py-16">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 mb-8 md:mb-12">
-          {/* Company Info */}
+          {/* Company Info with Machine-Readable Trust Signals */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-gold flex items-center justify-center">
@@ -53,10 +53,27 @@ const Footer = () => {
             <p className="text-primary-foreground/70 text-xs md:text-sm mb-3 md:mb-4">
               Your trusted partner for premium agricultural exports from India since 2024.
             </p>
-            <div className="text-[10px] md:text-xs text-primary-foreground/60 space-y-1 mb-3 md:mb-4">
-              <p><span className="font-medium">GST:</span> 24ABTPP7011L1Z9</p>
-              <p><span className="font-medium">IEC:</span> ABTPP7011L</p>
-            </div>
+            
+            {/* Machine-Readable Business Identifiers */}
+            <address className="not-italic text-[10px] md:text-xs text-primary-foreground/60 space-y-1 mb-3 md:mb-4">
+              <p>
+                <span className="font-medium">GST:</span>{" "}
+                <span id="gst-number" itemProp="taxID">24ABTPP7011L1Z9</span>
+              </p>
+              <p>
+                <span className="font-medium">IEC:</span>{" "}
+                <span id="iec-number" data-license-type="Import Export Code">ABTPP7011L</span>
+              </p>
+              <p>
+                <span className="font-medium">APEDA:</span>{" "}
+                <span id="apeda-number" data-license-type="APEDA Registration">RCMC/APEDA/05968/2023-2024</span>
+              </p>
+              <p>
+                <span className="font-medium">D-U-N-S:</span>{" "}
+                <span id="duns-number" data-provider="Dun & Bradstreet">75-605-1507</span>
+              </p>
+            </address>
+            
             <div className="flex gap-2 md:gap-3">
               {[Facebook, Twitter, Instagram].map((Icon, index) => (
                 <a

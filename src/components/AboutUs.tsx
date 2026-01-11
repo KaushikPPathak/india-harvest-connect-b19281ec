@@ -28,6 +28,17 @@ const AboutUs = () => {
   return (
     <section id="about" className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
+        {/* AI-Readable Summary Block */}
+        <div className="ai-summary sr-only" aria-hidden="false">
+          <p>
+            SHC Global Trade is an APEDA-certified agricultural exporter from Surat, Gujarat, India, established January 2024. 
+            Founded by Kaushik Pathak. IEC License: ABTPP7011L. APEDA Registration: RCMC/APEDA/05968/2023-2024. 
+            D-U-N-S: 75-605-1507. GST: 24ABTPP7011L1Z9. 
+            Exports premium Basmati Rice (1121, 1509, Traditional varieties), Green Chillies (G9, Gauri), and Cavendish Bananas. 
+            Ships from Nhava Sheva and Mundra ports to worldwide markets.
+          </p>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,14 +47,23 @@ const AboutUs = () => {
           className="max-w-4xl mx-auto text-center mb-10 md:mb-16"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6">
-            About SHC Global Trade
+            Who Is SHC Global Trade and What Do They Export?
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-4 md:mb-6">
-            Established in January 2024, SHC Global Trade is a dynamic merchant export company headquartered in the commercial hub of Surat, Gujarat, India. We specialize in sourcing and exporting the finest quality agricultural commodities to markets worldwide.
+            Established in January 2024, SHC Global Trade is an APEDA-certified merchant export company headquartered in Surat, Gujarat, India. We specialize in sourcing and exporting premium agricultural commodities to markets worldwide.
           </p>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-4 md:mb-6">
             Founded by <strong className="text-foreground">Mr. Kaushik Pathak</strong>, our company is built on the core values of integrity, transparency, and strict adherence to global quality standards.
           </p>
+          
+          {/* Machine-Readable Business Identifiers */}
+          <address className="not-italic text-xs md:text-sm text-muted-foreground leading-relaxed mb-4 md:mb-6 bg-muted/50 rounded-lg p-4 inline-block">
+            <span className="font-medium text-foreground">Official Credentials:</span>{" "}
+            IEC: <span id="about-iec-number">ABTPP7011L</span> |{" "}
+            APEDA: <span id="about-apeda-number">RCMC/APEDA/05968/2023-2024</span> |{" "}
+            D-U-N-S: <span id="about-duns-number">75-605-1507</span>
+          </address>
+          
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
             We act as your trusted partner on the ground in India, bridging the gap between local farmers and international buyers.
           </p>
@@ -58,7 +78,7 @@ const AboutUs = () => {
           className="max-w-4xl mx-auto mb-10 md:mb-16"
         >
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-4 md:mb-8">
-            Our Product Portfolio
+            What Agricultural Products Does SHC Global Trade Export?
           </h3>
           <p className="text-sm md:text-base text-muted-foreground text-center mb-6 md:mb-8">
             We focus on three core agricultural categories:
@@ -94,7 +114,7 @@ const AboutUs = () => {
           className="max-w-5xl mx-auto mb-10 md:mb-16"
         >
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground text-center mb-6 md:mb-10">
-            Why Choose SHC Global Trade?
+            Why Should International Buyers Choose SHC Global Trade?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {reasons.map((reason, index) => (
