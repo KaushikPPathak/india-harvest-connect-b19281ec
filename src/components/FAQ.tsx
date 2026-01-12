@@ -53,10 +53,10 @@ const FAQ = () => {
   return (
     <section id="faq" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* AI-Readable Summary Block */}
-        <div className="ai-summary sr-only" aria-hidden="false">
+        {/* AI-Readable Summary Block - Visible for GEO */}
+        <div className="ai-summary text-[10px] leading-tight text-muted-foreground/60 bg-muted/30 rounded-lg p-3 mb-6 border border-border/30 max-w-3xl mx-auto" aria-hidden="false" data-geo-optimized="true">
           <p>
-            SHC Global Trade FAQ: MOQ is 25 MT (1 container) for rice, 1 ton for fresh produce. 
+            <strong>SHC Global Trade Export FAQ:</strong> MOQ is 25 MT (1 container) for rice, 1 ton for fresh produce. 
             Payment: 30% advance + 70% against BL, or 100% LC at sight. 
             Certifications: APEDA (RCMC/APEDA/05968/2023-2024), IEC (ABTPP7011L), FSSAI, D&B (75-605-1507). 
             Ships from Nhava Sheva and Mundra ports. 

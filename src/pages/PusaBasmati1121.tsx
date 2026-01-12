@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
+import AIReadableSummary from "@/components/AIReadableSummary";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
 
 import rawBasmati from "@/assets/1121-raw-basmati.jpg";
 import steamBasmati from "@/assets/1121-steam-basmati.jpg";
@@ -56,6 +58,26 @@ const whyChooseUs = [
   { icon: Truck, title: "Timely Global Shipments", description: "Reliable logistics to any destination worldwide" },
 ];
 
+// Product Schema for this page
+const productSchema = createProductSchema({
+  id: "pusa-basmati-1121",
+  name: "Pusa Basmati 1121 Rice - Premium Extra-Long Grain",
+  description: "Premium Pusa Basmati 1121 rice exporter from India. Extra-long grain basmati rice with 8.3mm+ grain length, 2.5x elongation ratio, exceptional aroma. Available in Raw, Steam, Sella, Golden Sella, White Sella varieties. APEDA certified, HS Code 10063020.",
+  image: "https://shcglobaltrade.co.in/1121-basmati-rice.jpg",
+  hsCode: "10063020",
+  additionalProperties: [
+    { name: "Grain Length (Raw)", value: "8.3-8.4mm" },
+    { name: "Grain Length (Cooked)", value: "20mm+" },
+    { name: "Elongation Ratio", value: "2.5x" },
+    { name: "Aging", value: "Minimum 2 years" },
+    { name: "Moisture Content", value: "Maximum 14%" },
+    { name: "Broken Percentage", value: "Maximum 2% (Grade A)" },
+    { name: "Packaging", value: "5kg, 10kg, 25kg, 40kg, 50kg bags" },
+    { name: "Available Grades", value: "Raw, Steam, Sella, Golden Sella, White Sella" }
+  ],
+  certifications: ["APEDA", "FSSAI", "ISO 22000"]
+});
+
 const PusaBasmati1121 = () => {
   const scrollToContact = () => {
     window.location.href = "/#contact";
@@ -74,6 +96,16 @@ const PusaBasmati1121 = () => {
           content="Pusa Basmati 1121, 1121 basmati rice, basmati rice exporter India, 1121 sella rice, golden sella rice, steam basmati rice, Indian rice exporter, APEDA certified"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/pusa-basmati-1121" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
 
       <Header />
@@ -86,6 +118,17 @@ const PusaBasmati1121 = () => {
             Back to Home
           </Link>
           
+          {/* AI-Readable Summary - Visible */}
+          <AIReadableSummary>
+            <p>
+              <strong>Pusa Basmati 1121 Rice Export from India:</strong> Premium extra-long grain basmati rice with 8.3mm+ grain length, 2.5x elongation ratio after cooking. 
+              HS Code: 10063020. Country of Origin: India. Sourced from Punjab, Haryana, Uttar Pradesh. 
+              Available grades: Raw, Steam, Sella, Golden Sella, White Sella. Packaging: 5-50kg bags, custom packaging available. 
+              Certifications: APEDA (RCMC/APEDA/05968/2023-2024), FSSAI, ISO 22000. 
+              Exporter: SHC Global Trade, IEC: ABTPP7011L, D-U-N-S: 75-605-1507. MOQ: 25 MT (1x20ft container).
+            </p>
+          </AIReadableSummary>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +139,7 @@ const PusaBasmati1121 = () => {
               Premium Extra-Long Grain
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-              Pusa Basmati 1121 – Premium Extra-Long Grain Basmati Rice
+              What Are the Specifications for SHC Global Trade's Pusa Basmati 1121 Rice?
             </h1>
             <p className="text-xl md:text-2xl text-gold font-medium mb-6">
               APEDA & IEC Certified Exporter from India
@@ -129,7 +172,7 @@ const PusaBasmati1121 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Product Overview
+              What Are the Key Specifications of 1121 Basmati Rice for Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Key specifications of Pusa Basmati 1121 for international export markets
@@ -165,7 +208,7 @@ const PusaBasmati1121 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Available Types
+              What Varieties of 1121 Basmati Rice Does SHC Global Trade Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Choose from our premium range of Pusa Basmati 1121 varieties
@@ -213,7 +256,7 @@ const PusaBasmati1121 = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
-                Packaging & Export Details
+                What Packaging and Export Terms Does SHC Global Trade Offer?
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-4 p-4 bg-gold/10 rounded-xl border border-gold/20">
@@ -276,7 +319,7 @@ const PusaBasmati1121 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Why Choose SHC Global Trade?
+              Why Should Buyers Choose SHC Global Trade for 1121 Basmati Rice?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               India's trusted partner for premium Pusa Basmati 1121 exports

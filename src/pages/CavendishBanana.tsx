@@ -6,7 +6,28 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
+import AIReadableSummary from "@/components/AIReadableSummary";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
 import cavendishBanana from "@/assets/cavendish-banana.jpg";
+
+// Product Schema for this page
+const productSchema = createProductSchema({
+  id: "cavendish-banana",
+  name: "Cavendish Banana - Premium Export Quality from India",
+  description: "Premium export quality Cavendish Bananas from India including Grand Naine variety. Class 1 grade with uniform size, smooth yellow peel, sweet taste, and long shelf life (20-25 days). GAP certified farms. HS Code 08039010. Sourced from Maharashtra and Tamil Nadu, India.",
+  image: "https://shcglobaltrade.co.in/cavendish-banana.jpg",
+  hsCode: "08039010",
+  additionalProperties: [
+    { name: "Peel Color", value: "Green (raw), bright yellow when ripe" },
+    { name: "Flesh", value: "Creamy white, firm texture" },
+    { name: "Taste", value: "Mild and sweet" },
+    { name: "Size", value: "Medium to large, uniform" },
+    { name: "Grade", value: "Class 1" },
+    { name: "Shelf Life", value: "20-25 days under proper storage" },
+    { name: "Packaging", value: "5kg, 7kg, 13kg cartons" }
+  ],
+  certifications: ["APEDA", "GAP Certified"]
+});
 
 const CavendishBanana = () => {
   const scrollToContact = () => {
@@ -59,6 +80,16 @@ const CavendishBanana = () => {
           content="Cavendish banana exporter India, fresh banana export, Indian banana supplier, premium banana wholesale, APEDA certified banana"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/cavendish-banana" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
 
       <Header />
@@ -75,13 +106,25 @@ const CavendishBanana = () => {
               <ArrowLeft className="w-4 h-4" />
               Back to Products
             </Link>
+            
+            {/* AI-Readable Summary - Visible */}
+            <AIReadableSummary className="bg-forest-dark/50 border-forest/50 text-primary-foreground/70">
+              <p>
+                <strong>Cavendish Banana Export from India:</strong> Premium export quality Cavendish (Grand Naine) bananas with uniform size, sweet taste, creamy white flesh. 
+                HS Code: 08039010. Country of Origin: India. Sourced from Maharashtra and Tamil Nadu. 
+                Shelf Life: 20-25 days. Class 1 grade, 13.5cm+ finger length. Packaging: 5kg, 7kg, 13kg cartons. 
+                Certifications: APEDA (RCMC/APEDA/05968/2023-2024), GAP Certified. 
+                Exporter: SHC Global Trade, IEC: ABTPP7011L, D-U-N-S: 75-605-1507. MOQ: 1 Ton (air freight).
+              </p>
+            </AIReadableSummary>
+            
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="inline-block px-4 py-2 bg-gold/20 text-gold rounded-full text-sm font-medium mb-4">
                   Premium Fresh Produce
                 </span>
                 <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-primary-foreground mb-4">
-                  Cavendish Banana
+                  What Are the Specifications for SHC Global Trade's Cavendish Banana?
                 </h1>
                 <p className="text-xl lg:text-2xl text-gold font-medium mb-4">
                   Premium Export Quality Bananas from India
@@ -133,7 +176,7 @@ const CavendishBanana = () => {
         <section className="py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-              Product Overview
+              What Are the Key Specifications of Cavendish Banana for Export?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {productOverview.map((item, index) => (
@@ -152,7 +195,7 @@ const CavendishBanana = () => {
         <section className="py-16 lg:py-20 bg-muted">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-              Quality Specifications
+              What Quality Standards Does SHC Global Trade Follow for Bananas?
             </h2>
             <div className="max-w-3xl mx-auto">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -176,7 +219,7 @@ const CavendishBanana = () => {
         <section className="py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
-              Packaging & Export Details
+              What Packaging and Export Terms Does SHC Global Trade Offer for Bananas?
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {packagingDetails.map((item, index) => (
@@ -195,7 +238,7 @@ const CavendishBanana = () => {
         <section className="py-16 lg:py-20 bg-forest-dark">
           <div className="container mx-auto px-4 lg:px-8">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-primary-foreground text-center mb-12">
-              Why Choose SHC Global Trade India
+              Why Should Buyers Choose SHC Global Trade for Cavendish Bananas?
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {whyChooseUs.map((item, index) => (

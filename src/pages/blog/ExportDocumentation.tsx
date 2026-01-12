@@ -6,33 +6,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "@id": "https://shcglobaltrade.co.in/blog/export-documentation-india-agricultural-products#article",
+import { createArticleSchema, organizationSchema } from "@/lib/geo-schema";
+
+const articleSchema = createArticleSchema({
+  id: "export-documentation",
   headline: "Essential Export Documentation for Indian Agricultural Products",
   description: "A comprehensive guide to IEC, APEDA registration, phytosanitary certificates, Bill of Lading, and customs documentation required for exporting rice, vegetables, and fruits from India.",
   image: "https://shcglobaltrade.co.in/image.jpeg",
-  author: {
-    "@type": "Person",
-    name: "Kaushik Pathak",
-    url: "https://www.linkedin.com/in/kaushik-pathak-83945927/"
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "SHC Global Trade",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://shcglobaltrade.co.in/logo.jpeg"
-    }
-  },
   datePublished: "2025-01-05",
-  dateModified: "2025-01-05",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://shcglobaltrade.co.in/blog/export-documentation-india-agricultural-products"
-  }
-};
+  url: "https://shcglobaltrade.co.in/blog/export-documentation-india-agricultural-products",
+  aboutTopics: ["Export Documentation India", "IEC Code Registration", "APEDA Certified Agricultural Exporter", "Phytosanitary Certificate"]
+});
 
 const ExportDocumentation = () => {
   return (

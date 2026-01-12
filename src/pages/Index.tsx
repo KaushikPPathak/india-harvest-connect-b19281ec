@@ -10,217 +10,71 @@ import DownloadCatalogue from "@/components/DownloadCatalogue";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { organizationSchema, organizationReference, createProductSchema } from "@/lib/geo-schema";
 
 const Index = () => {
 
   /* ✅ GOOGLE TRANSLATE - Script loaded in index.html */
 
-  // Organization Schema with full business identifiers
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://shcglobaltrade.co.in/#organization",
-    name: "SHC Global Trade",
-    legalName: "SHC Global Trade",
-    description: "APEDA-certified agricultural exporter from India specializing in premium Basmati Rice, Green Chillies, and Cavendish Bananas. IEC licensed with D&B verified credentials.",
-    url: "https://shcglobaltrade.co.in",
-    logo: "https://shcglobaltrade.co.in/logo.jpeg",
-    telephone: "+91-9327420046",
-    email: "sales@shcglobaltrade.co.in",
-    foundingDate: "2024-01",
-    founder: {
-      "@type": "Person",
-      name: "Kaushik Pathak",
-      sameAs: "https://www.linkedin.com/in/kaushik-pathak-83945927/"
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Gopipura",
-      addressLocality: "Surat",
-      addressRegion: "Gujarat",
-      postalCode: "395003",
-      addressCountry: "IN"
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "21.1702",
-      longitude: "72.8311"
-    },
-    areaServed: "Worldwide",
-    sameAs: [
-      "https://www.linkedin.com/in/kaushik-pathak-83945927/"
-    ],
-    taxID: "24ABTPP7011L1Z9",
-    duns: "75-605-1507",
-    naics: "111199",
-    isicV4: "0111",
-    additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "IEC Number",
-        value: "ABTPP7011L"
-      },
-      {
-        "@type": "PropertyValue",
-        name: "APEDA Registration",
-        value: "RCMC/APEDA/05968/2023-2024"
-      },
-      {
-        "@type": "PropertyValue",
-        name: "D-U-N-S Number",
-        value: "75-605-1507"
-      },
-      {
-        "@type": "PropertyValue",
-        name: "GST Number",
-        value: "24ABTPP7011L1Z9"
-      }
-    ],
-    hasCredential: [
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "APEDA Registration",
-        credentialCategory: "Export License",
-        recognizedBy: {
-          "@type": "Organization",
-          name: "Agricultural and Processed Food Products Export Development Authority"
-        }
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "FSSAI License",
-        credentialCategory: "Food Safety Certification"
-      }
-    ]
-  };
-
-  // Product Schemas for each category
+  // Product Schemas for each category - with Organization reference
   const productSchemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://shcglobaltrade.co.in/#1121-basmati-rice",
+    createProductSchema({
+      id: "1121-basmati-rice",
       name: "1121 Basmati Rice",
-      description: "Premium extra-long grain 1121 Basmati Rice with 8.3mm+ grain length, 2.5x elongation ratio after cooking. Aged for minimum 2 years. Available in Raw, Sella, Golden Sella, White Sella, and Steam varieties.",
+      description: "Premium extra-long grain 1121 Basmati Rice with 8.3mm+ grain length, 2.5x elongation ratio after cooking. Aged for minimum 2 years. Available in Raw, Sella, Golden Sella, White Sella, and Steam varieties. APEDA certified export quality from India.",
       image: "https://shcglobaltrade.co.in/1121-basmati-rice.jpg",
-      brand: {
-        "@type": "Brand",
-        name: "SHC Global Trade"
-      },
-      manufacturer: {
-        "@type": "Organization",
-        name: "SHC Global Trade"
-      },
-      countryOfOrigin: {
-        "@type": "Country",
-        name: "India"
-      },
-      material: "Non-GMO Basmati Rice",
-      additionalProperty: [
-        { "@type": "PropertyValue", name: "HS Code", value: "1006.30" },
-        { "@type": "PropertyValue", name: "Grain Length", value: "8.3mm+" },
-        { "@type": "PropertyValue", name: "Elongation Ratio", value: "2.5x" },
-        { "@type": "PropertyValue", name: "Aging", value: "Minimum 2 years" },
-        { "@type": "PropertyValue", name: "Packaging", value: "25/50 Kg PP Bags, Jute Bags" },
-        { "@type": "PropertyValue", name: "Certifications", value: "APEDA, FSSAI, ISO 22000" }
+      hsCode: "1006.30",
+      additionalProperties: [
+        { name: "Grain Length", value: "8.3mm+" },
+        { name: "Elongation Ratio", value: "2.5x" },
+        { name: "Aging", value: "Minimum 2 years" },
+        { name: "Packaging", value: "25/50 Kg PP Bags, Jute Bags" },
+        { name: "Available Grades", value: "Raw, Sella, Golden Sella, White Sella, Steam" }
       ],
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "USD"
-        },
-        seller: {
-          "@type": "Organization",
-          name: "SHC Global Trade"
-        }
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://shcglobaltrade.co.in/#1509-basmati-rice",
+      certifications: ["APEDA", "FSSAI", "ISO 22000"]
+    }),
+    createProductSchema({
+      id: "1509-basmati-rice",
       name: "Pusa Basmati 1509 Rice",
-      description: "High-yielding Pusa 1509 Basmati variety developed by IARI with excellent cooking qualities. Features pearly white grains with 7.5mm+ length and consistent quality. Available in Raw, Sella, Golden Sella, White Sella, and Steam varieties.",
+      description: "High-yielding Pusa 1509 Basmati variety developed by IARI with excellent cooking qualities. Features pearly white grains with 7.5mm+ length and consistent quality. Available in Raw, Sella, Golden Sella, White Sella, and Steam varieties. APEDA certified export from India.",
       image: "https://shcglobaltrade.co.in/pusa-basmati-rice.jpg",
-      brand: {
-        "@type": "Brand",
-        name: "SHC Global Trade"
-      },
-      countryOfOrigin: {
-        "@type": "Country",
-        name: "India"
-      },
-      additionalProperty: [
-        { "@type": "PropertyValue", name: "HS Code", value: "1006.30" },
-        { "@type": "PropertyValue", name: "Grain Length", value: "7.5mm+" },
-        { "@type": "PropertyValue", name: "Variety", value: "Pusa 1509" },
-        { "@type": "PropertyValue", name: "Packaging", value: "25/50 Kg PP Bags, Jute Bags" },
-        { "@type": "PropertyValue", name: "Certifications", value: "APEDA, FSSAI" }
+      hsCode: "1006.30",
+      additionalProperties: [
+        { name: "Grain Length", value: "7.5mm+" },
+        { name: "Variety", value: "Pusa 1509" },
+        { name: "Packaging", value: "25/50 Kg PP Bags, Jute Bags" },
+        { name: "Available Grades", value: "Raw, Sella, Golden Sella, White Sella, Steam" }
       ],
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        seller: { "@type": "Organization", name: "SHC Global Trade" }
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://shcglobaltrade.co.in/#green-chillies",
+      certifications: ["APEDA", "FSSAI"]
+    }),
+    createProductSchema({
+      id: "green-chillies",
       name: "Fresh Green Chillies (G9 & Gauri Varieties)",
-      description: "Export-grade fresh green chillies from India. G9 variety offers high pungency with excellent shelf life. Gauri variety features balanced heat and vibrant color. Processed under HACCP standards with cold chain maintained.",
+      description: "Export-grade fresh green chillies from India. G9 variety offers high pungency with excellent shelf life. Gauri variety features balanced heat and vibrant color. Processed under HACCP standards with cold chain maintained. HS Code 0709.60.",
       image: "https://shcglobaltrade.co.in/green-chillies.jpg",
-      brand: {
-        "@type": "Brand",
-        name: "SHC Global Trade"
-      },
-      countryOfOrigin: {
-        "@type": "Country",
-        name: "India"
-      },
-      additionalProperty: [
-        { "@type": "PropertyValue", name: "HS Code", value: "0709.60" },
-        { "@type": "PropertyValue", name: "Varieties", value: "G9, Gauri" },
-        { "@type": "PropertyValue", name: "Packaging", value: "5/10 Kg Cartons, Reefer Containers" },
-        { "@type": "PropertyValue", name: "Storage", value: "Cold Chain Maintained" },
-        { "@type": "PropertyValue", name: "Certifications", value: "APEDA, FSSAI, HACCP" }
+      hsCode: "0709.60",
+      additionalProperties: [
+        { name: "Varieties", value: "G9, Gauri" },
+        { name: "Packaging", value: "5/10 Kg Cartons, Reefer Containers" },
+        { name: "Storage", value: "Cold Chain Maintained" },
+        { name: "Shelf Life", value: "12-15 days" }
       ],
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        seller: { "@type": "Organization", name: "SHC Global Trade" }
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "@id": "https://shcglobaltrade.co.in/#cavendish-banana",
+      certifications: ["APEDA", "FSSAI", "HACCP"]
+    }),
+    createProductSchema({
+      id: "cavendish-banana",
       name: "Fresh Cavendish Bananas (Grand Naine)",
-      description: "Premium Cavendish variety bananas, including Grand Naine sub-variety. Class 1 grade with 13.5cm+ finger length. GAP certified farms ensure quality from cultivation to export. Ideal for supermarket chains worldwide.",
+      description: "Premium Cavendish variety bananas, including Grand Naine sub-variety. Class 1 grade with 13.5cm+ finger length. GAP certified farms ensure quality from cultivation to export. Ideal for supermarket chains worldwide. HS Code 0803.90.",
       image: "https://shcglobaltrade.co.in/cavendish-banana.jpg",
-      brand: {
-        "@type": "Brand",
-        name: "SHC Global Trade"
-      },
-      countryOfOrigin: {
-        "@type": "Country",
-        name: "India"
-      },
-      additionalProperty: [
-        { "@type": "PropertyValue", name: "HS Code", value: "0803.90" },
-        { "@type": "PropertyValue", name: "Grade", value: "Class 1" },
-        { "@type": "PropertyValue", name: "Finger Length", value: "13.5cm+" },
-        { "@type": "PropertyValue", name: "Packaging", value: "13/18 Kg Cartons, Cluster Packing" },
-        { "@type": "PropertyValue", name: "Certifications", value: "APEDA, GAP Certified" }
+      hsCode: "0803.90",
+      additionalProperties: [
+        { name: "Grade", value: "Class 1" },
+        { name: "Finger Length", value: "13.5cm+" },
+        { name: "Packaging", value: "13/18 Kg Cartons, Cluster Packing" },
+        { name: "Shelf Life", value: "20-25 days" }
       ],
-      offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        seller: { "@type": "Organization", name: "SHC Global Trade" }
-      }
-    }
+      certifications: ["APEDA", "GAP Certified"]
+    })
   ];
 
   // FAQ Schema
@@ -233,7 +87,7 @@ const Index = () => {
         name: "What is the Minimum Order Quantity (MOQ) for SHC Global Trade exports?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "For sea shipments (Rice/Sugar), the MOQ is one 20ft container (approximately 25 MT). For air shipments (Vegetables/Fruits), the MOQ is 1 Ton."
+          text: "For sea shipments (Basmati Rice), the MOQ is one 20ft container, approximately 25 metric tons. For air shipments (Fresh Vegetables and Fruits including Green Chillies and Bananas), the MOQ is 1 metric ton."
         }
       },
       {
@@ -241,7 +95,7 @@ const Index = () => {
         name: "What payment terms does SHC Global Trade accept?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We accept 30% Advance with 70% against scanned Bill of Lading (BL), or 100% Irrevocable Letter of Credit (LC) at sight."
+          text: "SHC Global Trade accepts two payment options: (1) 30% advance payment with 70% against scanned Bill of Lading (BL), or (2) 100% Irrevocable Letter of Credit (LC) at sight."
         }
       },
       {
@@ -249,47 +103,47 @@ const Index = () => {
         name: "Does SHC Global Trade offer private labeling services?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, we offer private labeling services. We can print your brand and logo on bags/boxes as per buyer requirements."
+          text: "Yes, SHC Global Trade offers private labeling. We can print your brand name and logo on bags, boxes, and cartons according to buyer specifications and requirements."
         }
       },
       {
         "@type": "Question",
-        name: "What certifications does SHC Global Trade hold?",
+        name: "What certifications does SHC Global Trade hold for agricultural exports?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "SHC Global Trade is APEDA certified (RCMC/APEDA/05968/2023-2024), holds IEC License (ABTPP7011L), FSSAI certified, and is D&B verified (D-U-N-S: 75-605-1507)."
+          text: "SHC Global Trade is APEDA certified (Registration: RCMC/APEDA/05968/2023-2024), holds IEC License (ABTPP7011L), FSSAI certified for food safety, GST registered (24ABTPP7011L1Z9), and is D&B verified (D-U-N-S: 75-605-1507)."
         }
       },
       {
         "@type": "Question",
-        name: "Which ports does SHC Global Trade use for shipping?",
+        name: "Which ports does SHC Global Trade use for international shipping?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We primarily use Nhava Sheva (JNPT) and Mundra Port in Gujarat, India. Our strategic location in Surat minimizes transit time and ensures freshness for perishable goods."
+          text: "SHC Global Trade primarily ships from Nhava Sheva Port (JNPT) and Mundra Port in Gujarat, India. Our headquarters in Surat provides strategic proximity to both ports, minimizing transit time and maintaining freshness for perishable goods."
         }
       },
       {
         "@type": "Question",
-        name: "What quality standards does SHC Global Trade follow?",
+        name: "What quality standards does SHC Global Trade follow for exports?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We implement rigorous quality checks at the sourcing stage. Our products meet international food safety standards including FSSAI, ISO 22000, and HACCP compliance for applicable products."
+          text: "SHC Global Trade implements rigorous quality checks at the sourcing stage. Products meet international food safety standards including FSSAI certification, ISO 22000 compliance for applicable products, and HACCP certification for processed items."
         }
       },
       {
         "@type": "Question",
-        name: "Where does SHC Global Trade source its products from?",
+        name: "Where does SHC Global Trade source its agricultural products from?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Basmati Rice is sourced from Punjab, Haryana, and Uttar Pradesh. Green Chillies come from Gujarat and Andhra Pradesh. Bananas are sourced from Maharashtra and Tamil Nadu."
+          text: "Basmati Rice is sourced from the fertile regions of Punjab, Haryana, and Uttar Pradesh. Green Chillies (G9 and Gauri varieties) come from Gujarat and Andhra Pradesh. Cavendish Bananas are sourced from Maharashtra and Tamil Nadu."
         }
       },
       {
         "@type": "Question",
-        name: "Does SHC Global Trade ship internationally?",
+        name: "Which countries does SHC Global Trade export to?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, we export to markets worldwide including the Middle East, Europe, USA, Canada, Australia, and Asian countries. We offer both sea freight (FCL) and air freight options."
+          text: "SHC Global Trade exports to markets worldwide including the Middle East (UAE, Saudi Arabia, Kuwait, Qatar), Europe (UK, Germany, Netherlands), North America (USA, Canada), Australia, and Asian countries. We offer both sea freight (FCL containers) and air freight options."
         }
       }
     ]
@@ -369,7 +223,7 @@ const Index = () => {
           content="Extra Long Grain 1121 Basmati Rice, Pusa Basmati, G9 Green Chillies & Cavendish Bananas. APEDA certified exporter with global delivery."
         />
 
-        {/* Organization Schema */}
+        {/* Organization Schema - Canonical */}
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>

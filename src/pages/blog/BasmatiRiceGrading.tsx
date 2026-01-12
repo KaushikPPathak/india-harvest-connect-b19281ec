@@ -6,33 +6,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "@id": "https://shcglobaltrade.co.in/blog/basmati-rice-grading-system-india#article",
+import { createArticleSchema, organizationSchema } from "@/lib/geo-schema";
+
+const articleSchema = createArticleSchema({
+  id: "basmati-rice-grading",
   headline: "Complete Guide to Basmati Rice Grading System in India",
   description: "Understanding the AGMARK and export grading standards for 1121 and 1509 Basmati rice varieties. Learn about grain length, broken percentage, moisture content, and quality parameters.",
   image: "https://shcglobaltrade.co.in/image.jpeg",
-  author: {
-    "@type": "Person",
-    name: "Kaushik Pathak",
-    url: "https://www.linkedin.com/in/kaushik-pathak-83945927/"
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "SHC Global Trade",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://shcglobaltrade.co.in/logo.jpeg"
-    }
-  },
   datePublished: "2025-01-10",
-  dateModified: "2025-01-10",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://shcglobaltrade.co.in/blog/basmati-rice-grading-system-india"
-  }
-};
+  url: "https://shcglobaltrade.co.in/blog/basmati-rice-grading-system-india",
+  aboutTopics: ["Basmati Rice Export from India", "AGMARK Rice Standards", "APEDA Certified Agricultural Exporter", "Rice Quality Grading"]
+});
 
 const BasmatiRiceGrading = () => {
   return (

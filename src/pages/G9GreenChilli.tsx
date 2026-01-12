@@ -6,7 +6,28 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
+import AIReadableSummary from "@/components/AIReadableSummary";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
 import g9ChilliImage from "@/assets/g9-green-chilli.jpg";
+
+// Product Schema for this page
+const productSchema = createProductSchema({
+  id: "g9-green-chilli",
+  name: "G9 Green Chilli - High Pungency Export Quality",
+  description: "Premium G9 Green Chilli exporter from India. High pungency export quality green chilli with dark green color, long shelf life (12-15 days). HACCP certified processing with cold chain maintained. HS Code 07096010. Sourced from Gujarat, India.",
+  image: "https://shcglobaltrade.co.in/g9-green-chilli.jpg",
+  hsCode: "07096010",
+  additionalProperties: [
+    { name: "Color", value: "Dark green" },
+    { name: "Pungency", value: "High" },
+    { name: "Size", value: "Long and slender" },
+    { name: "Texture", value: "Thick skin, firm body" },
+    { name: "Shelf Life", value: "12-15 days under cold storage" },
+    { name: "Packaging", value: "2kg, 5kg, 10kg cartons" },
+    { name: "Storage", value: "Cold chain maintained" }
+  ],
+  certifications: ["APEDA", "FSSAI", "HACCP"]
+});
 
 const G9GreenChilli = () => {
   const productOverview = [
@@ -52,6 +73,16 @@ const G9GreenChilli = () => {
           content="G9 green chilli, green chilli exporter India, high pungency chilli, Indian green chillies, fresh green chillies export"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/g9-green-chilli" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
 
       <Header />
@@ -67,6 +98,17 @@ const G9GreenChilli = () => {
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
+          
+          {/* AI-Readable Summary - Visible */}
+          <AIReadableSummary className="bg-emerald-900/50 border-emerald-700/50 text-emerald-100/80">
+            <p>
+              <strong>G9 Green Chilli Export from India:</strong> High pungency green chilli variety with dark green color, long slender shape, thick skin. 
+              HS Code: 07096010. Country of Origin: India. Sourced from Gujarat and Andhra Pradesh. 
+              Shelf Life: 12-15 days under cold storage. Packaging: 2kg, 5kg, 10kg ventilated cartons. 
+              Certifications: APEDA (RCMC/APEDA/05968/2023-2024), FSSAI, HACCP. 
+              Exporter: SHC Global Trade, IEC: ABTPP7011L, D-U-N-S: 75-605-1507. MOQ: 1 Ton (air freight).
+            </p>
+          </AIReadableSummary>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -79,10 +121,7 @@ const G9GreenChilli = () => {
                 High Pungency
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                G9 Green Chilli
-                <span className="block text-emerald-300 text-2xl md:text-3xl mt-2">
-                  High Pungency Export Quality Green Chilli
-                </span>
+                What Are the Specifications for SHC Global Trade's G9 Green Chilli?
               </h1>
               <p className="text-emerald-100 text-lg mb-4 font-medium">
                 Strong Flavor, Long Shelf Life
@@ -143,7 +182,7 @@ const G9GreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Product Overview
+              What Are the Key Specifications of G9 Green Chilli for Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Detailed specifications of our premium G9 Green Chilli
@@ -179,7 +218,7 @@ const G9GreenChilli = () => {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Quality Specifications
+                What Quality Standards Does SHC Global Trade Follow for G9 Chilli?
               </h2>
               <p className="text-muted-foreground mb-8">
                 We ensure the highest quality standards for all our G9 green chilli exports through rigorous quality control processes.
@@ -246,7 +285,7 @@ const G9GreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Packaging & Export Details
+              What Packaging and Export Terms Does SHC Global Trade Offer for Green Chilli?
             </h2>
           </motion.div>
 
@@ -279,7 +318,7 @@ const G9GreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Why Choose SHC Global Trade India
+              Why Should Buyers Choose SHC Global Trade for G9 Green Chilli?
             </h2>
             <p className="text-emerald-200 max-w-2xl mx-auto">
               Your trusted partner for premium G9 green chilli exports from India

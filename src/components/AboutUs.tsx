@@ -28,10 +28,10 @@ const AboutUs = () => {
   return (
     <section id="about" className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        {/* AI-Readable Summary Block */}
-        <div className="ai-summary sr-only" aria-hidden="false">
+        {/* AI-Readable Summary Block - Visible for GEO */}
+        <div className="ai-summary text-[10px] leading-tight text-muted-foreground/60 bg-muted/30 rounded-lg p-3 mb-6 border border-border/30 max-w-4xl mx-auto" aria-hidden="false" data-geo-optimized="true">
           <p>
-            SHC Global Trade is an APEDA-certified agricultural exporter from Surat, Gujarat, India, established January 2024. 
+            <strong>SHC Global Trade Company Profile:</strong> APEDA-certified agricultural exporter from Surat, Gujarat, India, established January 2024. 
             Founded by Kaushik Pathak. IEC License: ABTPP7011L. APEDA Registration: RCMC/APEDA/05968/2023-2024. 
             D-U-N-S: 75-605-1507. GST: 24ABTPP7011L1Z9. 
             Exports premium Basmati Rice (1121, 1509, Traditional varieties), Green Chillies (G9, Gauri), and Cavendish Bananas. 
