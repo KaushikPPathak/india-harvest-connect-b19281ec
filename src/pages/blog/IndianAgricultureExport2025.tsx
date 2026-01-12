@@ -6,33 +6,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "@id": "https://shcglobaltrade.co.in/blog/indian-agriculture-export-opportunities-2025#article",
+import { createArticleSchema, organizationSchema } from "@/lib/geo-schema";
+
+const articleSchema = createArticleSchema({
+  id: "indian-agriculture-export-2025",
   headline: "Indian Agriculture Export Opportunities in 2025",
   description: "Explore the growing demand for Indian Basmati rice, green chillies, and bananas in global markets. Key trends, target countries, and how to capitalize on export opportunities.",
   image: "https://shcglobaltrade.co.in/image.jpeg",
-  author: {
-    "@type": "Person",
-    name: "Kaushik Pathak",
-    url: "https://www.linkedin.com/in/kaushik-pathak-83945927/"
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "SHC Global Trade",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://shcglobaltrade.co.in/logo.jpeg"
-    }
-  },
   datePublished: "2024-12-28",
-  dateModified: "2024-12-28",
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://shcglobaltrade.co.in/blog/indian-agriculture-export-opportunities-2025"
-  }
-};
+  url: "https://shcglobaltrade.co.in/blog/indian-agriculture-export-opportunities-2025",
+  aboutTopics: ["Indian Agricultural Export", "Basmati Rice Export from India", "APEDA Certified Agricultural Exporter", "Global Food Trade 2025"]
+});
 
 const IndianAgricultureExport2025 = () => {
   return (

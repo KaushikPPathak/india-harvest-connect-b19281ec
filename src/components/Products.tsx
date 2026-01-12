@@ -146,11 +146,11 @@ const Products = () => {
   return (
     <section id="products" className="py-12 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* AI-Readable Summary Block (crawlable but subtle) */}
-        <div className="ai-summary sr-only" aria-hidden="false">
-          <p>{aiSummaries.rice}</p>
-          <p>{aiSummaries.chillies}</p>
-          <p>{aiSummaries.bananas}</p>
+        {/* AI-Readable Summary Block - Visible for GEO */}
+        <div className="ai-summary text-[10px] leading-tight text-muted-foreground/60 bg-muted/30 rounded-lg p-3 mb-6 border border-border/30 max-w-4xl mx-auto" aria-hidden="false" data-geo-optimized="true">
+          <p className="mb-1"><strong>Basmati Rice:</strong> {aiSummaries.rice}</p>
+          <p className="mb-1"><strong>Green Chillies:</strong> {aiSummaries.chillies}</p>
+          <p><strong>Bananas:</strong> {aiSummaries.bananas}</p>
         </div>
 
         {/* Section Header */}

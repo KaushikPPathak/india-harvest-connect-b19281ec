@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
+import AIReadableSummary from "@/components/AIReadableSummary";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
 
 import rawBasmati from "@/assets/1509-raw-basmati.jpg";
 import steamBasmati from "@/assets/1509-steam-basmati.jpg";
@@ -56,6 +58,25 @@ const whyChooseUs = [
   { icon: Truck, title: "Global Delivery Network", description: "Efficient logistics worldwide" },
 ];
 
+// Product Schema for this page
+const productSchema = createProductSchema({
+  id: "pusa-basmati-1509",
+  name: "Pusa Basmati 1509 Rice - High-Quality Long Grain",
+  description: "Premium Pusa Basmati 1509 rice exporter from India. High-quality long grain basmati rice with 7.5mm+ grain length, excellent aroma, and consistent quality. Available in Raw, Steam, Sella, Golden Sella, White Sella varieties. APEDA certified, HS Code 10063020.",
+  image: "https://shcglobaltrade.co.in/pusa-basmati-rice.jpg",
+  hsCode: "10063020",
+  additionalProperties: [
+    { name: "Grain Length (Raw)", value: "7.5-8.0mm" },
+    { name: "Grain Length (Cooked)", value: "15-18mm" },
+    { name: "Elongation Ratio", value: "2.2-2.3x" },
+    { name: "Moisture Content", value: "Maximum 14%" },
+    { name: "Broken Percentage", value: "Maximum 2% (Grade A)" },
+    { name: "Packaging", value: "5kg, 10kg, 25kg, 40kg, 50kg bags" },
+    { name: "Available Grades", value: "Raw, Steam, Sella, Golden Sella, White Sella" }
+  ],
+  certifications: ["APEDA", "FSSAI"]
+});
+
 const PusaBasmati1509 = () => {
   const scrollToContact = () => {
     window.location.href = "/#contact";
@@ -74,6 +95,16 @@ const PusaBasmati1509 = () => {
           content="Pusa Basmati 1509, 1509 basmati rice, basmati rice exporter India, 1509 sella rice, golden sella rice, steam basmati rice, Indian rice exporter"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/pusa-basmati-1509" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
 
       <Header />
@@ -86,6 +117,17 @@ const PusaBasmati1509 = () => {
             Back to Home
           </Link>
           
+          {/* AI-Readable Summary - Visible */}
+          <AIReadableSummary>
+            <p>
+              <strong>Pusa Basmati 1509 Rice Export from India:</strong> High-quality long grain basmati rice with 7.5mm+ grain length, 2.2x elongation ratio. 
+              HS Code: 10063020. Country of Origin: India. Sourced from Punjab, Haryana, Uttar Pradesh. 
+              Available grades: Raw, Steam, Sella, Golden Sella, White Sella. Packaging: 5-50kg bags. 
+              Certifications: APEDA (RCMC/APEDA/05968/2023-2024), FSSAI. 
+              Exporter: SHC Global Trade, IEC: ABTPP7011L, D-U-N-S: 75-605-1507. MOQ: 25 MT (1x20ft container).
+            </p>
+          </AIReadableSummary>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +138,7 @@ const PusaBasmati1509 = () => {
               Premium Basmati Rice
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-              Pusa Basmati 1509 – High-Quality Long Grain Basmati Rice
+              What Are the Specifications for SHC Global Trade's Pusa Basmati 1509 Rice?
             </h1>
             <p className="text-xl md:text-2xl text-primary font-medium mb-6">
               Trusted Export Quality from India
@@ -128,7 +170,7 @@ const PusaBasmati1509 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Product Overview
+              What Are the Key Specifications of 1509 Basmati Rice for Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Key specifications of Pusa Basmati 1509 for export markets
@@ -164,7 +206,7 @@ const PusaBasmati1509 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Available Types
+              What Varieties of 1509 Basmati Rice Does SHC Global Trade Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Choose from our range of Pusa Basmati 1509 varieties
@@ -212,7 +254,7 @@ const PusaBasmati1509 = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
-                Packaging & Export Details
+                What Packaging and Export Terms Does SHC Global Trade Offer?
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl">
@@ -274,7 +316,7 @@ const PusaBasmati1509 = () => {
             className="text-center mb-16"
           >
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-              Why Choose SHC Global Trade?
+              Why Should Buyers Choose SHC Global Trade for 1509 Basmati Rice?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Your trusted partner for premium basmati rice exports from India

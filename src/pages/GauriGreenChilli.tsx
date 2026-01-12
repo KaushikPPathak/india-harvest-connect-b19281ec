@@ -6,7 +6,28 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
+import AIReadableSummary from "@/components/AIReadableSummary";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
 import gauriChilliImage from "@/assets/gauri-green-chilli.jpg";
+
+// Product Schema for this page
+const productSchema = createProductSchema({
+  id: "gauri-green-chilli",
+  name: "Gauri Green Chilli - Premium Indian Export Quality",
+  description: "Premium Gauri Green Chilli exporter from India. Fresh, spicy, export-grade quality green chillies with bright green color and medium pungency. APEDA certified processing. HS Code 07096010. Sourced from Andhra Pradesh and Gujarat, India.",
+  image: "https://shcglobaltrade.co.in/gauri-green-chilli.jpg",
+  hsCode: "07096010",
+  additionalProperties: [
+    { name: "Color", value: "Bright glossy green" },
+    { name: "Pungency", value: "Medium to high" },
+    { name: "Size", value: "Medium length, uniform" },
+    { name: "Texture", value: "Smooth skin, firm flesh" },
+    { name: "Shelf Life", value: "10-14 days under cold storage" },
+    { name: "Packaging", value: "2kg, 5kg, 10kg cartons" },
+    { name: "Storage", value: "Cold chain maintained" }
+  ],
+  certifications: ["APEDA", "FSSAI"]
+});
 
 const GauriGreenChilli = () => {
   const productOverview = [
@@ -52,6 +73,16 @@ const GauriGreenChilli = () => {
           content="Gauri green chilli, green chilli exporter India, Indian green chillies, fresh green chillies export, APEDA certified chilli exporter"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/gauri-green-chilli" />
+        
+        {/* Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
       </Helmet>
 
       <Header />
@@ -67,6 +98,17 @@ const GauriGreenChilli = () => {
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
+          
+          {/* AI-Readable Summary - Visible */}
+          <AIReadableSummary className="bg-green-900/50 border-green-700/50 text-green-100/80">
+            <p>
+              <strong>Gauri Green Chilli Export from India:</strong> Premium green chilli variety with bright glossy green color, medium to high pungency, uniform size. 
+              HS Code: 07096010. Country of Origin: India. Sourced from Andhra Pradesh and Gujarat. 
+              Shelf Life: 10-14 days under cold storage. Packaging: 2kg, 5kg, 10kg ventilated cartons. 
+              Certifications: APEDA (RCMC/APEDA/05968/2023-2024), FSSAI. 
+              Exporter: SHC Global Trade, IEC: ABTPP7011L, D-U-N-S: 75-605-1507. MOQ: 1 Ton (air freight).
+            </p>
+          </AIReadableSummary>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -78,10 +120,7 @@ const GauriGreenChilli = () => {
                 Premium Export Quality
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Gauri Green Chilli
-                <span className="block text-green-300 text-2xl md:text-3xl mt-2">
-                  Premium Indian Green Chilli for Export
-                </span>
+                What Are the Specifications for SHC Global Trade's Gauri Green Chilli?
               </h1>
               <p className="text-green-100 text-lg mb-4 font-medium">
                 Fresh, Spicy & Export-Grade Quality
@@ -142,7 +181,7 @@ const GauriGreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Product Overview
+              What Are the Key Specifications of Gauri Green Chilli for Export?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Detailed specifications of our premium Gauri Green Chilli
@@ -178,7 +217,7 @@ const GauriGreenChilli = () => {
               viewport={{ once: true }}
             >
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Quality Specifications
+                What Quality Standards Does SHC Global Trade Follow for Gauri Chilli?
               </h2>
               <p className="text-muted-foreground mb-8">
                 We ensure the highest quality standards for all our green chilli exports through rigorous quality control processes.
@@ -245,7 +284,7 @@ const GauriGreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Packaging & Export Details
+              What Packaging and Export Terms Does SHC Global Trade Offer for Green Chilli?
             </h2>
           </motion.div>
 
@@ -278,7 +317,7 @@ const GauriGreenChilli = () => {
             className="text-center mb-12"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Why Choose SHC Global Trade India
+              Why Should Buyers Choose SHC Global Trade for Gauri Green Chilli?
             </h2>
             <p className="text-green-200 max-w-2xl mx-auto">
               Your trusted partner for premium green chilli exports from India
