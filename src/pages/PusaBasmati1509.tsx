@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Check, Package, Globe, Award, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
@@ -78,8 +78,16 @@ const productSchema = createProductSchema({
 });
 
 const PusaBasmati1509 = () => {
+  const navigate = useNavigate();
+  
   const scrollToContact = () => {
-    window.location.href = "/#contact";
+    navigate('/');
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
 
   return (
