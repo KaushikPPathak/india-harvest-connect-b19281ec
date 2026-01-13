@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OptimizedImage from "@/components/OptimizedImage";
-
 // Basmati Rice varieties
 import rice1121 from "@/assets/1121-basmati-rice.jpg";
 import riceTraditional from "@/assets/traditional-basmati-rice.jpg";
@@ -134,7 +133,18 @@ const products: Product[] = [
 ];
 
 const Products = () => {
+  const navigate = useNavigate();
   const categories = [...new Set(products.map((p) => p.category))];
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // If not on homepage, navigate to homepage and scroll
+      navigate("/#contact");
+    }
+  };
 
   // AI-readable product summaries for RAG optimization
   const aiSummaries = {
@@ -246,7 +256,7 @@ const Products = () => {
                           </Button>
                         </Link>
                       ) : (
-                        <Button variant="outline" className="w-full group/btn">
+                        <Button variant="outline" className="w-full group/btn" onClick={scrollToContact}>
                           Request Quote
                           <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                         </Button>

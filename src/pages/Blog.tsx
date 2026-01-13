@@ -5,6 +5,8 @@ import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { organizationSchema, organizationReference } from "@/lib/geo-schema";
+import AIReadableSummary from "@/components/AIReadableSummary";
 
 interface BlogPost {
   slug: string;
@@ -50,29 +52,67 @@ const blogPosts: BlogPost[] = [
   }
 ];
 
-// Blog listing schema
+// Enhanced Blog listing schema with GEO optimization
 const blogListingSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
   "@id": "https://shcglobaltrade.co.in/blog#blog",
   name: "SHC Global Trade - Agricultural Export Insights",
-  description: "Expert articles on Basmati rice grading, export documentation, Indian agriculture trends, and international trade from India's trusted agricultural exporter.",
+  description: "Expert articles on Basmati rice grading, export documentation, Indian agriculture trends, and international trade from India's trusted APEDA-certified agricultural exporter.",
   url: "https://shcglobaltrade.co.in/blog",
-  publisher: {
-    "@type": "Organization",
-    name: "SHC Global Trade",
-    url: "https://shcglobaltrade.co.in"
+  inLanguage: "en-US",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://shcglobaltrade.co.in/blog"
   },
+  about: [
+    {
+      "@type": "Thing",
+      name: "Basmati Rice Export from India"
+    },
+    {
+      "@type": "Thing",
+      name: "Indian Agricultural Export Documentation"
+    },
+    {
+      "@type": "Thing",
+      name: "APEDA Certified Agricultural Exporter"
+    },
+    {
+      "@type": "Thing",
+      name: "1121 Basmati Rice Grading Standards"
+    }
+  ],
+  publisher: organizationReference,
   blogPost: blogPosts.map(post => ({
     "@type": "BlogPosting",
+    "@id": `https://shcglobaltrade.co.in/blog/${post.slug}#article`,
     headline: post.title,
     description: post.excerpt,
     author: {
       "@type": "Person",
-      name: post.author
+      name: post.author,
+      url: "https://www.linkedin.com/in/kaushik-pathak-83945927/"
     },
     datePublished: post.date,
-    url: `https://shcglobaltrade.co.in/blog/${post.slug}`
+    dateModified: post.date,
+    url: `https://shcglobaltrade.co.in/blog/${post.slug}`,
+    image: `https://shcglobaltrade.co.in${post.image}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://shcglobaltrade.co.in/blog/${post.slug}`
+    },
+    publisher: organizationReference,
+    about: [
+      {
+        "@type": "Thing",
+        name: post.category === "Rice Export" 
+          ? "Basmati Rice Export from India" 
+          : post.category === "Export Guide" 
+          ? "Indian Agricultural Export Documentation"
+          : "Indian Agricultural Export Market"
+      }
+    ]
   }))
 };
 
@@ -96,6 +136,12 @@ const Blog = () => {
         <meta property="og:url" content="https://shcglobaltrade.co.in/blog" />
         <meta property="og:type" content="blog" />
         
+        {/* Organization Schema - canonical across all pages */}
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        
+        {/* Blog Listing Schema with enhanced GEO */}
         <script type="application/ld+json">
           {JSON.stringify(blogListingSchema)}
         </script>
@@ -106,15 +152,15 @@ const Blog = () => {
 
         <main className="pt-32 md:pt-40 pb-16">
           <div className="container mx-auto px-4 lg:px-8">
-            {/* AI-Readable Summary */}
-            <div className="ai-summary sr-only" aria-hidden="false">
-              <p>
-                SHC Global Trade blog covers Basmati rice grading standards (AGMARK, export grades), 
-                export documentation requirements (IEC, APEDA, phytosanitary certificates), 
-                and Indian agricultural export market trends for 2025. 
-                Written by Kaushik Pathak, founder of SHC Global Trade, APEDA-certified exporter.
-              </p>
-            </div>
+            {/* AI-Readable Summary - Visible for GEO */}
+            <AIReadableSummary>
+              SHC Global Trade blog provides expert insights on Indian agricultural exports. 
+              Topics covered: Basmati rice grading standards (AGMARK, export grades for 1121 and 1509 varieties), 
+              export documentation (IEC, APEDA registration, phytosanitary certificates, Bill of Lading), 
+              and Indian agricultural export market trends for 2025. Author: Kaushik Pathak, 
+              founder of SHC Global Trade, APEDA-certified exporter (IEC: ABTPP7011L). 
+              Country: India. Business Type: Agricultural Exporter.
+            </AIReadableSummary>
 
             {/* Header Section */}
             <motion.div
