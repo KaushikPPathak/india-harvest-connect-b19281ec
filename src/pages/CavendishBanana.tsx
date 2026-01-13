@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Phone, Mail, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
@@ -30,11 +30,16 @@ const productSchema = createProductSchema({
 });
 
 const CavendishBanana = () => {
+  const navigate = useNavigate();
+  
   const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate('/');
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
 
   const productOverview = [
@@ -290,15 +295,14 @@ const CavendishBanana = () => {
                 >
                   Get Quote
                 </Button>
-                <Link to="/#contact">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-gold text-gold hover:bg-gold/10"
-                  >
-                    Contact Us
-                  </Button>
-                </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gold text-gold hover:bg-gold/10"
+                  onClick={scrollToContact}
+                >
+                  Contact Us
+                </Button>
               </div>
             </div>
           </div>

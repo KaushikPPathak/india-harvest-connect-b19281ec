@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, Package, Truck, Award, Leaf, Thermometer, Clock, Flame } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
@@ -30,6 +30,18 @@ const productSchema = createProductSchema({
 });
 
 const G9GreenChilli = () => {
+  const navigate = useNavigate();
+  
+  const scrollToContact = () => {
+    navigate('/');
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+  
   const productOverview = [
     { label: "Color", value: "Dark green" },
     { label: "Pungency", value: "High" },
@@ -134,17 +146,17 @@ const G9GreenChilli = () => {
                   variant="hero"
                   size="xl"
                   className="bg-emerald-500 hover:bg-emerald-400 text-white"
-                  asChild
+                  onClick={scrollToContact}
                 >
-                  <a href="/#contact">Get Quote</a>
+                  Get Quote
                 </Button>
                 <Button
                   variant="heroOutline"
                   size="xl"
                   className="border-emerald-300/30 text-white hover:bg-emerald-300/20"
-                  asChild
+                  onClick={scrollToContact}
                 >
-                  <a href="/#contact">Contact Us</a>
+                  Contact Us
                 </Button>
               </div>
             </motion.div>
@@ -353,17 +365,17 @@ const G9GreenChilli = () => {
               <Button
                 size="xl"
                 className="bg-white text-emerald-900 hover:bg-emerald-100"
-                asChild
+                onClick={scrollToContact}
               >
-                <a href="/#contact">Get Quote</a>
+                Get Quote
               </Button>
               <Button
                 variant="outline"
                 size="xl"
                 className="border-white text-white hover:bg-white/10"
-                asChild
+                onClick={scrollToContact}
               >
-                <a href="/#contact">Contact Us</a>
+                Contact Us
               </Button>
             </div>
           </motion.div>
