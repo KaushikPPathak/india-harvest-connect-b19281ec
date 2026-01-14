@@ -134,7 +134,7 @@ export default function ChatWidget() {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gold-600 hover:bg-gold-700 text-white shadow-lg flex items-center justify-center transition-colors"
+            className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-gold-600 hover:bg-gold-700 text-white shadow-lg flex items-center justify-center transition-colors"
             aria-label="Open chat"
           >
             <MessageCircle className="w-6 h-6" />
