@@ -10,6 +10,7 @@ import DownloadCatalogue from "@/components/DownloadCatalogue";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ChatWidget from "@/components/ChatWidget";
 import { organizationSchema, organizationReference, createProductSchema } from "@/lib/geo-schema";
 
 const Index = () => {
@@ -262,6 +263,7 @@ const Index = () => {
 
         <Footer />
         <WhatsAppButton />
+        <ChatWidget />
       </div>
     </>
   );
