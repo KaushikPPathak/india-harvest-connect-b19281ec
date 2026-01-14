@@ -5,12 +5,15 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const WEB3FORMS_KEY = "4383280e-d560-4a06-9700-fa688f582fbb";
+
 const KNOWLEDGE_BASE = `You are a multilingual AI assistant for SHC Global Trade, an agricultural export company from India.
 
 CRITICAL RULES:
 1. Always respond in the SAME LANGUAGE the user writes in
 2. Keep responses professional, friendly, and concise (max 2-3 sentences)
 3. Support these languages: English, Hindi, Arabic, French, Spanish, Russian, Chinese, German, Portuguese
+4. When user provides product inquiry with details (product, quantity, destination), ALWAYS include [LEAD_CAPTURED] at the END of your response
 
 BUSINESS KNOWLEDGE:
 - Company: SHC Global Trade - Premium agricultural exports from India
@@ -30,12 +33,11 @@ FOR PRICE INQUIRIES, ASK:
 - What is your destination country?
 - What packing size do you prefer?
 
-FOR ORDERS, COLLECT:
-- Product name
-- Quantity required
-- Destination country
-- Packing size preference
-- Contact details (name, email, phone)
+WHEN USER PROVIDES INQUIRY DETAILS (product + quantity + destination):
+- Thank them for their inquiry
+- Confirm the details you received
+- Let them know your team will contact them soon
+- Add [LEAD_CAPTURED] at the end
 
 IF QUESTION IS NOT IN YOUR KNOWLEDGE, respond appropriately in the user's language:
 - English: "Please share more details, our team will confirm and reply soon."
@@ -47,6 +49,38 @@ IF QUESTION IS NOT IN YOUR KNOWLEDGE, respond appropriately in the user's langua
 - Chinese: "请分享详细信息，我们的团队将确认并尽快回复。"
 - German: "Bitte teilen Sie Details mit, unser Team wird bestätigen und bald antworten."
 - Portuguese: "Por favor, compartilhe os detalhes, nossa equipe confirmará e responderá em breve."`;
+
+async function sendLeadEmail(conversationHistory: string) {
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: "🤖 New Chatbot Lead - SHC Global Trade",
+        from_name: "SHC Chatbot",
+        to: "sales@shcglobaltrade.co.in",
+        message: `New inquiry received via chatbot:\n\n${conversationHistory}`,
+      }),
+    });
+    
+    const result = await response.json();
+    console.log("Lead email sent:", result);
+    return result.success;
+  } catch (error) {
+    console.error("Failed to send lead email:", error);
+    return false;
+  }
+}
+
+function extractConversation(messages: Array<{role: string, content: string}>): string {
+  return messages.map(msg => {
+    const role = msg.role === 'user' ? 'Customer' : 'Bot';
+    return `${role}: ${msg.content}`;
+  }).join('\n\n');
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -61,6 +95,8 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
+    console.log("Received chat request with messages:", JSON.stringify(messages));
+
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -73,7 +109,7 @@ serve(async (req) => {
           { role: "system", content: KNOWLEDGE_BASE },
           ...messages,
         ],
-        stream: true,
+        stream: false, // Changed to non-streaming to capture full response
       }),
     });
 
@@ -98,8 +134,33 @@ serve(async (req) => {
       });
     }
 
-    return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    const aiResponse = await response.json();
+    const assistantMessage = aiResponse.choices?.[0]?.message?.content || "";
+    
+    console.log("AI response:", assistantMessage);
+
+    // Check if lead was captured and send email
+    if (assistantMessage.includes("[LEAD_CAPTURED]")) {
+      console.log("Lead detected, sending email...");
+      const conversationWithResponse = [
+        ...messages,
+        { role: "assistant", content: assistantMessage.replace("[LEAD_CAPTURED]", "").trim() }
+      ];
+      await sendLeadEmail(extractConversation(conversationWithResponse));
+    }
+
+    // Remove the marker from the response sent to user
+    const cleanResponse = assistantMessage.replace("[LEAD_CAPTURED]", "").trim();
+
+    return new Response(JSON.stringify({
+      choices: [{
+        message: {
+          role: "assistant",
+          content: cleanResponse
+        }
+      }]
+    }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
     console.error("Chat function error:", error);
