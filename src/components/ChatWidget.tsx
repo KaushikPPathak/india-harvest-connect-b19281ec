@@ -112,18 +112,20 @@ export default function ChatWidget() {
             className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gold-600 text-white px-4 py-3 flex items-center justify-between">
+            <div className="bg-forest-dark text-white px-4 py-3 flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-sm">SHC Global Trade</h3>
-                <p className="text-xs text-gold-100">Export Assistant</p>
+                <h3 className="font-semibold text-sm text-gold-400">SHC AI Assistant</h3>
+                <p className="text-xs text-gold-200">Export Helper</p>
               </div>
-              <button
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-gold-700 rounded-full transition-colors"
+                className="h-8 w-8 bg-white/10 hover:bg-white/20 text-white rounded-full"
                 aria-label="Close chat"
               >
                 <X className="w-5 h-5" />
-              </button>
+              </Button>
             </div>
 
             {/* Messages */}
