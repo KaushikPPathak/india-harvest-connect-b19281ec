@@ -142,17 +142,26 @@ function isOwnerRequest(text: string) {
 }
 
 function isTimeQuestion(text: string) {
-  const t = text.toLowerCase();
-  return (
-    t.includes("time") &&
-    (t.includes("india") ||
-      t.includes("ist") ||
-      t.includes("indian time") ||
-      t.includes("current time") ||
-      t.includes("time now") ||
-      t.includes("now time") ||
-      t.includes("what time"))
-  );
+  const t = text.toLowerCase().trim();
+  // Match standalone "time" or time with context
+  const timeKeywords = [
+    "time",
+    "what time",
+    "current time",
+    "time now",
+    "now time",
+    "time in india",
+    "india time",
+    "indian time",
+    "ist time",
+    "what is time",
+    "tell me time",
+    "show time",
+    "kya time",
+    "samay",
+    "waqt"
+  ];
+  return timeKeywords.some((k) => t === k || t.includes(k));
 }
 function isGreeting(text: string) {
   const t = text.toLowerCase().trim();
