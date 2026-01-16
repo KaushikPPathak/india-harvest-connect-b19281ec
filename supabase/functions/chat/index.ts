@@ -144,14 +144,16 @@ function isOwnerRequest(text: string) {
 function isTimeQuestion(text: string) {
   const t = text.toLowerCase();
   return (
-    t.includes("time in india") ||
-    t.includes("india time") ||
-    t.includes("what is the time") ||
-    t.includes("current time in india") ||
-    t.includes("time now in india")
+    t.includes("time") &&
+    (t.includes("india") ||
+      t.includes("ist") ||
+      t.includes("indian time") ||
+      t.includes("current time") ||
+      t.includes("time now") ||
+      t.includes("now time") ||
+      t.includes("what time"))
   );
 }
-
 function isGreeting(text: string) {
   const t = text.toLowerCase().trim();
   const greetings = ["hi", "hello", "hey", "hii", "hlo", "good morning", "good evening", "good afternoon"];
