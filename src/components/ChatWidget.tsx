@@ -18,6 +18,8 @@ const QUICK_REPLIES = [
   { label: 'Contact', message: 'How can I contact your team?' },
 ];
 
+// ✅ Set your WhatsApp number here (with country code, no + sign)
+const OWNER_WHATSAPP_NUMBER = '919327420046';
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 export default function ChatWidget() {
@@ -51,14 +53,57 @@ export default function ChatWidget() {
     }
 
     const data = await resp.json();
-    const assistantContent = data.choices?.[0]?.message?.content || 'Sorry, I could not process your request.';
-    
+    const assistantContent =
+      data.choices?.[0]?.message?.content || 'Sorry, I could not process your request.';
+
     setMessages(prev => [...prev, { role: 'assistant', content: assistantContent }]);
   };
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || isLoading) return;
 
+    // ✅ Owner / Live Support Keywords (manual reply)
+    const lowerText = text.toLowerCase();
+
+    const ownerKeywords = [
+      'owner',
+      'bring owner online',
+      'bring owner',
+      'talk to owner',
+      'connect to owner',
+      'connect owner',
+      'manager',
+      'human',
+      'agent',
+      'live support',
+      'live chat',
+      'customer care',
+      'contact number',
+      'phone number',
+      'call',
+      'whatsapp',
+    ];
+
+    if (ownerKeywords.some(k => lowerText.includes(k))) {
+      const userMsg: Message = { role: 'user', content: text };
+
+      const whatsappLink = `https://wa.me/${OWNER_WHATSAPP_NUMBER}`;
+
+      setMessages(prev => [
+        ...prev,
+        userMsg,
+        {
+          role: 'assistant',
+          content:
+            `Sure! 😊\n\nYou can contact the owner directly on WhatsApp:\n${whatsappLink}\n\nOr share your Name + Mobile Number here and we will call you back.`,
+        },
+      ]);
+
+      setInput('');
+      return;
+    }
+
+    // Normal AI chat flow
     const userMsg: Message = { role: 'user', content: text };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
@@ -71,10 +116,10 @@ export default function ChatWidget() {
       console.error('Chat error:', error);
       setMessages(prev => [
         ...prev,
-        { 
-          role: 'assistant', 
-          content: 'Sorry, I encountered an error. Please try again or contact us directly.' 
-        }
+        {
+          role: 'assistant',
+          content: 'Sorry, I encountered an error. Please try again or contact us directly.',
+        },
       ]);
     } finally {
       setIsLoading(false);
@@ -137,7 +182,7 @@ export default function ChatWidget() {
                     👋 Hello! How can I help you today?
                   </p>
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {QUICK_REPLIES.map((qr) => (
+                    {QUICK_REPLIES.map(qr => (
                       <button
                         key={qr.label}
                         onClick={() => handleQuickReply(qr.message)}
@@ -149,7 +194,7 @@ export default function ChatWidget() {
                   </div>
                 </div>
               )}
-              
+
               {messages.map((msg, i) => (
                 <div
                   key={i}
@@ -166,7 +211,7 @@ export default function ChatWidget() {
                   </div>
                 </div>
               ))}
-              
+
               {isLoading && messages[messages.length - 1]?.role === 'user' && (
                 <div className="flex justify-start">
                   <div className="bg-muted px-3 py-2 rounded-2xl rounded-bl-md">
@@ -174,7 +219,7 @@ export default function ChatWidget() {
                   </div>
                 </div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
 
@@ -182,7 +227,7 @@ export default function ChatWidget() {
             {messages.length > 0 && !isLoading && (
               <div className="px-4 pb-2">
                 <div className="flex flex-wrap gap-1.5">
-                  {QUICK_REPLIES.slice(0, 3).map((qr) => (
+                  {QUICK_REPLIES.slice(0, 3).map(qr => (
                     <button
                       key={qr.label}
                       onClick={() => handleQuickReply(qr.message)}
@@ -198,7 +243,7 @@ export default function ChatWidget() {
             {/* Input */}
             <div className="p-3 border-t border-border">
               <form
-                onSubmit={(e) => {
+                onSubmit={e => {
                   e.preventDefault();
                   sendMessage(input);
                 }}
@@ -207,7 +252,7 @@ export default function ChatWidget() {
                 <input
                   type="text"
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={e => setInput(e.target.value)}
                   placeholder="Type your message..."
                   className="flex-1 px-3 py-2 text-sm bg-muted rounded-full border-0 focus:outline-none focus:ring-2 focus:ring-gold-500"
                   disabled={isLoading}
