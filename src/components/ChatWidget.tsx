@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
+import { X, Send, Loader2 } from 'lucide-react';
+import aiLogo from '@/assets/ai-logo.png';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -97,7 +98,7 @@ export default function ChatWidget() {
             className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg flex items-center justify-center transition-colors"
             aria-label="Open chat"
           >
-            <MessageCircle className="w-6 h-6" />
+            <img src={aiLogo} alt="AI" className="w-8 h-8 object-contain" />
           </motion.button>
         )}
       </AnimatePresence>
