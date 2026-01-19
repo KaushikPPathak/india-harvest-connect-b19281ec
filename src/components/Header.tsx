@@ -44,7 +44,7 @@ const Header = () => {
   const navLinks = [
     { id: "home", label: "Home" },
     { id: "products", label: "Products" },
-    { id: "about", label: "About Us" },
+    { id: "about-us", label: "About Us", isPage: true },
     { id: "quality", label: "Quality" },
     { id: "blog", label: "Blog", isPage: true },
     { id: "contact", label: "Contact" },

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import AboutUs from "./pages/AboutUs";
 import PusaBasmati1509 from "./pages/PusaBasmati1509";
 import PusaBasmati1121 from "./pages/PusaBasmati1121";
 import TraditionalBasmati from "./pages/TraditionalBasmati";
@@ -21,7 +22,6 @@ import Blog from "./pages/Blog";
 import BasmatiRiceGrading from "./pages/blog/BasmatiRiceGrading";
 import ExportDocumentation from "./pages/blog/ExportDocumentation";
 import IndianAgricultureExport2025 from "./pages/blog/IndianAgricultureExport2025";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +33,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/pusa-basmati-1509" element={<PusaBasmati1509 />} />
             <Route path="/pusa-basmati-1121" element={<PusaBasmati1121 />} />
             <Route path="/traditional-basmati" element={<TraditionalBasmati />} />

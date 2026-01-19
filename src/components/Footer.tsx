@@ -138,21 +138,32 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-2 md:space-y-3">
-              {[
-                { label: "About Us", id: "about" },
-                { label: "Quality Standards", id: "quality" },
-                { label: "Contact Us", id: "contact" },
-              ].map((item) => (
-                <li key={item.label}>
-                  <button
-                    type="button"
-                    onClick={() => handleScrollToSection(item.id)}
-                    className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/about-us"
+                  className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleScrollToSection("quality")}
+                  className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
+                >
+                  Quality Standards
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => handleScrollToSection("contact")}
+                  className="text-left text-primary-foreground/70 hover:text-gold transition-colors text-xs md:text-sm bg-transparent border-none p-0 cursor-pointer"
+                >
+                  Contact Us
+                </button>
+              </li>
             </ul>
             
             <h4 className="font-display font-semibold text-primary-foreground mb-3 md:mb-4 mt-4 md:mt-6 text-sm md:text-base">
