@@ -8,9 +8,11 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PusaBasmati1509 from "./pages/PusaBasmati1509";
 import PusaBasmati1121 from "./pages/PusaBasmati1121";
+import TraditionalBasmati from "./pages/TraditionalBasmati";
 import GauriGreenChilli from "./pages/GauriGreenChilli";
 import G9GreenChilli from "./pages/G9GreenChilli";
 import CavendishBanana from "./pages/CavendishBanana";
+import GrandNaineBanana from "./pages/GrandNaineBanana";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Disclaimer from "./pages/Disclaimer";
@@ -33,9 +35,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/pusa-basmati-1509" element={<PusaBasmati1509 />} />
             <Route path="/pusa-basmati-1121" element={<PusaBasmati1121 />} />
+            <Route path="/traditional-basmati" element={<TraditionalBasmati />} />
             <Route path="/gauri-green-chilli" element={<GauriGreenChilli />} />
             <Route path="/g9-green-chilli" element={<G9GreenChilli />} />
             <Route path="/cavendish-banana" element={<CavendishBanana />} />
+            <Route path="/grand-naine-banana" element={<GrandNaineBanana />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
