@@ -58,6 +58,7 @@ const products: Product[] = [
     category: "Basmati Rice",
     hsCode: "1006.30",
     packaging: "25/50 Kg PP Bags, Jute Bags",
+    detailPage: "/traditional-basmati",
   },
   {
     id: 3,
@@ -129,6 +130,7 @@ const products: Product[] = [
     category: "Fresh Banana",
     hsCode: "0803.90",
     packaging: "13/18 Kg Cartons, Cluster Packing",
+    detailPage: "/grand-naine-banana",
   },
 ];
 
