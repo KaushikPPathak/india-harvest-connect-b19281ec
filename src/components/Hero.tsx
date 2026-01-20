@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Award, Globe } from "lucide-react";
 import heroImage from "@/assets/hero-rice-premium.jpg";
 import heroImageWebp from "@/assets/hero-rice-premium.jpg?format=webp";
+import greenChilliImg from "@/assets/g9-green-chillies.jpg";
+import bananaImg from "@/assets/raw-banana.jpg";
 
 const Hero = () => {
   return (
@@ -104,6 +106,45 @@ const Hero = () => {
                 100%
               </span>
               <p className="text-xs md:text-sm text-white/80 mt-1">Quality Assured</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Product Images */}
+        <div className="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 z-20">
+          <div className="relative">
+            {/* Green Chilli - Top */}
+            <div 
+              className="absolute -top-32 right-0 w-28 h-28 xl:w-36 xl:h-36 rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/30 backdrop-blur-sm"
+              style={{ 
+                animation: 'float 4s ease-in-out infinite',
+                animationDelay: '0s'
+              }}
+            >
+              <img 
+                src={greenChilliImg} 
+                alt="Premium G9 Green Chillies" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
+              <span className="absolute bottom-2 left-2 text-xs font-semibold text-white">Green Chillies</span>
+            </div>
+            
+            {/* Banana - Bottom */}
+            <div 
+              className="absolute top-16 -right-8 w-28 h-28 xl:w-36 xl:h-36 rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/30 backdrop-blur-sm"
+              style={{ 
+                animation: 'float 4s ease-in-out infinite',
+                animationDelay: '2s'
+              }}
+            >
+              <img 
+                src={bananaImg} 
+                alt="Export-Grade Cavendish Bananas" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 to-transparent" />
+              <span className="absolute bottom-2 left-2 text-xs font-semibold text-white">Fresh Bananas</span>
             </div>
           </div>
         </div>
