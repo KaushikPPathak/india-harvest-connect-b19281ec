@@ -9,11 +9,13 @@ interface OptimizedImageProps {
   height?: number;
   priority?: boolean;
   aspectRatio?: "4/3" | "16/9" | "1/1" | "3/2" | "auto";
+  /** Dominant color for blur placeholder (hex or rgb) */
+  placeholderColor?: string;
 }
 
 /**
  * Optimized image component with WebP support, lazy loading, 
- * aspect ratio preservation, and layout shift prevention
+ * blur-up placeholder, and layout shift prevention
  */
 const OptimizedImage = ({
   src,
@@ -24,6 +26,7 @@ const OptimizedImage = ({
   height,
   priority = false,
   aspectRatio = "auto",
+  placeholderColor = "hsl(var(--muted))",
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -64,12 +67,27 @@ const OptimizedImage = ({
     <div
       ref={containerRef}
       className={`relative overflow-hidden ${aspectRatioClass}`}
-      style={{ width: width ? `${width}px` : undefined, height: height ? `${height}px` : undefined }}
+      style={{ 
+        width: width ? `${width}px` : undefined, 
+        height: height ? `${height}px` : undefined,
+      }}
     >
-      {/* Placeholder skeleton while loading */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-muted animate-pulse" />
-      )}
+      {/* Blur-up placeholder with gradient background */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-500 ${isLoaded ? 'opacity-0' : 'opacity-100'}`}
+        style={{ 
+          background: `linear-gradient(135deg, ${placeholderColor} 0%, ${placeholderColor} 100%)`,
+        }}
+      >
+        {/* Animated shimmer effect */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)`,
+            animation: 'shimmer 1.5s infinite',
+          }}
+        />
+      </div>
       
       {isInView && (
         <picture>
@@ -84,8 +102,8 @@ const OptimizedImage = ({
             loading={priority ? "eager" : "lazy"}
             decoding={priority ? "sync" : "async"}
             onLoad={() => setIsLoaded(true)}
-            className={`w-full h-full object-cover transition-opacity duration-300 ${
-              isLoaded ? "opacity-100" : "opacity-0"
+            className={`w-full h-full object-cover transition-all duration-500 ${
+              isLoaded ? "opacity-100 blur-0 scale-100" : "opacity-0 blur-sm scale-105"
             } ${className}`}
           />
         </picture>

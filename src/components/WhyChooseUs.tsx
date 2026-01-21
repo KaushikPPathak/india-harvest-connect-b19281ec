@@ -1,5 +1,6 @@
-import { Shield, Leaf, Clock, Award, Globe, HeartHandshake } from "lucide-react";
+import { Shield, Leaf, Clock, Award, Globe, HeartHandshake, TrendingUp, Package, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import AnimatedCounter from "./AnimatedCounter";
 
 const features = [
   {
@@ -40,10 +41,69 @@ const features = [
   },
 ];
 
+const stats = [
+  {
+    icon: Globe,
+    value: 45,
+    suffix: "+",
+    label: "Countries Served",
+  },
+  {
+    icon: Package,
+    value: 5000,
+    suffix: "+",
+    label: "Metric Tons Exported",
+  },
+  {
+    icon: Users,
+    value: 200,
+    suffix: "+",
+    label: "Happy Clients",
+  },
+  {
+    icon: TrendingUp,
+    value: 14,
+    suffix: "+",
+    label: "Years Experience",
+  },
+];
+
 const WhyChooseUs = () => {
   return (
     <section id="quality" className="py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
+        {/* Stats Section with Animated Counters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-gradient-hero p-6 rounded-2xl text-center group hover:shadow-elevated transition-shadow duration-300"
+            >
+              <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <stat.icon className="w-6 h-6 text-gold" />
+              </div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-gold mb-1">
+                <AnimatedCounter 
+                  end={stat.value} 
+                  suffix={stat.suffix}
+                  duration={2000}
+                />
+              </div>
+              <p className="text-primary-foreground/80 text-sm font-medium">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
