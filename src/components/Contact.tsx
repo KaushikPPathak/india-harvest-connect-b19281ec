@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Send, Loader2, Globe } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Loader2, Globe, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -76,22 +76,51 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="contact" className="py-12 md:py-24 relative overflow-hidden">
+      {/* Colorful Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-forest/5 via-gold/5 to-primary/10" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16">
           {/* Left - Contact Info */}
           <div>
-            <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
-              Get In Touch
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-4 md:mb-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gold/20 to-primary/20 border border-gold/30 mb-4"
+            >
+              <Sparkles className="w-4 h-4 text-gold" />
+              <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
+                Get In Touch
+              </span>
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-4 md:mb-6"
+            >
               Ready to Start
-              <span className="text-primary block">Exporting?</span>
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-lg mb-6 md:mb-10">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-gold to-forest block">
+                Exporting?
+              </span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-muted-foreground text-sm md:text-lg mb-6 md:mb-10"
+            >
               Fill out the form and our export specialists will contact you within
               24 hours to discuss your requirements.
-            </p>
+            </motion.p>
 
             {/* Contact Details */}
             <div className="space-y-6">
@@ -100,10 +129,10 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-forest rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Head Office</h4>
@@ -120,10 +149,10 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
@@ -140,10 +169,10 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-forest to-primary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
@@ -160,10 +189,10 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Globe className="w-5 h-5 text-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-gold-dark to-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Globe className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Website</h4>
@@ -180,23 +209,26 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-6 md:mt-10 p-4 md:p-6 bg-primary/5 rounded-2xl border border-primary/10"
+              className="mt-6 md:mt-10 p-4 md:p-6 bg-gradient-to-br from-primary/10 via-gold/5 to-forest/10 rounded-2xl border border-primary/20 backdrop-blur-sm"
             >
-              <h4 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base">Business Credentials</h4>
+              <h4 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-gold to-primary" />
+                Business Credentials
+              </h4>
               <div className="grid grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm">
-                <div>
+                <div className="p-2 rounded-lg bg-background/50">
                   <span className="text-muted-foreground text-[10px] md:text-xs">GST Number:</span>
                   <p className="font-medium text-foreground text-xs md:text-sm">24ABTPP7011L1Z9</p>
                 </div>
-                <div>
+                <div className="p-2 rounded-lg bg-background/50">
                   <span className="text-muted-foreground text-[10px] md:text-xs">IEC License:</span>
                   <p className="font-medium text-foreground text-xs md:text-sm">ABTPP7011L</p>
                 </div>
-                <div>
+                <div className="p-2 rounded-lg bg-background/50">
                   <span className="text-muted-foreground text-[10px] md:text-xs">APEDA License:</span>
                   <p className="font-medium text-foreground text-[10px] md:text-xs break-all">RCMC/APEDA/05968/2023-2024</p>
                 </div>
-                <div>
+                <div className="p-2 rounded-lg bg-background/50">
                   <span className="text-muted-foreground text-[10px] md:text-xs">D&B D-U-N-S:</span>
                   <p className="font-medium text-foreground text-xs md:text-sm">75-605-1507</p>
                 </div>
@@ -210,133 +242,152 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-card p-5 md:p-8 rounded-2xl shadow-elevated"
+            className="relative"
           >
-            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">
-              Request a Quote
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Full Name *
-                  </label>
-                  <Input
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                    className="bg-background"
-                  />
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-gold/30 to-transparent rounded-full blur-2xl" />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-2xl" />
+            
+            <div className="relative bg-gradient-to-br from-card via-card to-card/95 p-5 md:p-8 rounded-3xl shadow-2xl border border-gold/20 backdrop-blur-sm">
+              {/* Form Header */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold via-gold-dark to-primary flex items-center justify-center shadow-lg">
+                  <Send className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Email *
-                  </label>
-                  <Input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    required
-                    className="bg-background"
-                  />
+                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                    Request a Quote
+                  </h3>
+                  <p className="text-muted-foreground text-xs">Get competitive pricing today</p>
                 </div>
               </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="group">
+                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Full Name *
+                    </label>
+                    <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                    />
+                  </div>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Email *
+                    </label>
+                    <Input
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      required
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                    />
+                  </div>
+                </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Company
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="group">
+                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Company
+                    </label>
+                    <Input
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Company name"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                    />
+                  </div>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Phone
+                    </label>
+                    <Input
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+1 234 567 8900"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                    />
+                  </div>
+                </div>
+
+                <div className="group">
+                  <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    Product Interest *
                   </label>
-                  <Input
-                    name="company"
-                    value={formData.company}
+                  <select
+                    name="product"
+                    value={formData.product}
                     onChange={handleChange}
-                    placeholder="Company name"
-                    className="bg-background"
+                    required
+                    className="w-full h-10 rounded-lg border border-muted-foreground/20 bg-background/80 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/20 focus:border-gold transition-all"
+                  >
+                    <option value="">Select a product</option>
+                    <optgroup label="Basmati Rice">
+                      <option value="1121-basmati">1121 Basmati Rice</option>
+                      <option value="traditional-basmati">Traditional Basmati Rice</option>
+                      <option value="pusa-basmati">Pusa Basmati Rice</option>
+                    </optgroup>
+                    <optgroup label="Green Chillies">
+                      <option value="gauri-chillies">Gauri Green Chillies</option>
+                      <option value="g9-chillies">G9 Green Chillies</option>
+                    </optgroup>
+                    <optgroup label="Banana">
+                      <option value="cavendish-banana">Cavendish Banana</option>
+                      <option value="grand-naine-banana">Grand Naine Banana</option>
+                    </optgroup>
+                    <option value="multiple">Multiple Products</option>
+                  </select>
+                </div>
+
+                <div className="group">
+                  <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    Message *
+                  </label>
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your requirements, quantity, destination country..."
+                    required
+                    rows={4}
+                    className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all resize-none"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Phone
-                  </label>
-                  <Input
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 234 567 8900"
-                    className="bg-background"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Product Interest *
-                </label>
-                <select
-                  name="product"
-                  value={formData.product}
-                  onChange={handleChange}
-                  required
-                  className="w-full h-10 rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-gold via-gold-dark to-primary hover:from-gold-dark hover:via-gold hover:to-forest text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  disabled={isSubmitting}
                 >
-                  <option value="">Select a product</option>
-                  <optgroup label="Basmati Rice">
-                    <option value="1121-basmati">1121 Basmati Rice</option>
-                    <option value="traditional-basmati">Traditional Basmati Rice</option>
-                    <option value="pusa-basmati">Pusa Basmati Rice</option>
-                  </optgroup>
-                  <optgroup label="Green Chillies">
-                    <option value="gauri-chillies">Gauri Green Chillies</option>
-                    <option value="g9-chillies">G9 Green Chillies</option>
-                  </optgroup>
-                  <optgroup label="Banana">
-                    <option value="cavendish-banana">Cavendish Banana</option>
-                    <option value="grand-naine-banana">Grand Naine Banana</option>
-                  </optgroup>
-                  <option value="multiple">Multiple Products</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Message *
-                </label>
-                <Textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your requirements, quantity, destination country..."
-                  required
-                  rows={4}
-                  className="bg-background resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="gold"
-                size="lg"
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Submit Inquiry
-                  </>
-                )}
-              </Button>
-            </form>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Inquiry
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </Button>
+                
+                <p className="text-center text-xs text-muted-foreground">
+                  🔒 Your information is secure and will never be shared
+                </p>
+              </form>
+            </div>
           </motion.div>
         </div>
       </div>
