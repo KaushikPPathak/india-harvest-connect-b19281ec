@@ -76,14 +76,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-12 md:py-24 relative overflow-hidden">
+    <section id="contact" className="py-8 md:py-16 relative overflow-hidden">
       {/* Colorful Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-forest/5 via-gold/5 to-primary/10" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-gold/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-16">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl">
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-10 p-4 md:p-6 rounded-3xl border-2 border-gold bg-background/50 backdrop-blur-sm">
           {/* Left - Contact Info */}
           <div>
             <motion.div
@@ -104,7 +104,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 md:mt-3 mb-4 md:mb-6"
+              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mt-2 mb-3 md:mb-4"
             >
               Ready to Start
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-gold to-forest block">
@@ -116,14 +116,14 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-muted-foreground text-sm md:text-lg mb-6 md:mb-10"
+              className="text-muted-foreground text-xs md:text-base mb-4 md:mb-6"
             >
               Fill out the form and our export specialists will contact you within
               24 hours to discuss your requirements.
             </motion.p>
 
             {/* Contact Details */}
-            <div className="space-y-6">
+            <div className="space-y-4 p-3 rounded-xl border border-muted-foreground/30">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -131,8 +131,8 @@ const Contact = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-forest rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                  <MapPin className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-forest rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <MapPin className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Head Office</h4>
@@ -151,8 +151,8 @@ const Contact = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                  <Phone className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Phone className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
@@ -171,8 +171,8 @@ const Contact = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-forest to-primary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                  <Mail className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-forest to-primary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Mail className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
@@ -191,8 +191,8 @@ const Contact = () => {
                 viewport={{ once: true }}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-gold-dark to-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
-                  <Globe className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-gradient-to-br from-gold-dark to-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                  <Globe className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Website</h4>
@@ -209,28 +209,28 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-6 md:mt-10 p-4 md:p-6 bg-gradient-to-br from-primary/10 via-gold/5 to-forest/10 rounded-2xl border border-primary/20 backdrop-blur-sm"
+              className="mt-4 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-primary/10 via-gold/5 to-forest/10 rounded-xl border border-muted-foreground/30 backdrop-blur-sm"
             >
-              <h4 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base flex items-center gap-2">
+              <h4 className="font-semibold text-foreground mb-2 md:mb-3 text-xs md:text-sm flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-gradient-to-r from-gold to-primary" />
                 Business Credentials
               </h4>
-              <div className="grid grid-cols-2 gap-3 md:gap-4 text-xs md:text-sm">
-                <div className="p-2 rounded-lg bg-background/50">
-                  <span className="text-muted-foreground text-[10px] md:text-xs">GST Number:</span>
-                  <p className="font-medium text-foreground text-xs md:text-sm">24ABTPP7011L1Z9</p>
+              <div className="grid grid-cols-2 gap-2 md:gap-3 text-xs">
+                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
+                  <span className="text-muted-foreground text-[10px]">GST Number:</span>
+                  <p className="font-medium text-foreground text-[10px] md:text-xs">24ABTPP7011L1Z9</p>
                 </div>
-                <div className="p-2 rounded-lg bg-background/50">
-                  <span className="text-muted-foreground text-[10px] md:text-xs">IEC License:</span>
-                  <p className="font-medium text-foreground text-xs md:text-sm">ABTPP7011L</p>
+                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
+                  <span className="text-muted-foreground text-[10px]">IEC License:</span>
+                  <p className="font-medium text-foreground text-[10px] md:text-xs">ABTPP7011L</p>
                 </div>
-                <div className="p-2 rounded-lg bg-background/50">
-                  <span className="text-muted-foreground text-[10px] md:text-xs">APEDA License:</span>
-                  <p className="font-medium text-foreground text-[10px] md:text-xs break-all">RCMC/APEDA/05968/2023-2024</p>
+                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
+                  <span className="text-muted-foreground text-[10px]">APEDA License:</span>
+                  <p className="font-medium text-foreground text-[10px] break-all">RCMC/APEDA/05968/2023-2024</p>
                 </div>
-                <div className="p-2 rounded-lg bg-background/50">
-                  <span className="text-muted-foreground text-[10px] md:text-xs">D&B D-U-N-S:</span>
-                  <p className="font-medium text-foreground text-xs md:text-sm">75-605-1507</p>
+                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
+                  <span className="text-muted-foreground text-[10px]">D&B D-U-N-S:</span>
+                  <p className="font-medium text-foreground text-[10px] md:text-xs">75-605-1507</p>
                 </div>
               </div>
             </motion.div>
@@ -245,27 +245,27 @@ const Contact = () => {
             className="relative"
           >
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-gold/30 to-transparent rounded-full blur-2xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-2xl" />
+            <div className="absolute -top-3 -right-3 w-20 h-20 bg-gradient-to-br from-gold/30 to-transparent rounded-full blur-2xl" />
+            <div className="absolute -bottom-3 -left-3 w-24 h-24 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-2xl" />
             
-            <div className="relative bg-gradient-to-br from-card via-card to-card/95 p-5 md:p-8 rounded-3xl shadow-2xl border border-gold/20 backdrop-blur-sm">
+            <div className="relative bg-gradient-to-br from-card via-card to-card/95 p-4 md:p-6 rounded-2xl shadow-xl border border-muted-foreground/30 backdrop-blur-sm">
               {/* Form Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold via-gold-dark to-primary flex items-center justify-center shadow-lg">
-                  <Send className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold via-gold-dark to-primary flex items-center justify-center shadow-lg">
+                  <Send className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                  <h3 className="font-display text-lg md:text-xl font-bold text-foreground">
                     Request a Quote
                   </h3>
-                  <p className="text-muted-foreground text-xs">Get competitive pricing today</p>
+                  <p className="text-muted-foreground text-[10px]">Get competitive pricing today</p>
                 </div>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
+                <div className="grid sm:grid-cols-2 gap-3">
                   <div className="group">
-                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                       Full Name *
                     </label>
                     <Input
@@ -274,11 +274,11 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
-                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all h-9 text-sm"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                       Email *
                     </label>
                     <Input
@@ -288,14 +288,14 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="your@email.com"
                       required
-                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all h-9 text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3">
                   <div className="group">
-                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                       Company
                     </label>
                     <Input
@@ -303,11 +303,11 @@ const Contact = () => {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Company name"
-                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all h-9 text-sm"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                    <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                       Phone
                     </label>
                     <Input
@@ -315,13 +315,13 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 234 567 8900"
-                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all"
+                      className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all h-9 text-sm"
                     />
                   </div>
                 </div>
 
                 <div className="group">
-                  <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                  <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                     Product Interest *
                   </label>
                   <select
@@ -329,7 +329,7 @@ const Contact = () => {
                     value={formData.product}
                     onChange={handleChange}
                     required
-                    className="w-full h-10 rounded-lg border border-muted-foreground/20 bg-background/80 px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/20 focus:border-gold transition-all"
+                    className="w-full h-9 rounded-lg border border-muted-foreground/20 bg-background/80 px-3 py-1.5 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/20 focus:border-gold transition-all"
                   >
                     <option value="">Select a product</option>
                     <optgroup label="Basmati Rice">
@@ -350,7 +350,7 @@ const Contact = () => {
                 </div>
 
                 <div className="group">
-                  <label className="block text-sm font-medium text-foreground mb-2 group-focus-within:text-primary transition-colors">
+                  <label className="block text-xs font-medium text-foreground mb-1.5 group-focus-within:text-primary transition-colors">
                     Message *
                   </label>
                   <Textarea
@@ -359,15 +359,15 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Tell us about your requirements, quantity, destination country..."
                     required
-                    rows={4}
-                    className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all resize-none"
+                    rows={3}
+                    className="bg-background/80 border-muted-foreground/20 focus:border-gold focus:ring-gold/20 transition-all resize-none text-sm"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-gold via-gold-dark to-primary hover:from-gold-dark hover:via-gold hover:to-forest text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  size="default"
+                  className="w-full bg-gradient-to-r from-gold via-gold-dark to-primary hover:from-gold-dark hover:via-gold hover:to-forest text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group h-9"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -383,7 +383,7 @@ const Contact = () => {
                   )}
                 </Button>
                 
-                <p className="text-center text-xs text-muted-foreground">
+                <p className="text-center text-[10px] text-muted-foreground">
                   🔒 Your information is secure and will never be shared
                 </p>
               </form>
