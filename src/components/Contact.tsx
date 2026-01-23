@@ -203,37 +203,6 @@ const Contact = () => {
               </motion.div>
             </div>
 
-            {/* Business Credentials */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mt-4 md:mt-6 p-3 md:p-4 bg-gradient-to-br from-primary/10 via-gold/5 to-forest/10 rounded-xl border border-muted-foreground/30 backdrop-blur-sm"
-            >
-              <h4 className="font-semibold text-foreground mb-2 md:mb-3 text-xs md:text-sm flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-gold to-primary" />
-                Business Credentials
-              </h4>
-              <div className="grid grid-cols-2 gap-2 md:gap-3 text-xs">
-                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
-                  <span className="text-muted-foreground text-[10px]">GST Number:</span>
-                  <p className="font-medium text-foreground text-[10px] md:text-xs">24ABTPP7011L1Z9</p>
-                </div>
-                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
-                  <span className="text-muted-foreground text-[10px]">IEC License:</span>
-                  <p className="font-medium text-foreground text-[10px] md:text-xs">ABTPP7011L</p>
-                </div>
-                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
-                  <span className="text-muted-foreground text-[10px]">APEDA License:</span>
-                  <p className="font-medium text-foreground text-[10px] break-all">RCMC/APEDA/05968/2023-2024</p>
-                </div>
-                <div className="p-2 rounded-lg bg-background/50 border border-muted-foreground/20">
-                  <span className="text-muted-foreground text-[10px]">D&B D-U-N-S:</span>
-                  <p className="font-medium text-foreground text-[10px] md:text-xs">75-605-1507</p>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Right - Contact Form */}
