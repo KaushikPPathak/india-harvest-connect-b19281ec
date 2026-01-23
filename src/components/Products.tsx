@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import OptimizedImage from "@/components/OptimizedImage";
 // Basmati Rice varieties
@@ -190,14 +189,11 @@ const Products = () => {
               {products
                 .filter((p) => p.category === category)
                 .map((product, index) => (
-                  <motion.div
+                  <div
                     key={product.id}
-                    id={product.slug} // THIS IS THE KEY FIX: Giving the card an address
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 scroll-mt-32" 
+                    id={product.slug}
+                    className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 scroll-mt-32 animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {/* Image */}
                     <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
@@ -264,7 +260,7 @@ const Products = () => {
                         </Button>
                       )}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
             </div>
           </div>
