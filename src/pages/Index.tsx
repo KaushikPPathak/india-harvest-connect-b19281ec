@@ -1,17 +1,22 @@
 import { Helmet } from "react-helmet-async";
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import AboutUs from "@/components/AboutUs";
-import Products from "@/components/Products";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Certifications from "@/components/Certifications";
-import FAQ from "@/components/FAQ";
-import DownloadCatalogue from "@/components/DownloadCatalogue";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatWidget from "@/components/ChatWidget";
-import { organizationSchema, organizationReference, createProductSchema } from "@/lib/geo-schema";
+import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
+
+// Lazy load below-the-fold components for faster initial render
+const AboutUs = lazy(() => import("@/components/AboutUs"));
+const Products = lazy(() => import("@/components/Products"));
+const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const DownloadCatalogue = lazy(() => import("@/components/DownloadCatalogue"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+
+// Lazy load non-critical widgets
+const WhatsAppButton = lazy(() => import("@/components/WhatsAppButton"));
+const ChatWidget = lazy(() => import("@/components/ChatWidget"));
 
 const Index = () => {
 
@@ -252,18 +257,22 @@ const Index = () => {
 
         <main>
           <Hero />
-          <AboutUs />
-          <Products />
-          <WhyChooseUs />
-          <Certifications />
-          <DownloadCatalogue />
-          <FAQ />
-          <Contact />
+          <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
+            <AboutUs />
+            <Products />
+            <WhyChooseUs />
+            <Certifications />
+            <DownloadCatalogue />
+            <FAQ />
+            <Contact />
+          </Suspense>
         </main>
 
-        <Footer />
-        <WhatsAppButton />
-        <ChatWidget />
+        <Suspense fallback={null}>
+          <Footer />
+          <WhatsAppButton />
+          <ChatWidget />
+        </Suspense>
       </div>
     </>
   );

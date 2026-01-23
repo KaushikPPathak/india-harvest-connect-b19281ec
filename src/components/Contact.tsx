@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Send, Loader2, Globe, Sparkles, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -85,52 +84,28 @@ const Contact = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl">
         <div className="grid lg:grid-cols-2 gap-6 md:gap-10 p-4 md:p-6 rounded-3xl border-2 border-gold bg-background/50 backdrop-blur-sm">
           {/* Left - Contact Info */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gold/20 to-primary/20 border border-gold/30 mb-4"
-            >
+          <div className="animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-gold/20 to-primary/20 border border-gold/30 mb-4">
               <Sparkles className="w-4 h-4 text-gold" />
               <span className="text-gold font-medium uppercase tracking-wider text-xs md:text-sm">
                 Get In Touch
               </span>
-            </motion.div>
+            </div>
             
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mt-2 mb-3 md:mb-4"
-            >
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mt-2 mb-3 md:mb-4">
               Ready to Start
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-gold to-forest block">
                 Exporting?
               </span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-muted-foreground text-xs md:text-base mb-4 md:mb-6"
-            >
+            </h2>
+            <p className="text-muted-foreground text-xs md:text-base mb-4 md:mb-6">
               Fill out the form and our export specialists will contact you within
               24 hours to discuss your requirements.
-            </motion.p>
+            </p>
 
             {/* Contact Details */}
             <div className="space-y-4 p-3 rounded-xl border border-muted-foreground/30">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 group"
-              >
+              <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-primary to-forest rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
                   <MapPin className="w-4 h-4 text-white" />
                 </div>
@@ -142,15 +117,9 @@ const Contact = () => {
                     Gopipura, Surat, Gujarat, India
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 group"
-              >
+              <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
                   <Phone className="w-4 h-4 text-white" />
                 </div>
@@ -162,15 +131,9 @@ const Contact = () => {
                     (WhatsApp Available)
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 group"
-              >
+              <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-forest to-primary rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
@@ -182,15 +145,9 @@ const Contact = () => {
                     info@shcglobaltrade.co.in
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 group"
-              >
+              <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-gold-dark to-gold rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
                   <Globe className="w-4 h-4 text-white" />
                 </div>
@@ -200,19 +157,13 @@ const Contact = () => {
                     www.shcglobaltrade.co.in
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
           </div>
 
           {/* Right - Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <div className="relative animate-fade-in" style={{ animationDelay: '150ms' }}>
             {/* Decorative elements */}
             <div className="absolute -top-3 -right-3 w-20 h-20 bg-gradient-to-br from-gold/30 to-transparent rounded-full blur-2xl" />
             <div className="absolute -bottom-3 -left-3 w-24 h-24 bg-gradient-to-tr from-primary/30 to-transparent rounded-full blur-2xl" />
@@ -357,7 +308,7 @@ const Contact = () => {
                 </p>
               </form>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
