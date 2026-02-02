@@ -1,11 +1,10 @@
-import { Shield, Leaf, Clock, Award, Globe, HeartHandshake, TrendingUp, Package, Users } from "lucide-react";
+import { Shield, Leaf, Clock, Award, Globe, HeartHandshake, Rocket, Zap, Target, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
-import AnimatedCounter from "./AnimatedCounter";
 
 const features = [
   {
     icon: Shield,
-    title: "Quality Assurance",
+    title: "Quality First",
     description:
       "Rigorous quality control at every stage ensures only the finest products reach your destination.",
   },
@@ -25,46 +24,46 @@ const features = [
     icon: Award,
     title: "Certified Excellence",
     description:
-      "ISO, FSSAI, and APEDA certified operations meeting international food safety standards.",
+      "FSSAI and APEDA certified operations meeting international food safety standards.",
   },
   {
-    icon: Globe,
-    title: "Global Reach",
+    icon: Zap,
+    title: "Agile & Responsive",
     description:
-      "Established trade relationships in 45+ countries across Middle East, Europe, and Americas.",
+      "As a startup, we offer quick decision-making and personalized attention to every client.",
   },
   {
     icon: HeartHandshake,
-    title: "Trusted Partnership",
+    title: "Partnership Focus",
     description:
-      "Long-term relationships built on transparency, reliability, and mutual growth with our partners.",
+      "Building long-term relationships based on transparency, reliability, and mutual growth.",
   },
 ];
 
 const stats = [
   {
+    icon: Rocket,
+    label: "Founded",
+    value: "Jan 2024",
+    isText: true,
+  },
+  {
+    icon: Target,
+    label: "Our Mission",
+    value: "Quality",
+    isText: true,
+  },
+  {
     icon: Globe,
-    value: 45,
-    suffix: "+",
-    label: "Countries Served",
+    label: "Shipping",
+    value: "Worldwide",
+    isText: true,
   },
   {
-    icon: Package,
-    value: 5000,
-    suffix: "+",
-    label: "Metric Tons Exported",
-  },
-  {
-    icon: Users,
-    value: 200,
-    suffix: "+",
-    label: "Happy Clients",
-  },
-  {
-    icon: TrendingUp,
-    value: 14,
-    suffix: "+",
-    label: "Years Experience",
+    icon: Handshake,
+    label: "Approach",
+    value: "Client-First",
+    isText: true,
   },
 ];
 
@@ -72,7 +71,7 @@ const WhyChooseUs = () => {
   return (
     <section id="quality" className="py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* Stats Section with Animated Counters */}
+        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,12 +91,8 @@ const WhyChooseUs = () => {
               <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <stat.icon className="w-6 h-6 text-gold" />
               </div>
-              <div className="font-display text-3xl md:text-4xl font-bold text-gold mb-1">
-                <AnimatedCounter 
-                  end={stat.value} 
-                  suffix={stat.suffix}
-                  duration={2000}
-                />
+              <div className="font-display text-2xl md:text-3xl font-bold text-gold mb-1">
+                {stat.value}
               </div>
               <p className="text-primary-foreground/80 text-sm font-medium">{stat.label}</p>
             </motion.div>
@@ -111,28 +106,30 @@ const WhyChooseUs = () => {
               Why Choose Us
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
-              Your Trusted Partner in
+              Fresh Perspective in
               <span className="text-primary block">Agricultural Exports</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              With over 14 years of experience in agricultural exports, we have built
-              a reputation for excellence, reliability, and customer satisfaction.
-              Our commitment to quality and sustainable practices sets us apart.
+              Established in January 2024, SHC Global Trade brings a fresh, 
+              startup mindset to agricultural exports. We combine modern business 
+              practices with deep industry knowledge, offering personalized service 
+              and competitive pricing that larger, established players often can't match.
             </p>
 
             {/* Highlight Box */}
             <div className="bg-gradient-hero p-6 rounded-2xl">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Award className="w-6 h-6 text-gold" />
+                  <Rocket className="w-6 h-6 text-gold" />
                 </div>
                 <div>
                   <h4 className="font-display font-semibold text-primary-foreground text-lg mb-2">
-                    APEDA Registered Exporter
+                    Startup Advantage
                   </h4>
                   <p className="text-primary-foreground/80 text-sm">
-                    We are a registered member of the Agricultural and Processed Food
-                    Products Export Development Authority, Government of India.
+                    Being new means we're hungry to prove ourselves. Every client matters, 
+                    every shipment is handled with care, and we go the extra mile to earn 
+                    your trust and build lasting partnerships.
                   </p>
                 </div>
               </div>
