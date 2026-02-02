@@ -261,9 +261,9 @@ export default function ChatWidget() {
                   type="submit"
                   size="icon"
                   disabled={!input.trim() || isLoading}
-                  className="rounded-full bg-gold-600 hover:bg-gold-700 h-9 w-9"
+                  className="rounded-full bg-red-600 hover:bg-red-700 h-9 w-9 shadow-md border-2 border-red-700"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 text-white" />
                 </Button>
               </form>
             </div>
