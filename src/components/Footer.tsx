@@ -75,7 +75,15 @@ const Footer = () => {
             </address>
             
             <div className="flex gap-2 md:gap-3">
-              {[Facebook, Twitter, Instagram].map((Icon, index) => (
+              <a
+                href="https://www.facebook.com/profile.php?id=61587181178442"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 md:w-10 md:h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-gold transition-colors group"
+              >
+                <Facebook className="w-3 h-3 md:w-4 md:h-4 text-primary-foreground group-hover:text-foreground" />
+              </a>
+              {[Twitter, Instagram].map((Icon, index) => (
                 <a
                   key={index}
                   href="#"
