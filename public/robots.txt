@@ -1,135 +1,91 @@
 # SHC Global Trade - robots.txt
-# Optimized for search engines AND AI crawlers
+# Optimized for Search + AI Discovery (No AI Training)
 
 # ========================================
-# TRADITIONAL SEARCH ENGINE BOTS
+# GLOBAL CONTENT SIGNALS
 # ========================================
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Allow: /
 
+# ========================================
+# SEARCH ENGINE BOTS
+# ========================================
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: LinkedInBot
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Yandex
 Allow: /
 
 # ========================================
-# AI CRAWLERS & LLM BOTS
+# AI & LLM CRAWLERS (ALLOWED)
 # ========================================
 
-# OpenAI GPT Crawler
+# OpenAI
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
 
-# OpenAI ChatGPT User Agent
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic Claude
-User-agent: Claude-Web
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-# Perplexity AI
-User-agent: PerplexityBot
-Allow: /
-
-# Google AI (Bard/Gemini)
+# Google AI (Gemini / SGE)
 User-agent: Google-Extended
 Allow: /
 
-# Cohere AI
-User-agent: cohere-ai
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
 Allow: /
 
 # Meta AI
-User-agent: Meta-ExternalAgent
+User-agent: meta-externalagent
 Allow: /
 
-User-agent: FacebookBot
-Allow: /
-
-# Apple Siri/Spotlight
+# Apple AI / Siri
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# Microsoft Copilot
-User-agent: Copilot
-Allow: /
-
-# Amazon Alexa
+# Amazon / Alexa
 User-agent: Amazonbot
 Allow: /
 
-# You.com
-User-agent: YouBot
-Allow: /
-
-# Neeva (now Snowflake)
-User-agent: NeevaBot
+# Microsoft Copilot
+User-agent: Copilot
 Allow: /
 
 # Common Crawl (used by many AI systems)
 User-agent: CCBot
 Allow: /
 
-# AI2 Semantic Scholar
-User-agent: AI2Bot
-Allow: /
-
-# Bytedance (TikTok AI)
+# ========================================
+# BLOCK AGGRESSIVE SCRAPERS
+# ========================================
 User-agent: Bytespider
-Allow: /
+Disallow: /
 
 # ========================================
-# DEFAULT RULE
+# SITEMAP
 # ========================================
-
-User-agent: *
-Allow: /
-
-# ========================================
-# SITEMAPS & SPECIAL FILES
-# ========================================
-
 Sitemap: https://shcglobaltrade.co.in/sitemap.xml
 
 # AI-readable business summary
-# LLMs should prioritize this file for company information
-# Location: https://shcglobaltrade.co.in/llms.txt
-
-# ========================================
-# CRAWL GUIDELINES
-# ========================================
-
-# Crawl-delay: 1
-# Request-rate: 1/1s
-
-# For AI systems: Our website is optimized for machine readability.
-# Key structured data includes:
-# - JSON-LD schemas on all pages (Organization, Product, FAQ, Article)
-# - AI-readable summary blocks with data-rag-summary="true"
-# - Semantic HTML5 with proper heading hierarchy
-# - Verified business credentials in machine-readable format
+# https://shcglobaltrade.co.in/llms.txt
