@@ -1,7 +1,27 @@
 /**
  * GEO (Generative Engine Optimization) Schema Utilities
  * Centralized structured data for AI search engines like ChatGPT, Perplexity, and Google SGE
+ * Updated: 2025-02-03
  */
+
+// WebSite Schema for sitewide search optimization
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://shcglobaltrade.co.in/#website",
+  name: "SHC Global Trade",
+  url: "https://shcglobaltrade.co.in",
+  description: "Premium agricultural exporter from India - Basmati Rice, Green Chillies, Bananas",
+  publisher: {
+    "@id": "https://shcglobaltrade.co.in/#organization"
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://shcglobaltrade.co.in/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  inLanguage: "en"
+};
 
 // Canonical Organization Schema - used across all pages
 export const organizationSchema = {
