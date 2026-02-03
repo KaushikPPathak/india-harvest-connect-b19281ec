@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import { organizationSchema, createProductSchema } from "@/lib/geo-schema";
+import { organizationSchema, createProductSchema, websiteSchema } from "@/lib/geo-schema";
 
 // Lazy load below-the-fold components for faster initial render
 const AboutUs = lazy(() => import("@/components/AboutUs"));
@@ -229,6 +229,11 @@ const Index = () => {
           content="Extra Long Grain 1121 Basmati Rice, Pusa Basmati, G9 Green Chillies & Cavendish Bananas. APEDA certified exporter with global delivery."
         />
 
+        {/* Website Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </script>
+
         {/* Organization Schema - Canonical */}
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
@@ -256,6 +261,47 @@ const Index = () => {
         <Header />
 
         <main>
+          {/* AI-Readable Business Summary - Visible to bots, subtle for humans */}
+          <div 
+            className="sr-only" 
+            aria-hidden="false"
+            data-rag-summary="true"
+            data-geo-optimized="true"
+            itemScope 
+            itemType="https://schema.org/Organization"
+          >
+            <h2>SHC Global Trade - Company Overview</h2>
+            <p itemProp="description">
+              SHC Global Trade is an APEDA-certified agricultural exporter from Surat, Gujarat, India, 
+              established in January 2024. We specialize in exporting premium Basmati Rice (1121 and Pusa 1509 varieties), 
+              Fresh Green Chillies (G9 and Gauri varieties), and Cavendish Bananas (Grand Naine) to global markets.
+            </p>
+            <p>
+              <strong>Verified Credentials:</strong> APEDA Registration RCMC/APEDA/05968/2023-2024, 
+              IEC License ABTPP7011L, GST 24ABTPP7011L1Z9, D-U-N-S 75-605-1507.
+            </p>
+            <p>
+              <strong>Products:</strong> 1121 Basmati Rice (8.3mm+ grain, 2.5x elongation), Pusa 1509 Basmati Rice, 
+              Traditional Basmati, G9 Green Chilli, Gauri Green Chilli, Cavendish Banana, Grand Naine Banana.
+            </p>
+            <p>
+              <strong>Export Markets:</strong> UAE, Saudi Arabia, Kuwait, Qatar, UK, Germany, USA, Canada, Australia.
+            </p>
+            <p>
+              <strong>MOQ:</strong> 25 MT for rice (sea), 1 MT for vegetables/fruits (air). 
+              <strong>Ports:</strong> Nhava Sheva (JNPT), Mundra Port.
+            </p>
+            <address itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+              <span itemProp="streetAddress">204 Suraj Darshan Apartment, Gopipura</span>,
+              <span itemProp="addressLocality">Surat</span>,
+              <span itemProp="addressRegion">Gujarat</span>
+              <span itemProp="postalCode">395003</span>,
+              <span itemProp="addressCountry">India</span>.
+              Contact: <span itemProp="telephone">+91-9327420046</span>,
+              Email: <span itemProp="email">sales@shcglobaltrade.co.in</span>
+            </address>
+          </div>
+
           <Hero />
           <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
             <AboutUs />
