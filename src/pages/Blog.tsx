@@ -21,6 +21,16 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "market-update-march-2026",
+    title: "March 2026 Market Update: Navigating Global Supply Chains",
+    excerpt: "Strategic insights on pricing, supply trends, and uninterrupted shipping routes for Basmati Rice, Green Chillies, and Bananas amid global disruptions.",
+    author: "Kaushik Pathak",
+    date: "2026-03-05",
+    readTime: "6 min",
+    category: "Market Update",
+    image: "/image.jpeg"
+  },
+  {
     slug: "basmati-rice-grading-system-india",
     title: "Complete Guide to Basmati Rice Grading System in India",
     excerpt: "Understanding the AGMARK and export grading standards for 1121 and 1509 Basmati rice varieties. Learn about grain length, broken percentage, moisture content, and quality parameters.",
