@@ -27,6 +27,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BasmatiRiceGrading = lazy(() => import("./pages/blog/BasmatiRiceGrading"));
 const ExportDocumentation = lazy(() => import("./pages/blog/ExportDocumentation"));
 const IndianAgricultureExport2025 = lazy(() => import("./pages/blog/IndianAgricultureExport2025"));
+const MarketUpdateMarch2026 = lazy(() => import("./pages/blog/MarketUpdateMarch2026"));
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
               <Route path="/blog/basmati-rice-grading-system-india" element={<BasmatiRiceGrading />} />
               <Route path="/blog/export-documentation-india-agricultural-products" element={<ExportDocumentation />} />
               <Route path="/blog/indian-agriculture-export-opportunities-2025" element={<IndianAgricultureExport2025 />} />
+              <Route path="/blog/market-update-march-2026" element={<MarketUpdateMarch2026 />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
