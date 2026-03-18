@@ -53,7 +53,7 @@ const Certifications = () => {
         </div>
 
         {/* Certifications Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.name}
