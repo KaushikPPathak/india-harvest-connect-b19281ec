@@ -15,6 +15,12 @@ const certifications = [
     icon: FileCheck,
   },
   {
+    name: "FSSAI",
+    fullName: "Food Safety and Standards Authority of India",
+    description: "License No: 10726997000306 - Food safety certified",
+    icon: Shield,
+  },
+  {
     name: "D&B Certified",
     fullName: "Dun & Bradstreet Business Verification",
     description: "D-U-N-S: 75-605-1507 - Verified business credibility",
