@@ -78,7 +78,7 @@ const blogListingSchema = {
   "@type": "Blog",
   "@id": "https://shcglobaltrade.co.in/blog#blog",
   name: "SHC Global Trade - Agricultural Export Insights",
-  description: "Expert articles on Basmati rice grading, export documentation, Indian agriculture trends, and international trade from India's trusted APEDA-certified agricultural exporter.",
+  description: "Expert articles on global crop positions, El Niño climate impacts, geopolitical trade risks, Basmati rice prices and agricultural trade trends for 2026-2027 from India's trusted APEDA-certified agricultural exporter.",
   url: "https://shcglobaltrade.co.in/blog",
   inLanguage: "en-US",
   mainEntityOfPage: {
@@ -92,15 +92,19 @@ const blogListingSchema = {
     },
     {
       "@type": "Thing",
-      name: "Indian Agricultural Export Documentation"
+      name: "Global Agricultural Crop Position 2026-27"
     },
     {
       "@type": "Thing",
-      name: "APEDA Certified Agricultural Exporter"
+      name: "El Nino Climate Impact on Agriculture"
     },
     {
       "@type": "Thing",
-      name: "1121 Basmati Rice Grading Standards"
+      name: "Geopolitics and Agricultural Trade"
+    },
+    {
+      "@type": "Thing",
+      name: "Banana and Green Chilli Export Market"
     }
   ],
   publisher: organizationReference,
