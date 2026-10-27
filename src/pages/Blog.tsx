@@ -21,41 +21,51 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
-    slug: "market-update-march-2026",
-    title: "March 2026 Market Update: Navigating Global Supply Chains",
-    excerpt: "Strategic insights on pricing, supply trends, and uninterrupted shipping routes for Basmati Rice, Green Chillies, and Bananas amid global disruptions.",
+    slug: "global-agri-outlook-2026-2027",
+    title: "Global Agricultural Outlook 2026–27: Crop Positions, Trade Flows & Price Trends",
+    excerpt: "Worldwide crop positions, exporting and importing countries, and price trends for 2026 and 2027 for Basmati rice, Cavendish bananas and green chillies.",
     author: "Kaushik Pathak",
-    date: "2026-03-05",
-    readTime: "6 min",
-    category: "Market Update",
+    date: "2026-10-26",
+    readTime: "8 min",
+    category: "Market Outlook",
     image: "/image.jpeg"
   },
   {
-    slug: "basmati-rice-grading-system-india",
-    title: "Complete Guide to Basmati Rice Grading System in India",
-    excerpt: "Understanding the AGMARK and export grading standards for 1121 and 1509 Basmati rice varieties. Learn about grain length, broken percentage, moisture content, and quality parameters.",
+    slug: "strong-el-nino-2026-27-crop-impact",
+    title: "Strong El Niño 2026–27: What the Climate Outlook Means for Global Crop Supply",
+    excerpt: "NOAA expects a strong-to-very-strong El Niño through January–March 2027. What it means for rice, banana and chilli crops worldwide — and how importers should plan.",
     author: "Kaushik Pathak",
-    date: "2025-01-10",
-    readTime: "8 min",
+    date: "2026-10-26",
+    readTime: "7 min",
+    category: "Climate & Markets",
+    image: "/image.jpeg"
+  },
+  {
+    slug: "geopolitics-agri-trade-october-2026",
+    title: "Geopolitics & Agri Trade — October 2026 Briefing: Red Sea, Gulf Transit & Route Resilience",
+    excerpt: "How the West Asia conflict, Iran tariff escalation and Red Sea disruption are reshaping agricultural trade — and which corridors remain stable for importers.",
+    author: "Kaushik Pathak",
+    date: "2026-10-26",
+    readTime: "6 min",
+    category: "Geopolitics",
+    image: "/image.jpeg"
+  },
+  {
+    slug: "basmati-rice-crop-position-2026-27",
+    title: "Basmati Rice Crop Position 2026–27: Harvest, Exporters, Importers & Price Trends",
+    excerpt: "India's expanded 2026-27 Basmati crop is arriving with robust yields. Harvest quality, exporting and importing countries, and the 2027 price outlook.",
+    author: "Kaushik Pathak",
+    date: "2026-10-26",
+    readTime: "7 min",
     category: "Rice Export",
     image: "/image.jpeg"
   },
   {
-    slug: "export-documentation-india-agricultural-products",
-    title: "Essential Export Documentation for Indian Agricultural Products",
-    excerpt: "A comprehensive guide to IEC, APEDA registration, phytosanitary certificates, Bill of Lading, and customs documentation required for exporting rice, vegetables, and fruits from India.",
+    slug: "banana-green-chilli-market-2026-27",
+    title: "Banana & Green Chilli World Market 2026–27: Exporters, Importers & Price Outlook",
+    excerpt: "Global banana and green chilli crop positions: exporting and importing countries, current price levels, and the outlook into 2027.",
     author: "Kaushik Pathak",
-    date: "2025-01-05",
-    readTime: "10 min",
-    category: "Export Guide",
-    image: "/image.jpeg"
-  },
-  {
-    slug: "indian-agriculture-export-opportunities-2025",
-    title: "Indian Agriculture Export Opportunities in 2025",
-    excerpt: "Explore the growing demand for Indian Basmati rice, green chillies, and bananas in global markets. Key trends, target countries, and how to capitalize on export opportunities.",
-    author: "Kaushik Pathak",
-    date: "2024-12-28",
+    date: "2026-10-26",
     readTime: "7 min",
     category: "Market Insights",
     image: "/image.jpeg"
