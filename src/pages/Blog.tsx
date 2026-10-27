@@ -130,11 +130,15 @@ const blogListingSchema = {
     about: [
       {
         "@type": "Thing",
-        name: post.category === "Rice Export" 
-          ? "Basmati Rice Export from India" 
-          : post.category === "Export Guide" 
-          ? "Indian Agricultural Export Documentation"
-          : "Indian Agricultural Export Market"
+        name: post.category === "Rice Export"
+          ? "Basmati Rice Export from India"
+          : post.category === "Climate & Markets"
+          ? "El Nino Climate Impact on Agriculture"
+          : post.category === "Geopolitics"
+          ? "Geopolitics and Agricultural Trade"
+          : post.category === "Market Outlook"
+          ? "Global Agricultural Crop Position 2026-27"
+          : "Banana and Green Chilli Export Market"
       }
     ]
   }))
@@ -144,19 +148,19 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Agricultural Export Blog | Basmati Rice, Export Docs, India Trade - SHC Global Trade</title>
+        <title>Agri Trade Blog 2026-27 | Crop Positions, El Niño, Prices - SHC Global Trade</title>
         <meta
           name="description"
-          content="Expert insights on Basmati rice grading, export documentation, APEDA certification, and Indian agricultural export opportunities. Learn from India's trusted exporter."
+          content="Expert insights on the 2026-27 global crop position, El Niño climate impacts, geopolitics of agri trade, and price trends for Basmati rice, bananas and green chillies."
         />
         <meta
           name="keywords"
-          content="basmati rice grading, export documentation india, APEDA registration, agricultural export, indian rice export, 1121 basmati quality, export certificate india"
+          content="global crop position 2026 27, el nino agriculture, geopolitics agri trade, basmati rice price 2027, banana export price, green chilli market"
         />
         <link rel="canonical" href="https://shcglobaltrade.co.in/blog" />
         
-        <meta property="og:title" content="Agricultural Export Blog | SHC Global Trade" />
-        <meta property="og:description" content="Expert insights on Basmati rice grading, export documentation, and Indian agricultural export opportunities." />
+        <meta property="og:title" content="Agri Trade Blog 2026-27 | SHC Global Trade" />
+        <meta property="og:description" content="Crop positions, El Niño impacts, geopolitics and price trends for Basmati rice, bananas and green chillies." />
         <meta property="og:url" content="https://shcglobaltrade.co.in/blog" />
         <meta property="og:type" content="blog" />
         
