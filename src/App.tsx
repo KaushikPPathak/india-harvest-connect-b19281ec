@@ -3,15 +3,22 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-// Eagerly load the main page for fast initial load
+// Main pages
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
-// Lazy load pages
+// General pages
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const PusaBasmati1509 = lazy(() => import("./pages/PusaBasmati1509"));
 const PusaBasmati1121 = lazy(() => import("./pages/PusaBasmati1121"));
@@ -20,23 +27,28 @@ const GauriGreenChilli = lazy(() => import("./pages/GauriGreenChilli"));
 const G9GreenChilli = lazy(() => import("./pages/G9GreenChilli"));
 const CavendishBanana = lazy(() => import("./pages/CavendishBanana"));
 const GrandNaineBanana = lazy(() => import("./pages/GrandNaineBanana"));
-const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
+const TermsAndConditions = lazy(
+  () => import("./pages/TermsAndConditions")
+);
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
 const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 
+// Blog listing
 const Blog = lazy(() => import("./pages/Blog"));
-const BasmatiRiceGrading = lazy(
-  () => import("./pages/blog/BasmatiRiceGrading")
+
+// Blog articles: filenames confirmed in GitHub
+const BananaChilliMarket2027 = lazy(
+  () => import("./pages/blog/BananaChilliMarket2027")
 );
-const IndianAgricultureExport2025 = lazy(
-  () => import("./pages/blog/IndianAgricultureExport2025")
-);
-const MarketUpdateMarch2026 = lazy(
-  () => import("./pages/blog/MarketUpdateMarch2026")
+const BasmatiCropPosition = lazy(
+  () => import("./pages/blog/BasmatiCropPosition")
 );
 const ElNino2027 = lazy(
   () => import("./pages/blog/ElNino2027")
+);
+const GeopoliticsOctober2026 = lazy(
+  () => import("./pages/blog/GeopoliticsOctober2026")
 );
 const GlobalAgriOutlook2027 = lazy(
   () => import("./pages/blog/GlobalAgriOutlook2027")
@@ -44,7 +56,7 @@ const GlobalAgriOutlook2027 = lazy(
 
 const queryClient = new QueryClient();
 
-// Simple loading fallback
+// Loading indicator
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin" />
@@ -61,9 +73,13 @@ const App = () => (
         <BrowserRouter>
           <Suspense fallback={<PageLoader />}>
             <Routes>
+              {/* Home */}
               <Route path="/" element={<Index />} />
+
+              {/* Company */}
               <Route path="/about-us" element={<AboutUs />} />
 
+              {/* Products */}
               <Route
                 path="/pusa-basmati-1509"
                 element={<PusaBasmati1509 />}
@@ -93,6 +109,7 @@ const App = () => (
                 element={<GrandNaineBanana />}
               />
 
+              {/* Policies */}
               <Route
                 path="/terms-and-conditions"
                 element={<TermsAndConditions />}
@@ -101,7 +118,10 @@ const App = () => (
                 path="/privacy-policy"
                 element={<PrivacyPolicy />}
               />
-              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route
+                path="/disclaimer"
+                element={<Disclaimer />}
+              />
               <Route
                 path="/refund-policy"
                 element={<RefundPolicy />}
@@ -110,31 +130,29 @@ const App = () => (
               {/* Blog listing */}
               <Route path="/blog" element={<Blog />} />
 
-              {/* Existing blog articles */}
+              {/* Blog articles */}
               <Route
-                path="/blog/basmati-rice-grading-system-india"
-                element={<BasmatiRiceGrading />}
+                path="/blog/banana-green-chilli-market-2026-27"
+                element={<BananaChilliMarket2027 />}
               />
               <Route
-                path="/blog/indian-agriculture-export-opportunities-2025"
-                element={<IndianAgricultureExport2025 />}
+                path="/blog/basmati-rice-crop-position-2026-27"
+                element={<BasmatiCropPosition />}
               />
-              <Route
-                path="/blog/market-update-march-2026"
-                element={<MarketUpdateMarch2026 />}
-              />
-
-              {/* New blog articles */}
               <Route
                 path="/blog/strong-el-nino-2026-27-crop-impact"
                 element={<ElNino2027 />}
+              />
+              <Route
+                path="/blog/geopolitics-agri-trade-october-2026"
+                element={<GeopoliticsOctober2026 />}
               />
               <Route
                 path="/blog/global-agri-outlook-2026-2027"
                 element={<GlobalAgriOutlook2027 />}
               />
 
-              {/* Keep all custom routes above this route */}
+              {/* Keep this route last */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
